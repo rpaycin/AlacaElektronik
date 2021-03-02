@@ -15,7 +15,7 @@ namespace AdminWebPanel.Controllers
 
         public ActionResult Logout()
         {
-            Session.Abandon();
+            Session.Abandon();  //
             return RedirectToAction("Index", "Login");
         }
     }
