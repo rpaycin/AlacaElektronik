@@ -13,10 +13,10 @@ namespace Admin.DataLayer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CreativeSolutionsAdminEntities : DbContext
+    public partial class AlacaYazilimWebSiteEntities : DbContext
     {
-        public CreativeSolutionsAdminEntities()
-            : base("name=CreativeSolutionsAdminEntities")
+        public AlacaYazilimWebSiteEntities()
+            : base("name=AlacaYazilimWebSiteEntities")
         {
         }
     
@@ -25,7 +25,14 @@ namespace Admin.DataLayer
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Firm> Firm { get; set; }
-        public DbSet<User> User { get; set; }
+        public DbSet<DownloadLink> DownloadLink { get; set; }
+        public DbSet<DuyuruHaber> DuyuruHaber { get; set; }
+        public DbSet<FirmaBilgileri> FirmaBilgileri { get; set; }
+        public DbSet<Kullanicilar> Kullanicilar { get; set; }
+        public DbSet<MusteriYazi> MusteriYazi { get; set; }
+        public DbSet<Popup> Popup { get; set; }
+        public DbSet<Referans> Referans { get; set; }
+        public DbSet<Urun> Urun { get; set; }
+        public DbSet<UrunGrup> UrunGrup { get; set; }
     }
 }

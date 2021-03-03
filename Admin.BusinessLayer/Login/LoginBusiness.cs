@@ -16,11 +16,5 @@ namespace Admin.BusinessLayer.Login
         {
             return _loginData.LoginControl(user);
         }
-
-
-        public Response GetUserInfoByEmail(string emailAddress)
-        {
-            return _loginData.GetUserInfoByEmail(emailAddress);
-        }
     }
 }

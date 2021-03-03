@@ -1,5 +1,4 @@
-﻿using AdminWebPanel.Models;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace AdminWebPanel.Controllers
 {
@@ -7,15 +6,17 @@ namespace AdminWebPanel.Controllers
     {
         public ActionResult Index()
         {
-            BaseModel model=new BaseModel();
-            model.LoginControl();
+            return View();
+        }
 
-            return View(model);
+        public ActionResult FirmInformation()
+        {
+            return View();
         }
 
         public ActionResult Logout()
         {
-            Session.Abandon();  //
+            Session.Abandon(); 
             return RedirectToAction("Index", "Login");
         }
     }

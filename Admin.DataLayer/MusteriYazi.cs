@@ -12,14 +12,17 @@ namespace Admin.DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class MusteriYazi
     {
-        public int ID { get; set; }
-        public string EmailAddress { get; set; }
-        public string Password { get; set; }
-        public Nullable<int> IsSpecialUser { get; set; }
-        public int FirmID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public int MusteriYaziId { get; set; }
+        public string Isim { get; set; }
+        public string Unvan { get; set; }
+        public string MusteriYazi1 { get; set; }
+        public string ResimUrl { get; set; }
+        public string FirmaUrl { get; set; }
+        public Nullable<int> Sira { get; set; }
+        public Nullable<bool> Aktif { get; set; }
+        public Nullable<int> CreateUser { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
     }
 }

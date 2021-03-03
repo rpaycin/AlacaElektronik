@@ -55,18 +55,12 @@
         <div class="inputwrapper animate2 bounceIn">
             @Html.PasswordFor(m => m.User.Password, new { placeholder = "Şifre" })
         </div>
-        @if (Model.User!=null && Model.User.IsSpecialUser > 0)
-        {
-            <div class="animate3 bounceIn">
-                @Html.DropDownList("User.FirmID", Model.ListFirm, new { style = "width: 270px;height: 40px;" })
-            </div>
-        }
         <div class="inputwrapper animate4 bounceIn">
             <button id="frmSubmit">Giriş</button>
         </div>
         <div class="inputwrapper animate5 bounceIn">
             <div class="pull-right">
-                <a style="text-decoration: underline; cursor: pointer;" href="#ex2" rel="modal:open">Şifremi Unuttum</a>
+                @*<a style="text-decoration: underline; cursor: pointer;" href="#ex2" rel="modal:open">Şifremi Unuttum</a>*@
             </div>
         </div>
     </div>

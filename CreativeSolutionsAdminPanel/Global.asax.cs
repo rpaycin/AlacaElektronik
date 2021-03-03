@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CreativeSolutionsAdminPanel.Filters;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -37,6 +38,8 @@ namespace AdminWebPanel
 
             // Use LocalDB for Entity Framework by default
             Database.DefaultConnectionFactory = new SqlConnectionFactory(@"Data Source=(localdb)\v11.0; Integrated Security=True; MultipleActiveResultSets=True");
+
+            GlobalFilters.Filters.Add(new SessionControlFilter());
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);

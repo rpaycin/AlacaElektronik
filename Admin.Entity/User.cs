@@ -4,7 +4,7 @@ namespace Admin.Entity
 {
     public class User
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Email adresinizi giriniz!")]
         [EmailAddress(ErrorMessage = "Yanlış formatta email adresi girdiniz!")]
@@ -15,14 +15,6 @@ namespace Admin.Entity
         [Display(Name = "Şifre")]
         public string Password { get; set; }
 
-        public int IsSpecialUser { get; set; }
-
-        public int ClientID { get; set; }
-
-        [Range(0, int.MaxValue, ErrorMessage = "Şirket seçimini yapınız!")]
-        public int FirmID { get; set; }
-
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string FullName { get; set; }
     }
 }

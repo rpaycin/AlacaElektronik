@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AlacaYazilimWebSiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DownloadLink">
+          <Key>
+            <PropertyRef Name="DownloadId" />
+          </Key>
+          <Property Name="DownloadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DownloadAdi" Type="nvarchar" MaxLength="255" />
+          <Property Name="DownloadUrl" Type="nvarchar" MaxLength="255" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+          <Property Name="Aktif" Type="int" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DuyuruHaber">
+          <Key>
+            <PropertyRef Name="DuyuruId" />
+          </Key>
+          <Property Name="DuyuruId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DuyuruBaslik" Type="nvarchar" MaxLength="255" />
+          <Property Name="DuyuruKisa" Type="nvarchar" MaxLength="255" />
+          <Property Name="Duyuru" Type="nvarchar(max)" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sira" Type="int" />
+          <Property Name="Aktif" Type="bit" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FirmaBilgileri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="FirmaAdi" Type="nvarchar" MaxLength="255" />
+          <Property Name="FirmaAdiUzun" Type="nvarchar" MaxLength="255" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="255" />
+          <Property Name="Telefon1" Type="nvarchar" MaxLength="15" />
+          <Property Name="Telefon2" Type="nvarchar" MaxLength="15" />
+          <Property Name="CepTelefon" Type="nvarchar" MaxLength="15" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="15" />
+          <Property Name="IletisimMail" Type="nvarchar" MaxLength="255" />
+          <Property Name="DestekMail" Type="nvarchar" MaxLength="255" />
+          <Property Name="SatisMail" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="KullaniciId" />
+          </Key>
+          <Property Name="KullaniciId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="255" />
+          <Property Name="Aktif" Type="bit" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Sifre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MusteriYazi">
+          <Key>
+            <PropertyRef Name="MusteriYaziId" />
+          </Key>
+          <Property Name="MusteriYaziId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Isim" Type="nvarchar" MaxLength="100" />
+          <Property Name="Unvan" Type="nvarchar" MaxLength="100" />
+          <Property Name="MusteriYazi" Type="nvarchar" MaxLength="255" />
+          <Property Name="ResimUrl" Type="nvarchar" MaxLength="255" />
+          <Property Name="FirmaUrl" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sira" Type="int" />
+          <Property Name="Aktif" Type="bit" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Popup">
+          <Key>
+            <PropertyRef Name="PopupId" />
+          </Key>
+          <Property Name="PopupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Popup" Type="nvarchar(max)" />
+          <Property Name="Sira" Type="int" />
+          <Property Name="Aktif" Type="bit" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Referans">
+          <Key>
+            <PropertyRef Name="ReferansId" />
+          </Key>
+          <Property Name="ReferansId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReferansFirmaAdi" Type="nvarchar" MaxLength="255" />
+          <Property Name="ResimUrl" Type="nvarchar" MaxLength="255" />
+          <Property Name="FirmaUrl" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sira" Type="int" />
+          <Property Name="Aktif" Type="bit" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Urun">
+          <Key>
+            <PropertyRef Name="UrunId" />
+          </Key>
+          <Property Name="UrunId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FKUrunGrupId" Type="int" />
+          <Property Name="UrunAdi" Type="nvarchar" MaxLength="255" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+          <Property Name="ListeFiyat" Type="money" />
+          <Property Name="ListeIskontoOran" Type="float" />
+          <Property Name="Aktif" Type="bit" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UrunGrup">
+          <Key>
+            <PropertyRef Name="UrunGrupId" />
+          </Key>
+          <Property Name="UrunGrupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnaGrupId" Type="int" />
+          <Property Name="UrunGrupAdi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Aktif" Type="bit" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="Createdate" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="AlacaYazilimWebSiteModelStoreContainer">
+          <EntitySet Name="DownloadLink" EntityType="Self.DownloadLink" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DuyuruHaber" EntityType="Self.DuyuruHaber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FirmaBilgileri" EntityType="Self.FirmaBilgileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MusteriYazi" EntityType="Self.MusteriYazi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Popup" EntityType="Self.Popup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Referans" EntityType="Self.Referans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Urun" EntityType="Self.Urun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UrunGrup" EntityType="Self.UrunGrup" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AlacaYazilimWebSiteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DownloadLink">
+          <Key>
+            <PropertyRef Name="DownloadId" />
+          </Key>
+          <Property Name="DownloadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DownloadAdi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DownloadUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Aktif" Type="Int32" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="DuyuruHaber">
+          <Key>
+            <PropertyRef Name="DuyuruId" />
+          </Key>
+          <Property Name="DuyuruId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DuyuruBaslik" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DuyuruKisa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Duyuru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Sira" Type="Int32" />
+          <Property Name="Aktif" Type="Boolean" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="FirmaBilgileri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FirmaAdi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaAdiUzun" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CepTelefon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="IletisimMail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DestekMail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SatisMail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="KullaniciId" />
+          </Key>
+          <Property Name="KullaniciId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Aktif" Type="Boolean" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MusteriYazi">
+          <Key>
+            <PropertyRef Name="MusteriYaziId" />
+          </Key>
+          <Property Name="MusteriYaziId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Isim" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Unvan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MusteriYazi1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ResimUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Sira" Type="Int32" />
+          <Property Name="Aktif" Type="Boolean" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Popup">
+          <Key>
+            <PropertyRef Name="PopupId" />
+          </Key>
+          <Property Name="PopupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Popup1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sira" Type="Int32" />
+          <Property Name="Aktif" Type="Boolean" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Referans">
+          <Key>
+            <PropertyRef Name="ReferansId" />
+          </Key>
+          <Property Name="ReferansId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReferansFirmaAdi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ResimUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Sira" Type="Int32" />
+          <Property Name="Aktif" Type="Boolean" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Urun">
+          <Key>
+            <PropertyRef Name="UrunId" />
+          </Key>
+          <Property Name="UrunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FKUrunGrupId" Type="Int32" />
+          <Property Name="UrunAdi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ListeFiyat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ListeIskontoOran" Type="Double" />
+          <Property Name="Aktif" Type="Boolean" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="UrunGrup">
+          <Key>
+            <PropertyRef Name="UrunGrupId" />
+          </Key>
+          <Property Name="UrunGrupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnaGrupId" Type="Int32" />
+          <Property Name="UrunGrupAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Aktif" Type="Boolean" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="Createdate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="AlacaYazilimWebSiteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DownloadLink" EntityType="Self.DownloadLink" />
+          <EntitySet Name="DuyuruHaber" EntityType="Self.DuyuruHaber" />
+          <EntitySet Name="FirmaBilgileri" EntityType="Self.FirmaBilgileri" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
+          <EntitySet Name="MusteriYazi" EntityType="Self.MusteriYazi" />
+          <EntitySet Name="Popup" EntityType="Self.Popup" />
+          <EntitySet Name="Referans" EntityType="Self.Referans" />
+          <EntitySet Name="Urun" EntityType="Self.Urun" />
+          <EntitySet Name="UrunGrup" EntityType="Self.UrunGrup" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AlacaYazilimWebSiteModelStoreContainer" CdmEntityContainer="AlacaYazilimWebSiteEntities">
+          <EntitySetMapping Name="DownloadLink">
+            <EntityTypeMapping TypeName="AlacaYazilimWebSiteModel.DownloadLink">
+              <MappingFragment StoreEntitySet="DownloadLink">
+                <ScalarProperty Name="DownloadId" ColumnName="DownloadId" />
+                <ScalarProperty Name="DownloadAdi" ColumnName="DownloadAdi" />
+                <ScalarProperty Name="DownloadUrl" ColumnName="DownloadUrl" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DuyuruHaber">
+            <EntityTypeMapping TypeName="AlacaYazilimWebSiteModel.DuyuruHaber">
+              <MappingFragment StoreEntitySet="DuyuruHaber">
+                <ScalarProperty Name="DuyuruId" ColumnName="DuyuruId" />
+                <ScalarProperty Name="DuyuruBaslik" ColumnName="DuyuruBaslik" />
+                <ScalarProperty Name="DuyuruKisa" ColumnName="DuyuruKisa" />
+                <ScalarProperty Name="Duyuru" ColumnName="Duyuru" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Sira" ColumnName="Sira" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FirmaBilgileri">
+            <EntityTypeMapping TypeName="AlacaYazilimWebSiteModel.FirmaBilgileri">
+              <MappingFragment StoreEntitySet="FirmaBilgileri">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirmaAdi" ColumnName="FirmaAdi" />
+                <ScalarProperty Name="FirmaAdiUzun" ColumnName="FirmaAdiUzun" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Telefon1" ColumnName="Telefon1" />
+                <ScalarProperty Name="Telefon2" ColumnName="Telefon2" />
+                <ScalarProperty Name="CepTelefon" ColumnName="CepTelefon" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="IletisimMail" ColumnName="IletisimMail" />
+                <ScalarProperty Name="DestekMail" ColumnName="DestekMail" />
+                <ScalarProperty Name="SatisMail" ColumnName="SatisMail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicilar">
+            <EntityTypeMapping TypeName="AlacaYazilimWebSiteModel.Kullanicilar">
+              <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="KullaniciId" ColumnName="KullaniciId" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MusteriYazi">
+            <EntityTypeMapping TypeName="AlacaYazilimWebSiteModel.MusteriYazi">
+              <MappingFragment StoreEntitySet="MusteriYazi">
+                <ScalarProperty Name="MusteriYaziId" ColumnName="MusteriYaziId" />
+                <ScalarProperty Name="Isim" ColumnName="Isim" />
+                <ScalarProperty Name="Unvan" ColumnName="Unvan" />
+                <ScalarProperty Name="MusteriYazi1" ColumnName="MusteriYazi" />
+                <ScalarProperty Name="ResimUrl" ColumnName="ResimUrl" />
+                <ScalarProperty Name="FirmaUrl" ColumnName="FirmaUrl" />
+                <ScalarProperty Name="Sira" ColumnName="Sira" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Popup">
+            <EntityTypeMapping TypeName="AlacaYazilimWebSiteModel.Popup">
+              <MappingFragment StoreEntitySet="Popup">
+                <ScalarProperty Name="PopupId" ColumnName="PopupId" />
+                <ScalarProperty Name="Popup1" ColumnName="Popup" />
+                <ScalarProperty Name="Sira" ColumnName="Sira" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Referans">
+            <EntityTypeMapping TypeName="AlacaYazilimWebSiteModel.Referans">
+              <MappingFragment StoreEntitySet="Referans">
+                <ScalarProperty Name="ReferansId" ColumnName="ReferansId" />
+                <ScalarProperty Name="ReferansFirmaAdi" ColumnName="ReferansFirmaAdi" />
+                <ScalarProperty Name="ResimUrl" ColumnName="ResimUrl" />
+                <ScalarProperty Name="FirmaUrl" ColumnName="FirmaUrl" />
+                <ScalarProperty Name="Sira" ColumnName="Sira" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Urun">
+            <EntityTypeMapping TypeName="AlacaYazilimWebSiteModel.Urun">
+              <MappingFragment StoreEntitySet="Urun">
+                <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+                <ScalarProperty Name="FKUrunGrupId" ColumnName="FKUrunGrupId" />
+                <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="ListeFiyat" ColumnName="ListeFiyat" />
+                <ScalarProperty Name="ListeIskontoOran" ColumnName="ListeIskontoOran" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UrunGrup">
+            <EntityTypeMapping TypeName="AlacaYazilimWebSiteModel.UrunGrup">
+              <MappingFragment StoreEntitySet="UrunGrup">
+                <ScalarProperty Name="UrunGrupId" ColumnName="UrunGrupId" />
+                <ScalarProperty Name="AnaGrupId" ColumnName="AnaGrupId" />
+                <ScalarProperty Name="UrunGrupAdi" ColumnName="UrunGrupAdi" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

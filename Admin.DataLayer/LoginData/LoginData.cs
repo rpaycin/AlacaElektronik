@@ -1,44 +1,23 @@
-﻿using System.Collections.Generic;
-using Admin.DataLayer.Helper;
+﻿using Admin.DataLayer.Helper;
+using Admin.Entity;
 using System;
 using System.Linq;
-using Admin.Entity;
 
 namespace Admin.DataLayer.LoginData
 {
     public class LoginData : ILoginData
     {
-        public Response LoginControl(Entity.User user)
+        public Response LoginControl(User user)
         {
             try
             {
-                using (CreativeSolutionsAdminEntities entities = new CreativeSolutionsAdminEntities())
+                using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
                 {
-                    User cUser = entities.User.FirstOrDefault(l => l.EmailAddress == user.EmailAddress && l.Password == user.Password);
-                    if (cUser == null)
+                    Kullanicilar kullanici = entities.Kullanicilar.FirstOrDefault(l => l.Email == user.EmailAddress && l.Sifre == user.Password && l.Aktif.Value);
+                    if (kullanici == null)
                         return MakeResponse.CreateErrorResponse("Kullanıcı bulunamadı!");
 
-                    user = Converter.Convert<User, Entity.User>(cUser);
-                    return MakeResponse.CreateSuccessResponse(new object[] { user });
-                }
-            }
-            catch (Exception ex)
-            {
-                return MakeResponse.CreateErrorResponse(ex);
-            }
-        }
-
-        public Response GetUserInfoByEmail(string emailAddress)
-        {
-            try
-            {
-                using (CreativeSolutionsAdminEntities entities = new CreativeSolutionsAdminEntities())
-                {
-                    User cUser = entities.User.FirstOrDefault(l => l.EmailAddress == emailAddress);
-                    if (cUser == null)
-                        return MakeResponse.CreateErrorResponse("Kullanıcı bulunamadı!");
-
-                    Entity.User user = Converter.Convert<User, Entity.User>(cUser);
+                    user = Converter.Convert<Kullanicilar, User>(kullanici);
                     return MakeResponse.CreateSuccessResponse(new object[] { user });
                 }
             }

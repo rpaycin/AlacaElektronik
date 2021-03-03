@@ -12,10 +12,16 @@ namespace Admin.DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Firm
+    public partial class DuyuruHaber
     {
-        public int FirmID { get; set; }
-        public string FirmName { get; set; }
-        public string Link { get; set; }
+        public int DuyuruId { get; set; }
+        public string DuyuruBaslik { get; set; }
+        public string DuyuruKisa { get; set; }
+        public string Duyuru { get; set; }
+        public string ImageUrl { get; set; }
+        public Nullable<int> Sira { get; set; }
+        public Nullable<bool> Aktif { get; set; }
+        public Nullable<int> CreateUser { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
     }
 }

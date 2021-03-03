@@ -10,6 +10,5 @@ namespace Admin.BusinessLayer.Login
     public interface ILoginBusiness
     {
         Response LoginControl(User user);
-        Response GetUserInfoByEmail(string emailAddress);
     }
 }

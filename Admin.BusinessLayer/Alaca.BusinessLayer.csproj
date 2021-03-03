@@ -45,8 +45,6 @@
   <ItemGroup>
     <Compile Include="Login\ILoginBusiness.cs" />
     <Compile Include="Login\LoginBusiness.cs" />
-    <Compile Include="LookupList\ILookupListBusiness.cs" />
-    <Compile Include="LookupList\LookupListBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

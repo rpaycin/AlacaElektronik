@@ -5,6 +5,5 @@ namespace Admin.DataLayer.LoginData
     public interface ILoginData
     {
         Response LoginControl(Entity.User user);
-        Response GetUserInfoByEmail(string emailAddress);
     }
 }
