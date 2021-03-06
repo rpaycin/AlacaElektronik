@@ -44,8 +44,6 @@
         </div>
         <div class="inputwrapper login-alert">
             <div class="alert alert-error">
-                @Html.ValidationMessageFor(m => m.User.EmailAddress)
-                @Html.ValidationMessageFor(m => m.User.Password)
                 @Model.ErrorMessage
             </div>
         </div>

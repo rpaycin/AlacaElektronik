@@ -1,0 +1,75 @@
+﻿@model AdminWebPanel.Models.LoginModel
+@using System.Web.Optimization
+@using WebHelpers.Mvc5.Enum
+
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Alaca Elektronik Admin | Log in</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://adminlte.io/themes/dev/AdminLTE/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://adminlte.io/themes/dev/AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="https://adminlte.io/themes/dev/AdminLTE/dist/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="~/css/form.css" rel="stylesheet" />
+</head>
+<body class="login-page" style="min-height: 512.391px;">
+    <div class="login-box">
+        <div class="login-logo">
+            <b>Alaca Elektronik </b>Admin
+        </div>
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Lütfen bilgilerinizi giriniz</p>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="validation-summary-errors">
+                        @Html.ValidationMessageFor(m => m.User.EmailAddress)<br />
+                        @Html.ValidationMessageFor(m => m.User.Password)
+                        @Model.ErrorMessage
+                    </div>
+                    <div class="input-group mb-3">
+                        @Html.TextBoxFor(m => m.User.EmailAddress, new { placeholder = "Email", @class = "form-control" })
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        @Html.PasswordFor(m => m.User.Password, new { placeholder = "Şifre", @class = "form-control" })
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Giriş</button>
+                        </div>
+                    </div>
+                }
+
+                @*<p class="mb-1">
+                        <a href="forgot-password.html">I forgot my password</a>
+                    </p>*@
+            </div>
+        </div>
+    </div>
+    <script src="https://adminlte.io/themes/dev/AdminLTE/plugins/jquery/jquery.min.js"></script>
+    <script src="https://adminlte.io/themes/dev/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://adminlte.io/themes/dev/AdminLTE/dist/js/adminlte.min.js"></script>
+</body>
+</html>
