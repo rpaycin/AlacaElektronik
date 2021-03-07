@@ -14,7 +14,10 @@ namespace Alaca.Admin.App_Start
                 .Include("~/Content/css/font-awesome.min.css", new CssRewriteUrlTransformAbsolute())
                 .Include("~/Content/css/icheck/blue.min.css", new CssRewriteUrlTransformAbsolute())
                 .Include("~/Content/css/AdminLTE.css", new CssRewriteUrlTransformAbsolute())
-                .Include("~/Content/css/skins/skin-blue.css"));
+                .Include("~/Content/css/skins/skin-blue.css")
+                .Include("~/Content/css/datatables/dataTables.bootstrap4.min.css")
+                .Include("~/Content/css/datatables/responsive.bootstrap4.min.css")
+                .Include("~/Content/css/datatables/buttons.bootstrap4.min.css"));
 
             bundles.Add(new ScriptBundle("~/Bundles/js")
                 .Include("~/Content/js/plugins/jquery/jquery-3.3.1.js")
@@ -28,7 +31,17 @@ namespace Alaca.Admin.App_Start
                 .Include("~/Content/js/plugins/validator/validator.js")
                 .Include("~/Content/js/plugins/inputmask/jquery.inputmask.bundle.js")
                 .Include("~/Content/js/adminlte.js")
-                .Include("~/Content/js/init.js"));
+                .Include("~/Content/js/init.js")
+                .Include("~/Content/js/plugins/datatables/datatable.js")
+                .Include("~/Content/js/plugins/datatables/dataTables.responsive.min.js")
+                .Include("~/Content/js/plugins/datatables/dataTables.bootstrap4.min.js")
+                .Include("~/Content/js/plugins/datatables/responsive.bootstrap4.min.js")
+                .Include("~/Content/js/plugins/datatables/dataTables.buttons.min.js")
+                .Include("~/Content/js/plugins/datatables/buttons.bootstrap4.min.js")
+                .Include("~/Content/js/plugins/datatables/jszip.min.js")
+                .Include("~/Content/js/plugins/datatables/buttons.html5.min.js")
+                .Include("~/Content/js/plugins/datatables/buttons.print.min.js")
+                .Include("~/Content/js/plugins/datatables/buttons.colVis.min.js"));
 
 #if DEBUG
             BundleTable.EnableOptimizations = false;

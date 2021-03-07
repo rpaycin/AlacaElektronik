@@ -15,5 +15,11 @@ namespace Alaca.Admin.Controllers
         {
             return View("Index");
         }
+
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Login");
+        }
     }
 }
