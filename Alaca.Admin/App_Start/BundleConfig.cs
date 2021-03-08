@@ -20,7 +20,7 @@ namespace Alaca.Admin.App_Start
                 .Include("~/Content/css/datatables/buttons.bootstrap4.min.css"));
 
             bundles.Add(new ScriptBundle("~/Bundles/js")
-                .Include("~/Content/js/plugins/jquery/jquery-3.3.1.js")
+                .Include("~/Content/js/plugins/jquery/jquery-1.12.4.js")
                 .Include("~/Content/js/plugins/bootstrap/bootstrap.js")
                 .Include("~/Content/js/plugins/fastclick/fastclick.js")
                 .Include("~/Content/js/plugins/slimscroll/jquery.slimscroll.js")

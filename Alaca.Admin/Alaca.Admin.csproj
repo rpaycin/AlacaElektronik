@@ -130,12 +130,14 @@
     <Content Include="Content\js\plugins\datatables\pdfmake.min.js" />
     <Content Include="Content\js\plugins\datatables\responsive.bootstrap4.min.js" />
     <Content Include="Content\js\plugins\datatables\vfs_fonts.js" />
+    <Content Include="Content\js\plugins\jquery\jquery-1.12.4.js" />
     <Content Include="css\form.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\FirmInformation\Index.cshtml" />
     <Content Include="Content\js\plugins\datatables\dataTables.bootstrap4.min.js" />
+    <Content Include="Views\FirmInformation\Listeleme.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
