@@ -10,12 +10,6 @@ namespace Alaca.Admin.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult AnotherLink()
-        {
-            return View("Index");
-        }
-
         public ActionResult Logout()
         {
             Session.Abandon();

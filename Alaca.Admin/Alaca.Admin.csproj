@@ -137,7 +137,6 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\FirmInformation\Index.cshtml" />
     <Content Include="Content\js\plugins\datatables\dataTables.bootstrap4.min.js" />
-    <Content Include="Views\FirmInformation\Listeleme.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -287,9 +286,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Admin.BusinessLayer\Alaca.BusinessLayer.csproj">
-      <Project>{7485dd0c-42e3-424d-afe2-f1d4add7331b}</Project>
-      <Name>Alaca.BusinessLayer</Name>
+    <ProjectReference Include="..\Admin.DataLayer\Alaca.DataLayer.csproj">
+      <Project>{6d26788d-0aca-44a3-a360-ef31857da9ea}</Project>
+      <Name>Alaca.DataLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Admin.Entity\Alaca.Entity.csproj">
       <Project>{f6b8a3bd-9ecf-4d36-89c5-5834ed203111}</Project>

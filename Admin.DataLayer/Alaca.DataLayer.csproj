@@ -80,6 +80,8 @@
     <Compile Include="FirmaBilgileri.cs">
       <DependentUpon>AlacaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Firms\IFirmsData.cs" />
+    <Compile Include="Firms\FirmsData.cs" />
     <Compile Include="Helper\Converter.cs" />
     <Compile Include="Helper\MakeResponse.cs" />
     <Compile Include="Kullanicilar.cs">

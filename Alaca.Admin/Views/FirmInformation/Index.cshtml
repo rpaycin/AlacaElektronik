@@ -1,197 +1,244 @@
-﻿
+﻿@using Admin.DataLayer;
+@model IEnumerable<FirmaBilgileri>
+
 @{
     ViewBag.Title = "Firma Bilgileri";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!-- Main content -->
-<section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
+
+<button type="button" class="btn btn-block btn-info btn-sm" data-toggle="modal" data-target="#modalSave" style="width:100px" onclick="addClick()">Firma Ekle</button> <br />
+
+<table id="tblDataList" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="dataList_info">
+    <thead>
+        <tr role="row">
+            <th>Firma Adı</th>
+            <th>Uzun Adı</th>
+            <th>Adres</th>
+            <th>Telefon 1</th>
+            <th>Telefon 2</th>
+            <th>Cep Telefonu</th>
+            <th>Fax</th>
+            <th>İletişim</th>
+            <th>Destek</th>
+            <th>Satış</th>
+
+            <th style="width:150px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (FirmaBilgileri firm in Model)
+        {
+            <tr role="row" class="odd">
+                <td>@firm.FirmaAdi</td>
+                <td>@firm.FirmaAdiUzun</td>
+                <td>@firm.Adres</td>
+                <td>@firm.Telefon1</td>
+                <td>@firm.Telefon2</td>
+                <td>@firm.CepTelefon</td>
+                <td>@firm.Fax</td>
+                <td>@firm.IletisimMail</td>
+                <td>@firm.DestekMail</td>
+                <td>@firm.SatisMail</td>
+                <td>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalSave"  onclick="updateClick(@firm.Id)" title="Güncelle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
+                            <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalDelete" onclick="deleteClick(@firm.Id)" title="Sil">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                        </svg>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*Firma ekleme&güncelleme*@
+<div class="modal fade" id="modalSave" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="spanBaslik"></span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div id="divUpdate" class="modal-body">
+                <form role="form">
                     <div class="card-body">
-                        <div id="dataList_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                            <div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row">
-                                <div class="col-sm-12">
-                                    <table id="dataList" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="dataList_info">
-                                        <thead>
-                                            <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dataList" rowspan="1" colspan="1" 
-                                                               aria-label="Rendering engine: activate to sort column descending" 
-                                                               aria-sort="ascending">Rendering engine</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataList" rowspan="1" colspan="1" 
-                                                aria-label="Browser: activate to sort column ascending">Browser</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataList" rowspan="1" colspan="1" 
-                                                aria-label="Platform(s): activate to sort column ascending">Platform(s)</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataList" rowspan="1" colspan="1" 
-                                                aria-label="Engine version: activate to sort column ascending">Engine version</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataList" rowspan="1" colspan="1" 
-                                                aria-label="CSS grade: activate to sort column ascending">CSS grade</th></tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr role="row" class="odd">
-                                                <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                <td>Firefox 1.0</td>
-                                                <td>Win 98+ / OSX.2+</td>
-                                                <td>1.7</td>
-                                                <td>A</td>
-                                            </tr>
-                                            <tr role="row" class="even">
-                                                <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                <td>Firefox 1.5</td>
-                                                <td>Win 98+ / OSX.2+</td>
-                                                <td>1.8</td>
-                                                <td>A</td>
-                                            </tr>
-                                            <tr role="row" class="odd">
-                                                <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                <td>Firefox 2.0</td>
-                                                <td>Win 98+ / OSX.2+</td>
-                                                <td>1.8</td>
-                                                <td>A</td>
-                                            </tr>
-                                            <tr role="row" class="even">
-                                                <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                <td>Firefox 3.0</td>
-                                                <td>Win 2k+ / OSX.3+</td>
-                                                <td>1.9</td>
-                                                <td>A</td>
-                                            </tr>
-                                            <tr role="row" class="odd">
-                                                <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                <td>Camino 1.0</td>
-                                                <td>OSX.2+</td>
-                                                <td>1.8</td>
-                                                <td>A</td>
-                                            </tr>
-                                            <tr role="row" class="even">
-                                                <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                <td>Camino 1.5</td>
-                                                <td>OSX.3+</td>
-                                                <td>1.8</td>
-                                                <td>A</td>
-                                            </tr>
-                                            <tr role="row" class="odd">
-                                                <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                <td>Netscape 7.2</td>
-                                                <td>Win 95+ / Mac OS 8.6-9.2</td>
-                                                <td>1.7</td>
-                                                <td>A</td>
-                                            </tr>
-                                            <tr role="row" class="even">
-                                                <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                <td>Netscape Browser 8</td>
-                                                <td>Win 98SE+</td>
-                                                <td>1.7</td>
-                                                <td>A</td>
-                                            </tr>
-                                            <tr role="row" class="odd">
-                                                <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                <td>Netscape Navigator 9</td>
-                                                <td>Win 98+ / OSX.2+</td>
-                                                <td>1.8</td>
-                                                <td>A</td>
-                                            </tr>
-                                            <tr role="row" class="even">
-                                                <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                <td>Mozilla 1.0</td>
-                                                <td>Win 95+ / OSX.1+</td>
-                                                <td>1</td>
-                                                <td>A</td>
-                                            </tr>
-                                            <tr role="row" class="even">
-                                                <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                <td>Mozilla 1.0</td>
-                                                <td>Win 95+ / OSX.1+</td>
-                                                <td>1</td>
-                                                <td>Ayaz</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Firma Adi</label>
+                                <input type="text" class="form-control" id="txtFirmaAdi" placeholder="Firma Adı">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Uzun Adi</label>
+                                <input type="text" class="form-control" id="txtUzunAdi" placeholder="Uzun Adı">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Cep Telefonu</label>
+                                <input type="tel" class="form-control" id="txtCepTelefon" placeholder="Cep Telefonu">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Telefon 1</label>
+                                <input type="tel" class="form-control" id="txtTelefon1" placeholder="Telefon 1">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Telefon 2</label>
+                                <input type="tel" class="form-control" id="txtTelefon2" placeholder="Telefon 2">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Fax</label>
+                                <input type="tel" class="form-control" id="txtFax" placeholder="Telefon 2">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Adres</label>
+                                <textarea class="form-control" id="txtAdres" placeholder="Adres"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">İletişim Mail</label>
+                                <input type="tel" class="form-control" id="txtIletisimMail" placeholder="İletişim Maili">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Destek Mail</label>
+                                <input type="tel" class="form-control" id="txtDestekMail" placeholder="Destek Mail">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Satış Mail</label>
+                                <input type="tel" class="form-control" id="txtSatisMail" placeholder="Satış Mail">
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="btnModalClose">Kapat</button>
+                <button type="button" class="btn btn-primary" onclick="modalKaydet()">Kaydet</button>
             </div>
         </div>
     </div>
-</section>
+</div>
+
+@*Firma silme*@
+<div class="modal fade" id="modalDelete" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Firmayı silmek istediğinize emin misiniz?</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hayır</button>
+                <button type="button" class="btn btn-primary" onclick="modalSil()">Evet</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script>
     $(function () {
-        // New record
-        $('a.editor_create').on('click', function (e) {
-            e.preventDefault();
-
-            editor.create({
-                title: 'Create new record',
-                buttons: 'Add'
-            });
-        });
-
-        // Edit record
-        $('#example').on('click', 'a.editor_edit', function (e) {
-            e.preventDefault();
-
-            editor.edit($(this).closest('tr'), {
-                title: 'Edit record',
-                buttons: 'Update'
-            });
-        });
-
-        // Delete a record
-        $('#example').on('click', 'a.editor_remove', function (e) {
-            e.preventDefault();
-
-            editor.remove($(this).closest('tr'), {
-                title: 'Delete record',
-                message: 'Are you sure you wish to remove this record?',
-                buttons: 'Delete'
-            });
-        });
-
-        $("#dataList").dataTable({
+        $("#tblDataList").dataTable({
             "responsive": true,
             "autoWidth": true,
-            "columns": [               
-                { data: "name" },
-                { data: "surname" },
-                { data: "platform" },
-                { data: "version" },
-                { data: "css" }
-            ],
             "language": {
-                "emptyTable": "Gösterilecek ver yok.",
-                "processing": "Veriler yükleniyor",
-                "sDecimal": ".",
-                "sInfo": "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor",
-                "sInfoFiltered": "(_MAX_ kayıt içerisinden bulunan)",
-                "sInfoPostFix": "",
-                "sInfoThousands": ".",
-                "sLengthMenu": "Sayfada _MENU_ kayıt göster",
-                "sLoadingRecords": "Yükleniyor...",
-                "sSearch": "Ara:",
-                "sZeroRecords": "Eşleşen kayıt bulunamadı",
-                "oPaginate": {
-                    "sFirst": "İlk",
-                    "sLast": "Son",
-                    "sNext": "Sonraki",
-                    "sPrevious": "Önceki"
-                },
-                "oAria": {
-                    "sSortAscending": ": artan sütun sıralamasını aktifleştir",
-                    "sSortDescending": ": azalan sütun sıralamasını aktifleştir"
-                },
-                "select": {
-                    "rows": {
-                        "_": "%d kayıt seçildi",
-                        "0": "",
-                        "1": "1 kayıt seçildi"
-                    }
-                }
+                "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
             }
         });
     });
+
+    var selectedRowId = 0;
+
+    function addClick() {
+        $("#spanBaslik").text("Firma Ekleme");
+    }
+
+    function updateClick(id) {
+        $("#spanBaslik").text("Firma Güncelleme");
+
+        selectedRowId = id;
+
+        var model = @Html.Raw(Json.Encode(Model));
+
+        if (id > 0 && model != null && model.length > 0) {
+            var item = model.find(findItem);
+
+            if (item != null) {
+                $("#txtFirmaAdi").val(item.FirmaAdi);
+                $("#txtUzunAdi").val(item.FirmaAdiUzun);
+                $("#txtAdres").val(item.Adres);
+                $("#txtTelefon1").val(item.Telefon1);
+                $("#txtTelefon2").val(item.Telefon2);
+                $("#txtCepTelefon").val(item.CepTelefon);
+                $("#txtFax").val(item.Fax);
+                $("#txtIletisimMail").val(item.IletisimMail);
+                $("#txtDestekMail").val(item.DestekMail);
+                $("#txtSatisMail").val(item.SatisMail);
+            }
+        }
+    }
+
+    function findItem(item) {
+        return item.Id = selectedRowId;
+    }
+
+    function deleteClick(id) {
+        selectedRowId = id;
+    }
+
+    // kaydetme
+    function modalKaydet() {
+        var firma = {};
+
+        firma.Id = selectedRowId;
+        firma.FirmaAdi = $("#txtFirmaAdi").val();
+        firma.FirmaAdiUzun = $("#txtUzunAdi").val();
+        firma.Adres = $("#txtAdres").val();
+        firma.Telefon1 = $("#txtTelefon1").val();
+        firma.Telefon2 = $("#txtTelefon2").val();
+        firma.CepTelefon = $("#txtCepTelefon").val();
+        firma.Fax = $("#txtFax").val();
+        firma.IletisimMail = $("#txtIletisimMail").val();
+        firma.DestekMail = $("#txtDestekMail").val();
+        firma.SatisMail = $("#txtSatisMail").val();
+
+        var actionName = selectedRowId > 0 ? "UpdateFirm" : "SaveFirm";
+
+        $.ajax({
+            type: "POST",
+            url: "/FirmInformation/" + actionName,
+            data: '{firma:' + JSON.stringify(firma) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                location.reload();
+            }
+        });
+    }
+
+    // silme
+    function modalSil() {
+        var firma = {};
+        firma.Id = selectedRowId;
+
+        $.ajax({
+            type: "POST",
+            url: "/FirmInformation/DeleteFirm",
+            data: '{firma:' + JSON.stringify(firma) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                location.reload();
+            }
+        });
+    }
 </script>
+

@@ -35,7 +35,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirmaAdi" Type="nvarchar" MaxLength="255" />
           <Property Name="FirmaAdiUzun" Type="nvarchar" MaxLength="255" />
           <Property Name="Adres" Type="nvarchar" MaxLength="255" />

@@ -1,18 +1,18 @@
-﻿using Admin.BusinessLayer.Login;
+﻿using Admin.DataLayer.LoginData;
 using Admin.Entity;
-using AdminWebPanel.Models;
 using Admin.Models.Helper;
+using AdminWebPanel.Models;
 using System.Web.Mvc;
 
 namespace AdminWebPanel.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly ILoginBusiness _loginBusiness;
+        private readonly ILoginData _loginData;
 
         public LoginController()
         {
-            _loginBusiness = new LoginBusiness();
+            _loginData = new LoginData();
         }
 
         public ActionResult Index()
@@ -28,7 +28,7 @@ namespace AdminWebPanel.Controllers
 
             if (ModelState.IsValid)
             {
-                Response response = _loginBusiness.LoginControl(user);
+                Response response = _loginData.LoginControl(user);
 
                 if (response.IsSuccess)
                 {
