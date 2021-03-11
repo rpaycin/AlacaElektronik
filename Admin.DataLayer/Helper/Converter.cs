@@ -26,6 +26,10 @@ namespace Admin.DataLayer.Helper
 
                 AutoMapper.Mapper.CreateMap<Entity.User, User>();
                 AutoMapper.Mapper.CreateMap<Firm, Entity.Firm>();
+                AutoMapper.Mapper.CreateMap<Urun, Entity.Product>();
+                AutoMapper.Mapper.CreateMap<Product, Urun>();
+                AutoMapper.Mapper.CreateMap<UrunGrup, Entity.ProductGroup>();
+                AutoMapper.Mapper.CreateMap<ProductGroup, UrunGrup>();
 
                 _isInitiliazed = true;
             }
