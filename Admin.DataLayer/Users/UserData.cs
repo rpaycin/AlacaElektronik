@@ -1,0 +1,59 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Admin.DataLayer.LoginData
+{
+    public class UserData : IUserData
+    {
+        public List<Kullanicilar> GetUsers()
+        {
+            using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
+            {
+                List<Kullanicilar> UserDbList = entities.Kullanicilar.Where(u => u.Aktif.HasValue && u.Aktif.Value).ToList();
+
+                return UserDbList;
+            }
+        }
+
+        public void SaveUser(Kullanicilar user)
+        {
+            using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
+            {
+                user.CreateDate = DateTime.Now;
+                user.Aktif = true;
+                Kullanicilar dbKullanici = entities.Kullanicilar.Add(user);
+
+                entities.SaveChanges();
+            }
+        }
+
+        public void DeleteUser(int userId)
+        {
+            using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
+            {
+                Kullanicilar dbKullanici = entities.Kullanicilar.FirstOrDefault(f => f.KullaniciId == userId);
+
+                dbKullanici.Aktif = false;
+                entities.Kullanicilar.Remove(dbKullanici);
+
+                entities.SaveChanges();
+            }
+        }
+
+        public void UpdateUser(Kullanicilar user)
+        {
+            using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
+            {
+                Kullanicilar dbKullanici = entities.Kullanicilar.FirstOrDefault(f => f.KullaniciId == user.KullaniciId);
+
+                dbKullanici.KullaniciAdi = user.KullaniciAdi;
+                dbKullanici.Email = user.Email;
+                dbKullanici.Aciklama = user.Aciklama;
+                dbKullanici.Sifre = user.Sifre;
+
+                entities.SaveChanges();
+            }
+        }
+    }
+}

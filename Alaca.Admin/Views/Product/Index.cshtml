@@ -257,14 +257,18 @@
         var model = @Html.Raw(Json.Encode(Model.Products));
 
         if (id > 0 && model != null && model.length > 0) {
+            for (var i = 0; i < model.length; i++) {
+                if (model[i].UrunId == selectedRowId) {
+                    $("#ddlUrunGrupId").val(model[i].FKUrunGrupId);
+                    $("#txtUrunAdi").val(model[i].UrunAdi);
+                    $("#txtListeFiyat").val(model[i].ListeFiyat);
+                    $("#txtListeIskontoOran").val(model[i].ListeIskontoOran);
+                    $("#txtAciklama").val(model[i].Aciklama);
+                }
+            }
             var item = model.find(findItem);
 
             if (item != null) {
-                $("#ddlUrunGrupId").val(item.FKUrunGrupId);
-                $("#txtUrunAdi").val(item.UrunAdi);
-                $("#txtListeFiyat").val(item.ListeFiyat);
-                $("#txtListeIskontoOran").val(item.ListeIskontoOran);
-                $("#txtAciklama").val(item.Aciklama);
             }
         }
     }

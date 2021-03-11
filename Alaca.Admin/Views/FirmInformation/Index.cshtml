@@ -169,25 +169,23 @@
         var model = @Html.Raw(Json.Encode(Model));
 
         if (id > 0 && model != null && model.length > 0) {
-            var item = model.find(findItem);
+            for (var i = 0; i < model.length; i++) {
+                if (model[i].Id == selectedRowId) {
+                    var item = model[i];
 
-            if (item != null) {
-                $("#txtFirmaAdi").val(item.FirmaAdi);
-                $("#txtUzunAdi").val(item.FirmaAdiUzun);
-                $("#txtAdres").val(item.Adres);
-                $("#txtTelefon1").val(item.Telefon1);
-                $("#txtTelefon2").val(item.Telefon2);
-                $("#txtCepTelefon").val(item.CepTelefon);
-                $("#txtFax").val(item.Fax);
-                $("#txtIletisimMail").val(item.IletisimMail);
-                $("#txtDestekMail").val(item.DestekMail);
-                $("#txtSatisMail").val(item.SatisMail);
+                    $("#txtFirmaAdi").val(item.FirmaAdi);
+                    $("#txtUzunAdi").val(item.FirmaAdiUzun);
+                    $("#txtAdres").val(item.Adres);
+                    $("#txtTelefon1").val(item.Telefon1);
+                    $("#txtTelefon2").val(item.Telefon2);
+                    $("#txtCepTelefon").val(item.CepTelefon);
+                    $("#txtFax").val(item.Fax);
+                    $("#txtIletisimMail").val(item.IletisimMail);
+                    $("#txtDestekMail").val(item.DestekMail);
+                    $("#txtSatisMail").val(item.SatisMail);
+                }
             }
         }
-    }
-
-    function findItem(item) {
-        return item.Id = selectedRowId;
     }
 
     function deleteClick(id) {
