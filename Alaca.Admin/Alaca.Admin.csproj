@@ -139,6 +139,7 @@
     <Content Include="Content\js\plugins\datatables\dataTables.bootstrap4.min.js" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\DownloadLink\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -147,6 +148,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\DownloadLinkController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\FirmInformationController.cs" />
