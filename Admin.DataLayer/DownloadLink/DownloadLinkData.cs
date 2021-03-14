@@ -22,7 +22,7 @@ namespace Admin.DataLayer.LoginData
             {
                 downloadLink.CreateDate = DateTime.Now;
                 downloadLink.Aktif = 1;
-                DownloadLink dbKullanici = entities.DownloadLink.Add(downloadLink);
+                entities.DownloadLink.Add(downloadLink);
 
                 entities.SaveChanges();
             }

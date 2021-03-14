@@ -22,7 +22,7 @@ namespace Admin.DataLayer.LoginData
             {
                 urunGrup.Createdate = DateTime.Now;
                 urunGrup.Aktif = true;
-                UrunGrup dburunGrup = entities.UrunGrup.Add(urunGrup);
+                entities.UrunGrup.Add(urunGrup);
 
                 entities.SaveChanges();
             }

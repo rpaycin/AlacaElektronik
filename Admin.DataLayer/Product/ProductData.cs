@@ -22,7 +22,7 @@ namespace Admin.DataLayer.LoginData
             {
                 urun.CreateDate = DateTime.Now;
                 urun.Aktif = true;
-                Urun dbUrun = entities.Urun.Add(urun);
+                entities.Urun.Add(urun);
 
                 entities.SaveChanges();
             }

@@ -22,7 +22,7 @@ namespace Admin.DataLayer.LoginData
             {
                 user.CreateDate = DateTime.Now;
                 user.Aktif = true;
-                Kullanicilar dbKullanici = entities.Kullanicilar.Add(user);
+                 entities.Kullanicilar.Add(user);
 
                 entities.SaveChanges();
             }

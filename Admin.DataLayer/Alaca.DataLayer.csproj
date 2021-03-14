@@ -71,6 +71,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AlacaModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="News\NewsData.cs" />
+    <Compile Include="News\INewsData.cs" />
     <Compile Include="DownloadLink.cs">
       <DependentUpon>AlacaModel.tt</DependentUpon>
     </Compile>

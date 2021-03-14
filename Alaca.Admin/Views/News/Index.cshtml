@@ -1,8 +1,8 @@
 ﻿@using Admin.DataLayer;
-@model IEnumerable<DownloadLink>
+@model IEnumerable<DuyuruHaber>
 
 @{
-    ViewBag.Title = "Download Link Bilgileri";
+    ViewBag.Title = "Duyuru-Haber Bilgileri";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -12,28 +12,29 @@
 <table id="tblDataList" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="dataList_info">
     <thead>
         <tr role="row">
-            <th>Download Adı</th>
-            <th>Download Url</th>
-            <th>Açıklama</th>
-
+            <th>Başlık</th>
+            <th>Kısa</th>
+            <th>Duyuru</th>
+            <th>Sıra</th>
             <th style="width:150px"></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (DownloadLink downloadLink in Model)
+        @foreach (DuyuruHaber duyuruHaber in Model)
         {
             <tr role="row" class="odd">
-                <td>@downloadLink.DownloadAdi</td>
-                <td>@downloadLink.DownloadUrl</td>
-                <td>@downloadLink.Aciklama</td>
+                <td>@duyuruHaber.DuyuruBaslik</td>
+                <td>@duyuruHaber.DuyuruKisa</td>
+                <td>@duyuruHaber.Duyuru</td>
+                <td>@duyuruHaber.Sira</td>
                 <td>
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalSave" onclick="updateClick(@downloadLink.DownloadId)" title="Güncelle">
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalSave" onclick="updateClick(@duyuruHaber.DuyuruId)" title="Güncelle">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
                             <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
                             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
                         </svg>
                     </button>
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalDelete" onclick="deleteClick(@downloadLink.DownloadId)" title="Sil">
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalDelete" onclick="deleteClick(@duyuruHaber.DuyuruId)" title="Sil">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
                             <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
@@ -45,7 +46,7 @@
     </tbody>
 </table>
 
-@*Download Link ekleme&güncelleme*@
+@*Duyuru-Haber ekleme&güncelleme*@
 <div class="modal fade" id="modalSave" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -57,19 +58,30 @@
             </div>
             <div id="divUpdate" class="modal-body">
                 <form role="form">
+                    @Html.AntiForgeryToken()
                     <div class="card-body">
                         <div class="form-group">
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Download Adi</label>
-                                <input type="text" class="form-control" id="txtDownloadAdi" placeholder="Download Adı">
+                                <label for="exampleInputPassword1">Duyuru Başlık</label>
+                                <input type="text" class="form-control" id="txtDuyuruBaslik" placeholder="Duyuru Başlık">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Download Url</label>
-                                <input type="text" class="form-control" id="txtDownloadUrl" placeholder="Download Url">
+                                <label for="exampleInputPassword1">Duyuru Kısa</label>
+                                <input type="text" class="form-control" id="txtDuyuruKisa" placeholder="Duyuru Kısa">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Açıklama</label>
-                                <input type="text" class="form-control" id="txtAciklama" placeholder="Açıklama">
+                                <label for="exampleInputPassword1">Duyuru</label>
+                                <textarea class="form-control" id="txtDuyuru" placeholder="Duyuru"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Resim</label>
+                                <input type="file" class="form-control" id="uplImage" accept="image/*">
+
+                                <a href="/" target="_blank" id="aUploadedImage" style="display:none">Yüklenen Resim</a>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Sıra</label>
+                                <input type="number" class="form-control" id="txtSira" placeholder="Sıra">
                             </div>
                         </div>
                     </div>
@@ -83,7 +95,7 @@
     </div>
 </div>
 
-@*Download Link silme*@
+@*Duyuru-Haber silme*@
 <div class="modal fade" id="modalDelete" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -116,11 +128,11 @@
     var selectedRowId = 0;
 
     function addClick() {
-        $("#spanBaslik").text("Download Link Ekleme");
+        $("#spanBaslik").text("Duyuru-Haber Ekleme");
     }
 
     function updateClick(id) {
-        $("#spanBaslik").text("Download Link Güncelleme");
+        $("#spanBaslik").text("Duyuru-Haber Güncelleme");
 
         selectedRowId = id;
 
@@ -128,12 +140,23 @@
 
         if (id > 0 && model != null && model.length > 0) {
             for (var i = 0; i < model.length; i++) {
-                if (model[i].DownloadId == selectedRowId) {
+                if (model[i].DuyuruId == selectedRowId) {
                     var item = model[i];
 
-                    $("#txtDownloadAdi").val(item.DownloadAdi);
-                    $("#txtDownloadUrl").val(item.DownloadUrl);
-                    $("#txtAciklama").val(item.Aciklama);
+                    $("#txtDuyuruBaslik").val(item.DuyuruBaslik);
+                    $("#txtDuyuruKisa").val(item.DuyuruKisa);
+                    $("#txtDuyuru").val(item.Duyuru);
+                    $("#txtSira").val(item.Sira);
+
+                    if (item.ImageUrl !=null &&item.ImageUrl != "") {
+                        var imageUrl = "Upload/NewsImage/" + item.ImageUrl;
+                        $("#aUploadedImage").attr("href", imageUrl);
+
+                        $('#aUploadedImage').show();
+                    }
+                    else {
+                        $('#aUploadedImage').hide();
+                    }
                 }
             }
         }
@@ -145,22 +168,26 @@
 
     // kaydetme
     function modalKaydet() {
-        var downloadLink = {};
+        var formData = new FormData();
+        formData.append("__RequestVerificationToken", $("input[name=__RequestVerificationToken]").val());
+        formData.append("DuyuruId", selectedRowId);
+        formData.append("DuyuruBaslik", $("#txtDuyuruBaslik").val());
+        formData.append("DuyuruKisa", $("#txtDuyuruKisa").val());
+        formData.append("Duyuru", $("#txtDuyuru").val());
+        formData.append("Sira", $("#txtSira").val());
 
-        downloadLink.DownloadId = selectedRowId;
-        downloadLink.DownloadAdi = $("#txtDownloadAdi").val();
-        downloadLink.DownloadUrl = $("#txtDownloadUrl").val();
-        downloadLink.Aciklama = $("#txtAciklama").val();
-
-        var actionName = selectedRowId > 0 ? "UpdateDownloadLink" : "SaveDownloadLink";
+        jQuery.each(jQuery('#uplImage')[0].files, function (i, file) {
+            formData.append('file-' + i, file);
+        });
 
         $.ajax({
             type: "POST",
-            url: "/DownloadLink/" + actionName,
-            data: '{downloadLink:' + JSON.stringify(downloadLink) + '}',
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (response) {
+            url: "/News/SaveNews",
+            data: formData,
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            success: function (data) {
                 location.reload();
             }
         });
@@ -168,13 +195,13 @@
 
     // silme
     function modalSil() {
-        var downloadLink = {};
-        downloadLink.DownloadId = selectedRowId;
+        var news = {};
+        news.DuyuruId = selectedRowId;
 
         $.ajax({
             type: "POST",
-            url: "/DownloadLink/DeleteDownloadLink",
-            data: '{downloadLink:' + JSON.stringify(downloadLink) + '}',
+            url: "/News/DeleteNews",
+            data: '{news:' + JSON.stringify(news) + '}',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (response) {
