@@ -73,6 +73,8 @@
     </Compile>
     <Compile Include="CustomerWriting\ICustomerWritingData.cs" />
     <Compile Include="CustomerWriting\CustomerWritingData.cs" />
+    <Compile Include="Popup\IPopupData.cs" />
+    <Compile Include="Popup\PopupData.cs" />
     <Compile Include="Reference\IReferenceData.cs" />
     <Compile Include="Reference\ReferenceData.cs" />
     <Compile Include="News\NewsData.cs" />

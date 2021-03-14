@@ -143,6 +143,7 @@
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\CustomerWriting\Index.cshtml" />
     <Content Include="Views\Reference\Index.cshtml" />
+    <Content Include="Views\Popup\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -151,6 +152,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\PopupController.cs" />
     <Compile Include="Controllers\ReferenceController.cs" />
     <Compile Include="Controllers\CustomerWritingController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
