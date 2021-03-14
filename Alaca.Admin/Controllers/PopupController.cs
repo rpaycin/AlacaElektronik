@@ -28,6 +28,8 @@ namespace Alaca.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
         public JsonResult SavePopup()
         {
             NameValueCollection form = HttpContext.Request.Form;
@@ -38,7 +40,6 @@ namespace Alaca.Admin.Controllers
                 Popup1 = form["Popup"],
                 Sira = !string.IsNullOrEmpty(form["Sira"]) ? Convert.ToInt32(form["Sira"]) : 0
             };
-
             if (Session[Constants.SessionInformation] != null)
             {
                 var user = (User)Session[Constants.SessionInformation];

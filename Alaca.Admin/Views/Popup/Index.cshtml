@@ -22,7 +22,7 @@
         @foreach (Popup popup in Model)
         {
             <tr role="row" class="odd">
-                <td>@Html Kodu</td>
+                <td>Html Kodu</td>
                 <td>@popup.Sira</td>
                 <td>
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalSave" onclick="updateClick(@popup.PopupId)" title="Güncelle">
@@ -55,6 +55,7 @@
             </div>
             <div id="divUpdate" class="modal-body">
                 <form role="form">
+                    @Html.AntiForgeryToken()
                     <div class="card-body">
                         <div class="form-group">
                             <div class="form-group">
@@ -63,7 +64,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Popup</label>
-                                <input type="text" class="form-control" id="txtDownloadAdi" placeholder="Download Adı">
+                                <textarea id="txtPopup"></textarea>
                             </div>
                         </div>
                     </div>
@@ -105,6 +106,8 @@
                 "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
             }
         });
+
+        $("#txtPopup").Editor();
     });
 
     var selectedRowId = 0;
@@ -113,6 +116,7 @@
         $("#spanBaslik").text("Popup Ekleme");
 
         $("#txtSira").val('');
+        $("#txtPopup").Editor('setText', '');
     }
 
     function updateClick(id) {
@@ -126,8 +130,9 @@
             for (var i = 0; i < model.length; i++) {
                 if (model[i].PopupId == selectedRowId) {
                     var item = model[i];
-                    
+
                     $("#txtSira").val(item.Sira);
+                    $("#txtPopup").Editor('setText', (item.Popup1));
                 }
             }
         }
@@ -139,21 +144,40 @@
 
     // kaydetme
     function modalKaydet() {
-        var popup = {};
-
-        popup.PopupId = selectedRowId;
-        popup.Sira = $("#txtSira").val();
+        var formData = new FormData();
+        formData.append("__RequestVerificationToken", $("input[name=__RequestVerificationToken]").val());
+        formData.append("PopupId", selectedRowId);
+        formData.append("Popup", $('#txtPopup').Editor("getText"));
+        formData.append("Sira", $("#txtSira").val());
 
         $.ajax({
             type: "POST",
             url: "/Popup/SavePopup",
-            data: '{popup:' + JSON.stringify(popup) + '}',
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (response) {
+            data: formData,
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            success: function (data) {
                 location.reload();
             }
         });
+
+        //var popup = {};
+
+        //popup.PopupId = selectedRowId;
+        //popup.Sira = $("#txtSira").val();
+        //popup.Popup = $('#txtPopup').Editor("getText");
+
+        //$.ajax({
+        //    type: "POST",
+        //    url: "/Popup/SavePopup",
+        //    data: '{popup:' + JSON.stringify(popup) + '}',
+        //    contentType: "application/json; charset=utf-8",
+        //    dataType: "json",
+        //    success: function (response) {
+        //        location.reload();
+        //    }
+        //});
     }
 
     // silme
@@ -173,4 +197,3 @@
         });
     }
 </script>
-
