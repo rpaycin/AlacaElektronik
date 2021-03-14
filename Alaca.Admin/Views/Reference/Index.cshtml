@@ -1,0 +1,206 @@
+﻿@using Admin.DataLayer;
+@model IEnumerable<Referans>
+
+@{
+    ViewBag.Title = "Referans Bilgileri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<button type="button" class="btn btn-block btn-info btn-sm" data-toggle="modal" data-target="#modalSave" style="width:100px" onclick="addClick()">Ekle</button> <br />
+
+<table id="tblDataList" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="dataList_info">
+    <thead>
+        <tr role="row">
+            <th>Firma Adı</th>
+            <th>Firma Url</th>
+            <th>Sıra</th>
+            <th style="width:150px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Referans referans in Model)
+        {
+            <tr role="row" class="odd">
+                <td>@referans.ReferansFirmaAdi</td>
+                <td>@referans.FirmaUrl</td>
+                <td>@referans.Sira</td>
+                <td>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalSave" onclick="updateClick(@referans.ReferansId)" title="Güncelle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
+                            <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalDelete" onclick="deleteClick(@referans.ReferansId)" title="Sil">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                        </svg>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*Referans ekleme&güncelleme*@
+<div class="modal fade" id="modalSave" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="spanBaslik"></span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div id="divUpdate" class="modal-body">
+                <form role="form">
+                    @Html.AntiForgeryToken()
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Firma Adı</label>
+                                <input type="text" class="form-control" id="txtReferansFirmaAdi" placeholder="Firma Adı">
+                            </div>
+                            <div class="form-group">
+                                <label>Resim</label>
+                                <input type="file" class="form-control" id="uplImage" accept="image/*">
+
+                                <a href="/" target="_blank" id="aUploadedImage" style="display:none">Yüklenen Resim</a>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Firma Url</label>
+                                <input type="text" class="form-control" id="txtFirmaUrl" placeholder="Firma Url">
+                            </div>
+                            <div class="form-group">
+                                <label>Sıra</label>
+                                <input type="number" class="form-control" id="txtSira" placeholder="Sıra">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="btnModalClose">Kapat</button>
+                <button type="button" class="btn btn-primary" onclick="modalKaydet()">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Referans silme*@
+<div class="modal fade" id="modalDelete" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Kaydı silmek istediğinize emin misiniz?</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hayır</button>
+                <button type="button" class="btn btn-primary" onclick="modalSil()">Evet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script>
+    $(function () {
+        $("#tblDataList").dataTable({
+            "responsive": true,
+            "autoWidth": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
+            }
+        });
+    });
+
+    var selectedRowId = 0;
+
+    function addClick() {
+        $("#spanBaslik").text("Referans Ekleme");
+    }
+
+    function updateClick(id) {
+        $("#spanBaslik").text("Referans Güncelleme");
+
+        selectedRowId = id;
+
+        var model = @Html.Raw(Json.Encode(Model));
+
+        if (id > 0 && model != null && model.length > 0) {
+            for (var i = 0; i < model.length; i++) {
+                if (model[i].ReferansId == selectedRowId) {
+                    var item = model[i];
+
+                    $("#txtReferansFirmaAdi").val(item.ReferansFirmaAdi);
+                    $("#txtFirmaUrl").val(item.FirmaUrl);
+                    $("#txtSira").val(item.Sira);
+
+                    if (item.ResimUrl != undefined && item.ResimUrl != null && item.ResimUrl != "") {
+                        var ResimUrl = "Upload/ReferenceImage/" + item.ResimUrl;
+                        $("#aUploadedImage").attr("href", ResimUrl);
+
+                        $('#aUploadedImage').show();
+                    }
+                    else {
+                        $('#aUploadedImage').hide();
+                    }
+                }
+            }
+        }
+    }
+
+    function deleteClick(id) {
+        selectedRowId = id;
+    }
+
+    // kaydetme
+    function modalKaydet() {
+        var formData = new FormData();
+        formData.append("__RequestVerificationToken", $("input[name=__RequestVerificationToken]").val());
+        formData.append("ReferansId", selectedRowId);
+        formData.append("ReferansFirmaAdi", $("#txtReferansFirmaAdi").val());
+        formData.append("FirmaUrl", $("#txtFirmaUrl").val());
+        formData.append("Sira", $("#txtSira").val());
+
+        jQuery.each(jQuery('#uplImage')[0].files, function (i, file) {
+            formData.append('file-' + i, file);
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "/Reference/SaveReference",
+            data: formData,
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                location.reload();
+            }
+        });
+    }
+
+    // silme
+    function modalSil() {
+        var reference = {};
+        reference.ReferansId = selectedRowId;
+
+        $.ajax({
+            type: "POST",
+            url: "/Reference/DeleteReference",
+            data: '{reference:' + JSON.stringify(reference) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                location.reload();
+            }
+        });
+    }
+</script>
+

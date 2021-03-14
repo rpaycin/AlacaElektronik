@@ -142,6 +142,7 @@
     <Content Include="Views\DownloadLink\Index.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\CustomerWriting\Index.cshtml" />
+    <Content Include="Views\Reference\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -150,6 +151,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ReferenceController.cs" />
     <Compile Include="Controllers\CustomerWritingController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\DownloadLinkController.cs" />
@@ -296,6 +298,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Upload\CustomerWritingImage\" />
     <Folder Include="Upload\NewsImage\" />
+    <Folder Include="Upload\ReferenceImage\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Admin.DataLayer\Alaca.DataLayer.csproj">
