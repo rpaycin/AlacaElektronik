@@ -243,10 +243,19 @@
 
     function addClick() {
         $("#spanBaslik").text("Ürün Ekleme");
+
+        $("#ddlUrunGrupId").val(-1);
+        $("#txtUrunAdi").val('');
+        $("#txtListeFiyat").val('');
+        $("#txtListeIskontoOran").val('');
+        $("#txtAciklama").val('');
     }
 
     function addClickGroup() {
         $("#spanBaslikGrup").text("Ürün Grup Ekleme");
+
+        $("#txtUrunGrupAdi").val('');
+        $("#ddlAnaUrunGrupId").val(-1);
     }
 
     function updateClick(id) {
