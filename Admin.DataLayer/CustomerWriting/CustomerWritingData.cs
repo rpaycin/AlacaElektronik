@@ -10,7 +10,7 @@ namespace Admin.DataLayer.LoginData
         {
             using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
             {
-                List<MusteriYazi> customerWritingDbList = entities.MusteriYazi.Where(u => u.Aktif.HasValue && u.Aktif.Value).ToList();
+                List<MusteriYazi> customerWritingDbList = entities.MusteriYazi.OrderByDescending(u=>u.Aktif.HasValue && u.Aktif.Value).ToList();
 
                 return customerWritingDbList;
             }
@@ -40,18 +40,19 @@ namespace Admin.DataLayer.LoginData
             }
         }
 
-        public void UpdateCustomerWriting(MusteriYazi CustomerWriting)
+        public void UpdateCustomerWriting(MusteriYazi customerWriting)
         {
             using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
             {
-                MusteriYazi dbCustomerWriting = entities.MusteriYazi.FirstOrDefault(f => f.MusteriYaziId == CustomerWriting.MusteriYaziId);
+                MusteriYazi dbCustomerWriting = entities.MusteriYazi.FirstOrDefault(f => f.MusteriYaziId == customerWriting.MusteriYaziId);
 
-                dbCustomerWriting.Isim = CustomerWriting.Isim;
-                dbCustomerWriting.Unvan = CustomerWriting.Unvan;
-                dbCustomerWriting.MusteriYazi1 = CustomerWriting.MusteriYazi1;
-                dbCustomerWriting.ResimUrl = CustomerWriting.ResimUrl;
-                dbCustomerWriting.Sira = CustomerWriting.Sira;
-                dbCustomerWriting.FirmaUrl = CustomerWriting.FirmaUrl;
+                dbCustomerWriting.Isim = customerWriting.Isim;
+                dbCustomerWriting.Unvan = customerWriting.Unvan;
+                dbCustomerWriting.MusteriYazi1 = customerWriting.MusteriYazi1;
+                dbCustomerWriting.ResimUrl = customerWriting.ResimUrl;
+                dbCustomerWriting.Sira = customerWriting.Sira;
+                dbCustomerWriting.FirmaUrl = customerWriting.FirmaUrl;
+                dbCustomerWriting.Aktif = customerWriting.Aktif;
 
                 entities.SaveChanges();
             }

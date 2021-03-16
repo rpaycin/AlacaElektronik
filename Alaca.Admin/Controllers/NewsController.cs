@@ -40,6 +40,7 @@ namespace Alaca.Admin.Controllers
                 DuyuruBaslik = form["DuyuruBaslik"],
                 Duyuru = form["Duyuru"],
                 DuyuruKisa = form["DuyuruKisa"],
+                Aktif = form["Aktif"] == "on",
                 Sira = !string.IsNullOrEmpty(form["Sira"]) ? Convert.ToInt32(form["Sira"]) : 0
             };
 

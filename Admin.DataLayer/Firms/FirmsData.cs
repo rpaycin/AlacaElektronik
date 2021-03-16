@@ -9,7 +9,7 @@ namespace Admin.DataLayer.LoginData
         {
             using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
             {
-                List<FirmaBilgileri> firmsDbList = entities.FirmaBilgileri.ToList();
+                List<FirmaBilgileri> firmsDbList = entities.FirmaBilgileri.OrderByDescending(u => u.Aktif.HasValue && u.Aktif.Value).ToList();
 
                 return firmsDbList;
             }
@@ -21,6 +21,7 @@ namespace Admin.DataLayer.LoginData
             {
                 FirmaBilgileri dbFirma = entities.FirmaBilgileri.Add(firma);
 
+                dbFirma.Aktif = true;
                 entities.SaveChanges();
             }
         }
@@ -31,7 +32,7 @@ namespace Admin.DataLayer.LoginData
             {
                 FirmaBilgileri dbFirma = entities.FirmaBilgileri.FirstOrDefault(f => f.Id == firmaId);
 
-                entities.FirmaBilgileri.Remove(dbFirma);
+                dbFirma.Aktif = false;
 
                 entities.SaveChanges();
             }
@@ -53,6 +54,7 @@ namespace Admin.DataLayer.LoginData
                 dbFirma.SatisMail = firma.SatisMail;
                 dbFirma.Telefon1 = firma.Telefon1;
                 dbFirma.Telefon2 = firma.Telefon2;
+                dbFirma.Aktif = firma.Aktif;
 
                 entities.SaveChanges();
             }

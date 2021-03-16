@@ -14,6 +14,7 @@
         <tr role="row">
             <th>Grup Adı</th>
             <th>Ana Grup Adı</th>
+            <th>Aktif</th>
             <th style="width:150px"></th>
         </tr>
     </thead>
@@ -23,6 +24,7 @@
             <tr role="row" class="odd">
                 <td>@productGroup.UrunGrupAdi</td>
                 <td>@productGroup.AnaGrupAdi</td>
+                <td>@productGroup.Aktif</td>
                 <td>
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalSaveGroup" onclick="updateClickGroup(@productGroup.UrunGrupId)" title="Güncelle">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
@@ -53,6 +55,7 @@
             <th>Açıklama</th>
             <th>Liste Fiyatı</th>
             <th>Liste İskonto Oranı</th>
+            <th>Aktif</th>
             <th style="width:150px"></th>
         </tr>
     </thead>
@@ -65,6 +68,7 @@
                 <td>@product.Aciklama</td>
                 <td>@product.ListeFiyat</td>
                 <td>@product.ListeIskontoOran</td>
+                <td>@product.Aktif</td>
                 <td>
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalSave" onclick="updateClick(@product.UrunId)" title="Güncelle">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
@@ -224,6 +228,7 @@
         $("#tblDataList").dataTable({
             "responsive": true,
             "autoWidth": true,
+            "ordering": false,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
             }
@@ -232,6 +237,7 @@
         $("#tblDataListGroup").dataTable({
             "responsive": true,
             "autoWidth": true,
+            "ordering": false,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
             }
@@ -313,6 +319,10 @@
 
     // kaydetme
     function modalKaydet() {
+        if (!fieldValidationControl("txtUrunAdi", "Ürün adı boş olamaz")) {
+            return;
+        }
+
         var urun = {};
 
         urun.UrunId = selectedRowId;
@@ -337,6 +347,10 @@
     }
 
     function modalGrupKaydet() {
+        if (!fieldValidationControl("txtUrunGrupAdi", "Ürün grup adı boş olamaz")) {
+            return;
+        }
+
         var urunGrup = {};
 
         urunGrup.UrunGrupId = selectedGroupRowId;

@@ -18,7 +18,8 @@ namespace Alaca.Admin.App_Start
                 .Include("~/Content/css/datatables/dataTables.bootstrap4.min.css")
                 .Include("~/Content/css/datatables/responsive.bootstrap4.min.css")
                 .Include("~/Content/css/datatables/buttons.bootstrap4.min.css")
-                .Include("~/Content/css/editor.css"));
+                .Include("~/Content/css/editor.css")
+                .Include("~/Content/css/toastr/toastr.min.css"));
 
             bundles.Add(new ScriptBundle("~/Bundles/js")
                 .Include("~/Content/js/plugins/jquery/jquery-1.12.4.js")
@@ -43,7 +44,9 @@ namespace Alaca.Admin.App_Start
                 .Include("~/Content/js/plugins/datatables/buttons.html5.min.js")
                 .Include("~/Content/js/plugins/datatables/buttons.print.min.js")
                 .Include("~/Content/js/plugins/datatables/buttons.colVis.min.js")
-                .Include("~/Content/js/editor.js"));
+                .Include("~/Content/js/editor.js")
+                .Include("~/Content/js/toastr/toastr.min.js")
+                .Include("~/Content/js/helper.js"));
 
 #if DEBUG
             BundleTable.EnableOptimizations = false;

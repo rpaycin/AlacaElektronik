@@ -17,6 +17,7 @@
             <th>Müşteri Yazı</th>
             <th>Firma Url</th>
             <th>Sıra</th>
+            <th>Aktif</th>
             <th style="width:150px"></th>
         </tr>
     </thead>
@@ -29,7 +30,10 @@
                 <td>@musteriYazi.MusteriYazi1</td>
                 <td>@musteriYazi.FirmaUrl</td>
                 <td>@musteriYazi.Sira</td>
+                <td>@musteriYazi.Aktif</td>
+
                 <td>
+
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalSave" onclick="updateClick(@musteriYazi.MusteriYaziId)" title="Güncelle">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
                             <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
@@ -44,7 +48,7 @@
                     </button>
                 </td>
             </tr>
-        }
+                    }
     </tbody>
 </table>
 
@@ -90,6 +94,10 @@
                                 <label>Sıra</label>
                                 <input type="number" class="form-control" id="txtSira" placeholder="Sıra">
                             </div>
+                            <div class="form-group">
+                                <label>Aktif</label><br />
+                                <input type="checkbox" class="form-control" id="chkAktif" placeholder="Aktif">
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -126,6 +134,7 @@
         $("#tblDataList").dataTable({
             "responsive": true,
             "autoWidth": true,
+            "ordering": false,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
             }
@@ -142,6 +151,7 @@
         $("#txtMusteriYazi").val('');
         $("#txtSira").val('');
         $("#txtFirmaUrl").val('');
+        $('#chkAktif').iCheck("uncheck");
         $('#aUploadedImage').hide();
     }
 
@@ -162,6 +172,9 @@
                     $("#txtMusteriYazi").val(item.MusteriYazi1);
                     $("#txtSira").val(item.Sira);
                     $("#txtFirmaUrl").val(item.FirmaUrl);
+
+                    var aktifText = item.Aktif ? "check" : "uncheck";
+                    $('#chkAktif').iCheck(aktifText);
 
                     if (item.ResimUrl != undefined && item.ResimUrl != null && item.ResimUrl != "") {
                         var ResimUrl = "Upload/CustomerWritingImage/" + item.ResimUrl;
@@ -184,6 +197,11 @@
     // kaydetme
     function modalKaydet() {
         var formData = new FormData();
+
+        if (!fieldValidationControl("txtUnvan", "Ünvan boş olamaz") || !fieldValidationControl("txtMusteriYazi", "Müşteri yazı boş olamaz")) {
+            return;
+        }
+
         formData.append("__RequestVerificationToken", $("input[name=__RequestVerificationToken]").val());
         formData.append("MusteriYaziId", selectedRowId);
         formData.append("Isim", $("#txtIsim").val());
@@ -191,6 +209,7 @@
         formData.append("MusteriYazi", $("#txtMusteriYazi").val());
         formData.append("FirmaUrl", $("#txtFirmaUrl").val());
         formData.append("Sira", $("#txtSira").val());
+        formData.append("Aktif", $("#chkAktif").val());
 
         jQuery.each(jQuery('#uplImage')[0].files, function (i, file) {
             formData.append('file-' + i, file);

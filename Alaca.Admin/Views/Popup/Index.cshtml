@@ -14,7 +14,7 @@
         <tr role="row">
             <th>Html İçerik</th>
             <th>Sıra</th>
-
+            <th>Aktif</th>
             <th style="width:150px"></th>
         </tr>
     </thead>
@@ -24,6 +24,7 @@
             <tr role="row" class="odd">
                 <td>Html Kodu</td>
                 <td>@popup.Sira</td>
+                <td>@popup.Aktif</td>
                 <td>
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalSave" onclick="updateClick(@popup.PopupId)" title="Güncelle">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
@@ -102,6 +103,7 @@
         $("#tblDataList").dataTable({
             "responsive": true,
             "autoWidth": true,
+            "ordering": false,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
             }
@@ -144,6 +146,11 @@
 
     // kaydetme
     function modalKaydet() {
+        if ($('#txtPopup').Editor("getText") == "") {
+            toastr.error("Popup boş olamaz")
+            return;
+        }
+
         var formData = new FormData();
         formData.append("__RequestVerificationToken", $("input[name=__RequestVerificationToken]").val());
         formData.append("PopupId", selectedRowId);
@@ -161,23 +168,6 @@
                 location.reload();
             }
         });
-
-        //var popup = {};
-
-        //popup.PopupId = selectedRowId;
-        //popup.Sira = $("#txtSira").val();
-        //popup.Popup = $('#txtPopup').Editor("getText");
-
-        //$.ajax({
-        //    type: "POST",
-        //    url: "/Popup/SavePopup",
-        //    data: '{popup:' + JSON.stringify(popup) + '}',
-        //    contentType: "application/json; charset=utf-8",
-        //    dataType: "json",
-        //    success: function (response) {
-        //        location.reload();
-        //    }
-        //});
     }
 
     // silme

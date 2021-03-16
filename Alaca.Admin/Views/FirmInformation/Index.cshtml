@@ -22,7 +22,7 @@
             <th>İletişim</th>
             <th>Destek</th>
             <th>Satış</th>
-
+            <th>Aktif</th>
             <th style="width:150px"></th>
         </tr>
     </thead>
@@ -40,6 +40,7 @@
                 <td>@firm.IletisimMail</td>
                 <td>@firm.DestekMail</td>
                 <td>@firm.SatisMail</td>
+                <td>@firm.Aktif</td>
                 <td>
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalSave"  onclick="updateClick(@firm.Id)" title="Güncelle">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
@@ -149,6 +150,7 @@
         $("#tblDataList").dataTable({
             "responsive": true,
             "autoWidth": true,
+            "ordering": false,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
             }
@@ -205,6 +207,10 @@
 
     // kaydetme
     function modalKaydet() {
+        if (!fieldValidationControl("txtFirmaAdi", "Firma adı boş olamaz")) {
+            return;
+        }
+
         var firma = {};
 
         firma.Id = selectedRowId;

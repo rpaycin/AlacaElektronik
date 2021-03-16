@@ -10,7 +10,7 @@ namespace Admin.DataLayer.LoginData
         {
             using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
             {
-                List<DownloadLink> downloadLinkDbList = entities.DownloadLink.Where(u => u.Aktif.HasValue && u.Aktif.Value == 1).ToList();
+                List<DownloadLink> downloadLinkDbList = entities.DownloadLink.OrderByDescending(u => u.Aktif).ToList();
 
                 return downloadLinkDbList;
             }
@@ -49,6 +49,7 @@ namespace Admin.DataLayer.LoginData
                 dbKullanici.DownloadAdi = downloadLink.DownloadAdi;
                 dbKullanici.DownloadUrl = downloadLink.DownloadUrl;
                 dbKullanici.Aciklama = downloadLink.Aciklama;
+                dbKullanici.Aktif = downloadLink.Aktif;
 
                 entities.SaveChanges();
             }

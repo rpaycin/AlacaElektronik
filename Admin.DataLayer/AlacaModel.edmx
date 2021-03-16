@@ -46,6 +46,7 @@
           <Property Name="IletisimMail" Type="nvarchar" MaxLength="255" />
           <Property Name="DestekMail" Type="nvarchar" MaxLength="255" />
           <Property Name="SatisMail" Type="nvarchar" MaxLength="255" />
+          <Property Name="Aktif" Type="bit" />
         </EntityType>
         <EntityType Name="Kullanicilar">
           <Key>
@@ -80,6 +81,7 @@
             <PropertyRef Name="PopupId" />
           </Key>
           <Property Name="PopupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PopupAd" Type="nvarchar" MaxLength="100" />
           <Property Name="Popup" Type="nvarchar(max)" />
           <Property Name="Sira" Type="int" />
           <Property Name="Aktif" Type="bit" />
@@ -180,6 +182,7 @@
           <Property Name="IletisimMail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DestekMail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="SatisMail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Aktif" Type="Boolean" />
         </EntityType>
         <EntityType Name="Kullanicilar">
           <Key>
@@ -219,6 +222,7 @@
           <Property Name="Aktif" Type="Boolean" />
           <Property Name="CreateUser" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="PopupAd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Referans">
           <Key>
@@ -306,6 +310,7 @@
           <EntitySetMapping Name="FirmaBilgileri">
             <EntityTypeMapping TypeName="AlacaYazilimWebSiteModel.FirmaBilgileri">
               <MappingFragment StoreEntitySet="FirmaBilgileri">
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirmaAdi" ColumnName="FirmaAdi" />
                 <ScalarProperty Name="FirmaAdiUzun" ColumnName="FirmaAdiUzun" />
@@ -353,6 +358,7 @@
           <EntitySetMapping Name="Popup">
             <EntityTypeMapping TypeName="AlacaYazilimWebSiteModel.Popup">
               <MappingFragment StoreEntitySet="Popup">
+                <ScalarProperty Name="PopupAd" ColumnName="PopupAd" />
                 <ScalarProperty Name="PopupId" ColumnName="PopupId" />
                 <ScalarProperty Name="Popup1" ColumnName="Popup" />
                 <ScalarProperty Name="Sira" ColumnName="Sira" />

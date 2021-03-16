@@ -20,5 +20,6 @@ namespace Admin.DataLayer
         public Nullable<bool> Aktif { get; set; }
         public Nullable<int> CreateUser { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
+        public string PopupAd { get; set; }
     }
 }

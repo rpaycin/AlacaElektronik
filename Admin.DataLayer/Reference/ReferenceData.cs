@@ -10,7 +10,7 @@ namespace Admin.DataLayer.LoginData
         {
             using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
             {
-                List<Referans> referenceDbList = entities.Referans.Where(u => u.Aktif.HasValue && u.Aktif.Value).ToList();
+                List<Referans> referenceDbList = entities.Referans.OrderByDescending(u => u.Aktif.HasValue && u.Aktif.Value).ToList();
 
                 return referenceDbList;
             }
@@ -40,16 +40,17 @@ namespace Admin.DataLayer.LoginData
             }
         }
 
-        public void UpdateReference(Referans Reference)
+        public void UpdateReference(Referans reference)
         {
             using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
             {
-                Referans dbReference = entities.Referans.FirstOrDefault(f => f.ReferansId == Reference.ReferansId);
+                Referans dbReference = entities.Referans.FirstOrDefault(f => f.ReferansId == reference.ReferansId);
 
-                dbReference.ReferansFirmaAdi = Reference.ReferansFirmaAdi;
-                dbReference.ResimUrl = Reference.ResimUrl;
-                dbReference.FirmaUrl = Reference.FirmaUrl;
-                dbReference.Sira = Reference.Sira;
+                dbReference.ReferansFirmaAdi = reference.ReferansFirmaAdi;
+                dbReference.ResimUrl = reference.ResimUrl;
+                dbReference.FirmaUrl = reference.FirmaUrl;
+                dbReference.Sira = reference.Sira;
+                dbReference.Aktif = reference.Aktif;
 
                 entities.SaveChanges();
             }

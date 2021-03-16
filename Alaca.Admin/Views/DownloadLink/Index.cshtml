@@ -15,7 +15,7 @@
             <th>Download Adı</th>
             <th>Download Url</th>
             <th>Açıklama</th>
-
+            <th>Aktif</th>
             <th style="width:150px"></th>
         </tr>
     </thead>
@@ -26,6 +26,7 @@
                 <td>@downloadLink.DownloadAdi</td>
                 <td>@downloadLink.DownloadUrl</td>
                 <td>@downloadLink.Aciklama</td>
+                <td>@downloadLink.Aktif</td>
                 <td>
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalSave" onclick="updateClick(@downloadLink.DownloadId)" title="Güncelle">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
@@ -107,6 +108,7 @@
         $("#tblDataList").dataTable({
             "responsive": true,
             "autoWidth": true,
+            "ordering": false,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
             }
@@ -147,9 +149,14 @@
         selectedRowId = id;
     }
 
+   
     // kaydetme
     function modalKaydet() {
         var downloadLink = {};
+
+        if (!fieldValidationControl("txtDownloadAdi", "Adı boş olamaz") || !fieldValidationControl("txtDownloadUrl", "Url boş olamaz")) {
+            return;
+        }
 
         downloadLink.DownloadId = selectedRowId;
         downloadLink.DownloadAdi = $("#txtDownloadAdi").val();

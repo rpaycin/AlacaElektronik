@@ -120,7 +120,9 @@
     <Content Include="Content\css\datatables\dataTables.bootstrap4.min.css" />
     <Content Include="Content\css\datatables\responsive.bootstrap4.min.css" />
     <Content Include="Content\css\editor.css" />
+    <Content Include="Content\css\toastr\toastr.min.css" />
     <Content Include="Content\js\editor.js" />
+    <Content Include="Content\js\helper.js" />
     <Content Include="Content\js\plugins\datatables\buttons.bootstrap4.min.js" />
     <Content Include="Content\js\plugins\datatables\buttons.colVis.min.js" />
     <Content Include="Content\js\plugins\datatables\buttons.html5.min.js" />
@@ -133,6 +135,7 @@
     <Content Include="Content\js\plugins\datatables\responsive.bootstrap4.min.js" />
     <Content Include="Content\js\plugins\datatables\vfs_fonts.js" />
     <Content Include="Content\js\plugins\jquery\jquery-1.12.4.js" />
+    <Content Include="Content\js\toastr\toastr.min.js" />
     <Content Include="css\form.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />

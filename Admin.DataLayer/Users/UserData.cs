@@ -10,7 +10,7 @@ namespace Admin.DataLayer.LoginData
         {
             using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
             {
-                List<Kullanicilar> UserDbList = entities.Kullanicilar.Where(u => u.Aktif.HasValue && u.Aktif.Value).ToList();
+                List<Kullanicilar> UserDbList = entities.Kullanicilar.OrderByDescending(u => u.Aktif.HasValue && u.Aktif.Value).ToList();
 
                 return UserDbList;
             }
@@ -22,7 +22,7 @@ namespace Admin.DataLayer.LoginData
             {
                 user.CreateDate = DateTime.Now;
                 user.Aktif = true;
-                 entities.Kullanicilar.Add(user);
+                entities.Kullanicilar.Add(user);
 
                 entities.SaveChanges();
             }
@@ -50,6 +50,7 @@ namespace Admin.DataLayer.LoginData
                 dbKullanici.Email = user.Email;
                 dbKullanici.Aciklama = user.Aciklama;
                 dbKullanici.Sifre = user.Sifre;
+                dbKullanici.Aktif = user.Aktif;
 
                 entities.SaveChanges();
             }

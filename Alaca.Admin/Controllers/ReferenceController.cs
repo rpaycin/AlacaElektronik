@@ -39,6 +39,7 @@ namespace Alaca.Admin.Controllers
                 ReferansId = Convert.ToInt32(form["ReferansId"]),
                 ReferansFirmaAdi = form["ReferansFirmaAdi"],
                 FirmaUrl = form["FirmaUrl"],
+                Aktif = form["Aktif"] == "on",
                 Sira = !string.IsNullOrEmpty(form["Sira"]) ? Convert.ToInt32(form["Sira"]) : 0
             };
 

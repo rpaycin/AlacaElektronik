@@ -10,7 +10,7 @@ namespace Admin.DataLayer.LoginData
         {
             using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
             {
-                List<Urun> productsDbList = entities.Urun.Where(u => u.Aktif.HasValue && u.Aktif.Value).ToList();
+                List<Urun> productsDbList = entities.Urun.OrderByDescending(u => u.Aktif.HasValue && u.Aktif.Value).ToList();
 
                 return productsDbList;
             }
@@ -51,6 +51,7 @@ namespace Admin.DataLayer.LoginData
                 dbUrun.ListeFiyat = urun.ListeFiyat;
                 dbUrun.ListeIskontoOran = urun.ListeIskontoOran;
                 dbUrun.UrunAdi = urun.UrunAdi;
+                dbUrun.Aktif = urun.Aktif;
 
                 entities.SaveChanges();
             }

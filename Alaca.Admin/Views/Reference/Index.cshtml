@@ -25,6 +25,7 @@
                 <td>@referans.ReferansFirmaAdi</td>
                 <td>@referans.FirmaUrl</td>
                 <td>@referans.Sira</td>
+                <td>@referans.Aktif</td>
                 <td>
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalSave" onclick="updateClick(@referans.ReferansId)" title="Güncelle">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
@@ -114,6 +115,7 @@
         $("#tblDataList").dataTable({
             "responsive": true,
             "autoWidth": true,
+            "ordering": false,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
             }
@@ -167,6 +169,10 @@
 
     // kaydetme
     function modalKaydet() {
+        if (!fieldValidationControl("txtReferansFirmaAdi", "Firma adı boş olamaz")) {
+            return;
+        }
+
         var formData = new FormData();
         formData.append("__RequestVerificationToken", $("input[name=__RequestVerificationToken]").val());
         formData.append("ReferansId", selectedRowId);
