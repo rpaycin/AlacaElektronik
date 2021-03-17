@@ -21,25 +21,22 @@ namespace AdminWebPanel.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Index(User user)
         {
             LoginModel model = new LoginModel { IsValid = ModelState.IsValid };
 
-            if (ModelState.IsValid)
+            Response response = _loginData.LoginControl(user);
+
+            if (response.IsSuccess)
             {
-                Response response = _loginData.LoginControl(user);
+                Session[Constants.SessionInformation] = (User)response.Data[0];
 
-                if (response.IsSuccess)
-                {
-                    Session[Constants.SessionInformation] = (User)response.Data[0];
-
-                    return RedirectToAction("Index", "Home");
-                }
-
-                model.IsValid = false;
-                model.ErrorMessage = response.ErrorMessage;
+                return RedirectToAction("Index", "Home");
             }
+
+            model.IsValid = false;
+            model.ErrorMessage = response.ErrorMessage;
+
             return View(model);
         }
 

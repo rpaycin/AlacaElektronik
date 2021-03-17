@@ -118,6 +118,10 @@
                                     }
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label>Aktif</label><br />
+                                <input type="checkbox" id="chkAktifUrunGrup">
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -174,6 +178,10 @@
                                 <label for="exampleInputPassword1">Liste İskonto Oran</label>
                                 <input type="number" class="form-control" id="txtListeIskontoOran" placeholder="Liste İskonto Oran">
                             </div>
+                            <div class="form-group">
+                                <label>Aktif</label><br />
+                                <input type="checkbox" id="chkAktifUrun">
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -224,6 +232,9 @@
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script>
+    var activeUrunGrup = false;
+    var activeUrun = false;
+
     $(function () {
         $("#tblDataList").dataTable({
             "responsive": true,
@@ -242,6 +253,22 @@
                 "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
             }
         });
+
+        $('#chkAktifUrunGrup').on('ifChecked', function (event) {
+            activeUrunGrup = true;
+        });
+
+        $('#chkAktifUrunGrup').on('ifUnchecked', function (event) {
+            activeUrunGrup = false;
+        });
+
+        $('#chkAktifUrun').on('ifChecked', function (event) {
+            activeUrun = true;
+        });
+
+        $('#chkAktifUrun').on('ifUnchecked', function (event) {
+            activeUrun = false;
+        });
     });
 
     var selectedRowId = 0;
@@ -255,6 +282,7 @@
         $("#txtListeFiyat").val('');
         $("#txtListeIskontoOran").val('');
         $("#txtAciklama").val('');
+        $('#chkAktifUrun').iCheck("uncheck");
     }
 
     function addClickGroup() {
@@ -262,6 +290,7 @@
 
         $("#txtUrunGrupAdi").val('');
         $("#ddlAnaUrunGrupId").val(-1);
+        $('#chkAktifUrunGrup').iCheck("uncheck");
     }
 
     function updateClick(id) {
@@ -279,6 +308,11 @@
                     $("#txtListeFiyat").val(model[i].ListeFiyat);
                     $("#txtListeIskontoOran").val(model[i].ListeIskontoOran);
                     $("#txtAciklama").val(model[i].Aciklama);
+
+                    var aktifText = model[i].Aktif ? "check" : "uncheck";
+                    $('#chkAktifUrun').iCheck(aktifText, function () {
+                        activeUrun = model[i].Aktif;
+                    });
                 }
             }
             var item = model.find(findItem);
@@ -300,6 +334,11 @@
                 if (model[i].UrunGrupId == selectedGroupRowId) {
                     $("#txtUrunGrupAdi").val(model[i].UrunGrupAdi);
                     $("#ddlAnaUrunGrupId").val(model[i].AnaGrupId);
+
+                    var aktifText = model[i].Aktif ? "check" : "uncheck";
+                    $('#chkAktifUrunGrup').iCheck(aktifText, function () {
+                        activeUrunGrup = model[i].Aktif;
+                    });
                 }
             }
         }
@@ -331,6 +370,7 @@
         urun.ListeFiyat = $("#txtListeFiyat").val();
         urun.ListeIskontoOran = $("#txtListeIskontoOran").val();
         urun.Aciklama = $("#txtAciklama").val();
+        urun.Aktif = activeUrun;
 
         var actionName = selectedRowId > 0 ? "UpdateProduct" : "SaveProduct";
 
@@ -356,6 +396,7 @@
         urunGrup.UrunGrupId = selectedGroupRowId;
         urunGrup.UrunGrupAdi = $("#txtUrunGrupAdi").val();
         urunGrup.AnaGrupId = $("#ddlAnaUrunGrupId").val();
+        urunGrup.Aktif = activeUrunGrup;
 
         var actionName = selectedGroupRowId > 0 ? "UpdateProductGroup" : "SaveProductGroup";
 

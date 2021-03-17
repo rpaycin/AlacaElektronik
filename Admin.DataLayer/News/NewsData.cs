@@ -34,7 +34,7 @@ namespace Admin.DataLayer.LoginData
             {
                 DuyuruHaber dbNew = entities.DuyuruHaber.FirstOrDefault(f => f.DuyuruId == NewsId);
 
-                dbNew.Aktif = false;
+                entities.DuyuruHaber.Remove(dbNew);
 
                 entities.SaveChanges();
             }

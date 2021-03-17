@@ -32,7 +32,7 @@ namespace Admin.DataLayer.LoginData
             {
                 FirmaBilgileri dbFirma = entities.FirmaBilgileri.FirstOrDefault(f => f.Id == firmaId);
 
-                dbFirma.Aktif = false;
+                entities.FirmaBilgileri.Remove(dbFirma);
 
                 entities.SaveChanges();
             }

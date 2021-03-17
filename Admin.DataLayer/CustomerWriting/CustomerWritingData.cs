@@ -34,7 +34,7 @@ namespace Admin.DataLayer.LoginData
             {
                 MusteriYazi dbCustomerWriting = entities.MusteriYazi.FirstOrDefault(f => f.MusteriYaziId == customerWritingId);
 
-                dbCustomerWriting.Aktif = false;
+                entities.MusteriYazi.Remove(dbCustomerWriting);
 
                 entities.SaveChanges();
             }

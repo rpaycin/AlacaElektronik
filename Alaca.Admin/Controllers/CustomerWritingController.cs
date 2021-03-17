@@ -41,7 +41,7 @@ namespace Alaca.Admin.Controllers
                 Unvan = form["Unvan"],
                 MusteriYazi1 = form["MusteriYazi"],
                 FirmaUrl = form["FirmaUrl"],
-                Aktif = form["Aktif"] == "on",
+                Aktif = Convert.ToBoolean(form["Aktif"]),
                 Sira = !string.IsNullOrEmpty(form["Sira"]) ? Convert.ToInt32(form["Sira"]) : 0
             };
 

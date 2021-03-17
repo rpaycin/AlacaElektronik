@@ -34,7 +34,7 @@ namespace Admin.DataLayer.LoginData
             {
                 Urun dbUrun = entities.Urun.FirstOrDefault(f => f.UrunId == urunId);
 
-                dbUrun.Aktif = false;
+                entities.Urun.Remove(dbUrun);
 
                 entities.SaveChanges();
             }

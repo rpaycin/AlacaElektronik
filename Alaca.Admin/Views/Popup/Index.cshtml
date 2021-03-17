@@ -67,6 +67,10 @@
                                 <label>Popup</label>
                                 <textarea id="txtPopup"></textarea>
                             </div>
+                            <div class="form-group">
+                                <label>Aktif</label><br />
+                                <input type="checkbox" id="chkAktif">
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -99,6 +103,8 @@
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script>
+    var active = false;
+
     $(function () {
         $("#tblDataList").dataTable({
             "responsive": true,
@@ -110,6 +116,14 @@
         });
 
         $("#txtPopup").Editor();
+
+        $('#chkAktif').on('ifChecked', function (event) {
+            active = true;
+        });
+
+        $('#chkAktif').on('ifUnchecked', function (event) {
+            active = false;
+        });
     });
 
     var selectedRowId = 0;
@@ -119,6 +133,7 @@
 
         $("#txtSira").val('');
         $("#txtPopup").Editor('setText', '');
+        $('#chkAktif').iCheck("uncheck");
     }
 
     function updateClick(id) {
@@ -135,6 +150,11 @@
 
                     $("#txtSira").val(item.Sira);
                     $("#txtPopup").Editor('setText', (item.Popup1));
+
+                    var aktifText = model[i].Aktif ? "check" : "uncheck";
+                    $('#chkAktif').iCheck(aktifText, function () {
+                        active = model[i].Aktif;
+                    });
                 }
             }
         }
@@ -156,6 +176,7 @@
         formData.append("PopupId", selectedRowId);
         formData.append("Popup", $('#txtPopup').Editor("getText"));
         formData.append("Sira", $("#txtSira").val());
+        formData.append("Aktif", active);
 
         $.ajax({
             type: "POST",

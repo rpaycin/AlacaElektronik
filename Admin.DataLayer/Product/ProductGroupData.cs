@@ -34,7 +34,7 @@ namespace Admin.DataLayer.LoginData
             {
                 UrunGrup dburunGrup = entities.UrunGrup.FirstOrDefault(f => f.UrunGrupId == urunGrupId);
 
-                dburunGrup.Aktif = false;
+                entities.UrunGrup.Remove(dburunGrup);
 
                 entities.SaveChanges();
             }

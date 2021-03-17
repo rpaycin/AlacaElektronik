@@ -15,6 +15,7 @@
             <th>Firma Adı</th>
             <th>Firma Url</th>
             <th>Sıra</th>
+            <th>Aktif</th>
             <th style="width:150px"></th>
         </tr>
     </thead>
@@ -79,6 +80,10 @@
                                 <label>Sıra</label>
                                 <input type="number" class="form-control" id="txtSira" placeholder="Sıra">
                             </div>
+                            <div class="form-group">
+                                <label>Aktif</label><br />
+                                <input type="checkbox" id="chkAktif">
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -111,6 +116,8 @@
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script>
+    var active = false;
+
     $(function () {
         $("#tblDataList").dataTable({
             "responsive": true,
@@ -119,6 +126,14 @@
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
             }
+        });
+
+        $('#chkAktif').on('ifChecked', function (event) {
+            active = true;
+        });
+
+        $('#chkAktif').on('ifUnchecked', function (event) {
+            active = false;
         });
     });
 
@@ -131,6 +146,7 @@
         $("#txtFirmaUrl").val('');
         $("#txtSira").val('');
         $('#aUploadedImage').hide();
+        $('#chkAktif').iCheck("uncheck");
     }
 
     function updateClick(id) {
@@ -158,6 +174,11 @@
                     else {
                         $('#aUploadedImage').hide();
                     }
+
+                    var aktifText = item.Aktif ? "check" : "uncheck";
+                    $('#chkAktif').iCheck(aktifText, function () {
+                        active = item.Aktif;
+                    });
                 }
             }
         }
@@ -179,6 +200,7 @@
         formData.append("ReferansFirmaAdi", $("#txtReferansFirmaAdi").val());
         formData.append("FirmaUrl", $("#txtFirmaUrl").val());
         formData.append("Sira", $("#txtSira").val());
+        formData.append("Aktif", active);
 
         jQuery.each(jQuery('#uplImage')[0].files, function (i, file) {
             formData.append('file-' + i, file);

@@ -114,6 +114,10 @@
                                 <label for="exampleInputPassword1">Satış Mail</label>
                                 <input type="tel" class="form-control" id="txtSatisMail" placeholder="Satış Mail">
                             </div>
+                            <div class="form-group">
+                                <label>Aktif</label><br />
+                                <input type="checkbox" id="chkAktif">
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -146,6 +150,8 @@
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script>
+    var active = false;
+
     $(function () {
         $("#tblDataList").dataTable({
             "responsive": true,
@@ -154,6 +160,14 @@
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
             }
+        });
+
+        $('#chkAktif').on('ifChecked', function (event) {
+            active = true;
+        });
+
+        $('#chkAktif').on('ifUnchecked', function (event) {
+            active = false;
         });
     });
 
@@ -172,6 +186,7 @@
         $("#txtIletisimMail").val('');
         $("#txtDestekMail").val('');
         $("#txtSatisMail").val('');
+        $('#chkAktif').iCheck("uncheck");
     }
 
     function updateClick(id) {
@@ -196,6 +211,11 @@
                     $("#txtIletisimMail").val(item.IletisimMail);
                     $("#txtDestekMail").val(item.DestekMail);
                     $("#txtSatisMail").val(item.SatisMail);
+
+                    var aktifText = item.Aktif ? "check" : "uncheck";
+                    $('#chkAktif').iCheck(aktifText, function () {
+                        active = item.Aktif;
+                    });
                 }
             }
         }
@@ -224,6 +244,7 @@
         firma.IletisimMail = $("#txtIletisimMail").val();
         firma.DestekMail = $("#txtDestekMail").val();
         firma.SatisMail = $("#txtSatisMail").val();
+        firma.Aktif = active;
 
         var actionName = selectedRowId > 0 ? "UpdateFirm" : "SaveFirm";
 

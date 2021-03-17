@@ -34,7 +34,7 @@ namespace Admin.DataLayer.LoginData
             {
                 DownloadLink dbKullanici = entities.DownloadLink.FirstOrDefault(f => f.DownloadId == downloadLinkId);
 
-                dbKullanici.Aktif = 0;
+                entities.DownloadLink.Remove(dbKullanici);
 
                 entities.SaveChanges();
             }

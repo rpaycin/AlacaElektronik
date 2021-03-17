@@ -38,7 +38,7 @@ namespace Alaca.Admin.Controllers
             {
                 PopupId = Convert.ToInt32(form["PopupId"]),
                 Popup1 = form["Popup"],
-                Aktif = form["Aktif"] == "on",
+                Aktif = Convert.ToBoolean(form["Aktif"]),
                 Sira = !string.IsNullOrEmpty(form["Sira"]) ? Convert.ToInt32(form["Sira"]) : 0
             };
             if (Session[Constants.SessionInformation] != null)

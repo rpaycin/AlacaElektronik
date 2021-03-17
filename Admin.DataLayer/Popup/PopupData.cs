@@ -34,7 +34,7 @@ namespace Admin.DataLayer.LoginData
             {
                 Popup dbPopup = entities.Popup.FirstOrDefault(f => f.PopupId == popupId);
 
-                dbPopup.Aktif = false;
+                entities.Popup.Remove(dbPopup);
 
                 entities.SaveChanges();
             }

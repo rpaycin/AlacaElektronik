@@ -29,7 +29,6 @@
 
                 @using (Html.BeginForm())
                 {
-                    @Html.AntiForgeryToken()
                     <div class="validation-summary-errors">
                         @Html.ValidationMessageFor(m => m.User.EmailAddress)<br />
                         @Html.ValidationMessageFor(m => m.User.Password)

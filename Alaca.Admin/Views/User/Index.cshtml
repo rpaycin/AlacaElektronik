@@ -114,6 +114,8 @@
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script>
+    var active = false;
+
     $(function () {
         $("#tblDataList").dataTable({
             "responsive": true,
@@ -122,6 +124,14 @@
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
             }
+        });
+
+        $('#chkAktif').on('ifChecked', function (event) {
+            active = true;
+        });
+
+        $('#chkAktif').on('ifUnchecked', function (event) {
+            active = false;
         });
     });
 
@@ -134,6 +144,7 @@
         $("#txtEmail").val('');
         $("#txtSifre").val('');
         $("#txtAciklama").val('');
+        $('#chkAktif').iCheck("uncheck");
     }
 
     function updateClick(id) {
@@ -152,6 +163,11 @@
                     $("#txtEmail").val(item.Email);
                     $("#txtSifre").val(item.Sifre);
                     $("#txtAciklama").val(item.Aciklama);
+
+                    var aktifText = item.Aktif ? "check" : "uncheck";
+                    $('#chkAktif').iCheck(aktifText, function () {
+                        active = item.Aktif;
+                    });
                 }
             }
         }
@@ -174,6 +190,7 @@
         user.Email = $("#txtEmail").val();
         user.Sifre = $("#txtSifre").val();
         user.Aciklama = $("#txtAciklama").val();
+        user.Aktif = active;
 
         var actionName = selectedRowId > 0 ? "UpdateUser" : "SaveUser";
 

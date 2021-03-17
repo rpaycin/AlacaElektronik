@@ -34,7 +34,7 @@ namespace Admin.DataLayer.LoginData
             {
                 Referans dbReference = entities.Referans.FirstOrDefault(f => f.ReferansId == referenceId);
 
-                dbReference.Aktif = false;
+                entities.Referans.Remove(dbReference);
 
                 entities.SaveChanges();
             }

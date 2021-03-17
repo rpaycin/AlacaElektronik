@@ -34,7 +34,7 @@ namespace Admin.DataLayer.LoginData
             {
                 Kullanicilar dbKullanici = entities.Kullanicilar.FirstOrDefault(f => f.KullaniciId == userId);
 
-                dbKullanici.Aktif = false;
+                entities.Kullanicilar.Remove(dbKullanici);
 
                 entities.SaveChanges();
             }
