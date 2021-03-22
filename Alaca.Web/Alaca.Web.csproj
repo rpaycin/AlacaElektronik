@@ -161,7 +161,26 @@
     <Content Include="css\stylemin.css" />
     <Content Include="css\web_devlop.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont3e6e-2.html" />
+    <Content Include="fonts\fontawesome-webfont3e6e-3.html" />
+    <Content Include="fonts\fontawesome-webfont3e6e-4.html" />
+    <Content Include="fonts\fontawesome-webfont3e6e-5.html" />
+    <Content Include="fonts\fontawesome-webfont3e6e.html" />
+    <Content Include="fonts\fontawesome-webfontd41d.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="font\demo-files\demo.css" />
+    <Content Include="font\fontello8dc8.html" />
+    <Content Include="font\fontello8dc8.svg" />
+    <Content Include="font\poppins-bold-webfont.html" />
+    <Content Include="font\poppins-extrabold-webfont.html" />
+    <Content Include="font\poppins-light-webfont.html" />
+    <Content Include="font\poppins-medium-webfont.html" />
+    <Content Include="font\poppins-regular-webfont.html" />
+    <Content Include="font\poppins-semibold-webfont.html" />
+    <Content Include="font\Roboto-Bold.html" />
+    <Content Include="font\Roboto-Light.html" />
+    <Content Include="font\Roboto-Medium.html" />
+    <Content Include="font\Roboto-Regular.html" />
     <Content Include="Global.asax" />
     <Content Include="images\1920x806_bg1.jpg" />
     <Content Include="images\404_shadow.png" />
@@ -1045,6 +1064,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="font\fontello8dc8.eot" />
+    <Content Include="font\fontello8dc8.ttf" />
+    <Content Include="font\fontello8dc8.woff" />
+    <Content Include="font\Linearicons.ttf" />
+    <Content Include="font\poppins-bold-webfont.woff" />
+    <Content Include="font\poppins-extrabold-webfont.woff" />
+    <Content Include="font\poppins-light-webfont.woff" />
+    <Content Include="font\poppins-medium-webfont.woff" />
+    <Content Include="font\poppins-regular-webfont.woff" />
+    <Content Include="font\poppins-semibold-webfont.woff" />
     <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
