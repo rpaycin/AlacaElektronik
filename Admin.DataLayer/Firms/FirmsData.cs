@@ -59,5 +59,15 @@ namespace Admin.DataLayer.LoginData
                 entities.SaveChanges();
             }
         }
+
+        public FirmaBilgileri GetFirstActiveFirm()
+        {
+            using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
+            {
+                FirmaBilgileri firm = entities.FirmaBilgileri.FirstOrDefault(u => u.Aktif.HasValue && u.Aktif.Value);
+
+                return firm;
+            }
+        }
     }
 }

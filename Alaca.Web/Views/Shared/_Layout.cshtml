@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Alaca.Web.Models
+@model LayoutModel
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>
@@ -42,6 +45,9 @@
     <link rel="stylesheet" href="css/responsivemin.css">
 </head>
 <body>
+    @{
+        string cellPhone = string.Format("90{0}", Model.Firm.CepTelefon);
+    }
     <div id="wrapper" class="wrapper-container">
         <nav id="mobile-advanced" class="mobile-advanced"></nav>
         <header id="header" class="header fixed-header">
@@ -49,7 +55,7 @@
                 <div class="top-header">
                     <div class="container-fluid">
                         <div class="header_social">
-                            <a target="_blank" href="https://api.whatsapp.com/send?phone=917723000038&amp;text=Hello,%20%20Team%20Esferasoft."><i class="fa fa-whatsapp fa-2x"></i></a>
+                            <a target="_blank" href="https://api.whatsapp.com/send?phone=@cellPhone&amp;text=Merhaba,%20%20Alaca%20Elektronik.">@Model.Firm.CepTelefon</a>
                         </div>
                     </div>
                 </div>
@@ -57,7 +63,7 @@
                     <div class="row justify-content-between align-items-center">
                         <div id="header-menu-1" class="col-sm-3">
                             <div class="logo-wrap">
-                                <a href="index.html" class="logo"><img alt="logo image" src="images/logo2.png"></a>
+                                <a href="/" class="logo"><img alt="logo image" src="images/logo2.png"></a>
                             </div>
                         </div>
                         <div id="header-menu-2" class="col-sm-9">
@@ -108,7 +114,7 @@
             <div class="side scocial-icon">
                 <div class="box_s soccil-icon-tab1">
                     <i class="fa fa-whatsapp fa-2x"></i>
-                    <a target="_blank" href="https://api.whatsapp.com/send?phone=905079611458&amp;text=Merhaba,%20%20Alaca%20Elektronik.">+90 5079611458</a>
+                    <a target="_blank" href="https://api.whatsapp.com/send?phone=@cellPhone&amp;text=Merhaba,%20%20Alaca%20Elektronik.">@Model.Firm.CepTelefon</a>
                 </div>
             </div>
         </header>
@@ -129,11 +135,11 @@
                             <h5 class="widget-title">Alaca Elektronik</h5>
                             <div class="our-info">
                                 <div class="info-item">
-                                    <div class="wrapper"> Otom. Eğitim ve Danş. Hizm. San. ve Tic. Ltd. Şti.<br>Çınardere Mahallesi Acar Sokak No.1 D.2 34896 Pendik / İstanbul </div>
+                                    <div class="wrapper">@Model.Firm.Adres</div>
                                 </div>
                                 <div class="info-item">
                                     <i class="fa fa-phone"></i>
-                                    <div class="wrapper contact_n"> <a href="tel:+91.172.400.0503">+90 (216) 354 64 00</a> </div>
+                                    <div class="wrapper contact_n"> <a href="tel:+90 @Model.Firm.Telefon1">@Model.Firm.Telefon1</a> </div>
                                 </div>
                             </div>
                         </div>

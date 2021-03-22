@@ -12,5 +12,7 @@ namespace Admin.DataLayer.LoginData
         void SaveFirm(FirmaBilgileri firma);
 
         void DeleteFirm(int firmaId);
+
+        FirmaBilgileri GetFirstActiveFirm();
     }
 }
