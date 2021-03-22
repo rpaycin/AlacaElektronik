@@ -51,8 +51,19 @@ namespace Admin.DataLayer.LoginData
                 dbReference.FirmaUrl = reference.FirmaUrl;
                 dbReference.Sira = reference.Sira;
                 dbReference.Aktif = reference.Aktif;
+                dbReference.ShowInSlider = reference.ShowInSlider;
 
                 entities.SaveChanges();
+            }
+        }
+
+        public List<Referans> GetSliderReferences()
+        {
+            using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
+            {
+                List<Referans> referenceDbList = entities.Referans.Where(u => u.Aktif.HasValue && u.Aktif.Value && u.ShowInSlider.HasValue && u.ShowInSlider.Value && !string.IsNullOrEmpty(u.ResimUrl)).ToList();
+
+                return referenceDbList;
             }
         }
     }

@@ -145,6 +145,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\LayoutModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1075,6 +1076,7 @@
     <Content Include="font\poppins-regular-webfont.woff" />
     <Content Include="font\poppins-semibold-webfont.woff" />
     <None Include="packages.config" />
+    <Content Include="Views\Shared\Partials\References.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Admin.DataLayer\Alaca.DataLayer.csproj">

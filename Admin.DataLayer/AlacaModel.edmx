@@ -100,6 +100,7 @@
           <Property Name="Aktif" Type="bit" />
           <Property Name="CreateUser" Type="int" />
           <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ShowInSlider" Type="bit" />
         </EntityType>
         <EntityType Name="Urun">
           <Key>
@@ -236,6 +237,7 @@
           <Property Name="Aktif" Type="Boolean" />
           <Property Name="CreateUser" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ShowInSlider" Type="Boolean" />
         </EntityType>
         <EntityType Name="Urun">
           <Key>
@@ -371,6 +373,7 @@
           <EntitySetMapping Name="Referans">
             <EntityTypeMapping TypeName="AlacaYazilimWebSiteModel.Referans">
               <MappingFragment StoreEntitySet="Referans">
+                <ScalarProperty Name="ShowInSlider" ColumnName="ShowInSlider" />
                 <ScalarProperty Name="ReferansId" ColumnName="ReferansId" />
                 <ScalarProperty Name="ReferansFirmaAdi" ColumnName="ReferansFirmaAdi" />
                 <ScalarProperty Name="ResimUrl" ColumnName="ResimUrl" />

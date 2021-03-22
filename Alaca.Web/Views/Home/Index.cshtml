@@ -1,4 +1,7 @@
-﻿@section slider
+﻿@using Alaca.Web.Models
+@model LayoutModel<HomeModel>
+
+@section slider
 {
 <div id="home_slider" class="carousel slide carousel-fade" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -44,4 +47,4 @@
 </div>
 }
 
-Ayaz Ege Payçın
+@Html.Partial("Partials/References",Model.PageModel.References)

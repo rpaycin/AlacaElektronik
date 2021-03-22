@@ -1,0 +1,29 @@
+﻿@using Admin.DataLayer
+@model List<Referans>
+
+@if (Model != null && Model.Count > 0)
+{
+    string mainPath = "http://localhost:61038/Upload/ReferenceImage/"; // TODO: burası değişecek
+
+    <div class="home_logo">
+        <div class="container">
+            <div class="home_logo_box">
+                <div class="row">
+                    <div class="col-md-3 logo_head"> <span class="">  Referanslarımız</span> </div>
+                    <div class="col-md-9">
+                        <div class="slick marquee">
+                            @foreach (Referans referance in Model)
+                            {
+                                <div class="slick-slide">
+                                    <div class="inner">
+                                        <img alt="@referance.ReferansFirmaAdi" src="@string.Format("{0}{1}",mainPath,referance.ResimUrl)">
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

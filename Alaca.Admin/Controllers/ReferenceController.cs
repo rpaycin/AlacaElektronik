@@ -40,6 +40,7 @@ namespace Alaca.Admin.Controllers
                 ReferansFirmaAdi = form["ReferansFirmaAdi"],
                 FirmaUrl = form["FirmaUrl"],
                 Aktif = Convert.ToBoolean(form["Aktif"]),
+                ShowInSlider = Convert.ToBoolean(form["ShowInSlider"]),
                 Sira = !string.IsNullOrEmpty(form["Sira"]) ? Convert.ToInt32(form["Sira"]) : 0
             };
 
