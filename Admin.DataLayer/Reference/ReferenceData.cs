@@ -47,7 +47,12 @@ namespace Admin.DataLayer.LoginData
                 Referans dbReference = entities.Referans.FirstOrDefault(f => f.ReferansId == reference.ReferansId);
 
                 dbReference.ReferansFirmaAdi = reference.ReferansFirmaAdi;
-                dbReference.ResimUrl = reference.ResimUrl;
+
+                if (!string.IsNullOrEmpty(reference.ResimUrl))
+                {
+                    dbReference.ResimUrl = reference.ResimUrl;
+                }
+
                 dbReference.FirmaUrl = reference.FirmaUrl;
                 dbReference.Sira = reference.Sira;
                 dbReference.Aktif = reference.Aktif;

@@ -1,0 +1,49 @@
+﻿@using Admin.DataLayer
+@model List<DuyuruHaber>
+
+
+
+
+@if (Model != null && Model.Count > 0)
+{
+    string mainPath = "http://localhost:61038/Upload/NewsImage/"; // TODO: burası değişecek
+
+    <section class="bg-img" id="all_blog_data">
+        <div class="page-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center head_section wow fadeInUp">
+                        <h2 class="section-title tt">Duyurular <span style="color: #e93726;">Haberler</span></h2>
+                        <br>
+                    </div>
+                </div>
+                <div class="entry-box style-2">
+                    <div class="content-element4">
+                        <div class="row" id="blog_data2">
+                            @foreach (DuyuruHaber news in Model)
+                            {
+                                <div class="col-lg-4 col-md-12 wow zoomIn animated" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;">
+                                    <div class="entry entry-small">
+                                        <div class="thumbnail-attachment">
+                                            <a href="/blog/wolt-food-delivery-startup-raises-530m-to-expand-its-fastest-growing-retail-service">
+                                                <img width="100%" alt="" src="@string.Format("{0}{1}",mainPath,news.ImageUrl)">
+                                            </a>
+                                        </div>
+                                        <div class="entry-meta">
+                                            <time class="entry-date" datetime="2018-12-21">@news.CreateDate.Value.ToShortDateString() </time>
+                                            <span> </span>
+                                            <a href="/blog/wolt-food-delivery-startup-raises-530m-to-expand-its-fastest-growing-retail-service" class="entry-cat">
+                                                @news.DuyuruKisa
+                                            </a>
+                                            <p class="country_link"><a href="/blog/wolt-food-delivery-startup-raises-530m-to-expand-its-fastest-growing-retail-service">Devamı...</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

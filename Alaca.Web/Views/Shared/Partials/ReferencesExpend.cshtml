@@ -1,0 +1,29 @@
+﻿@using Admin.DataLayer
+@model List<Referans>
+
+@if (Model != null && Model.Count > 0)
+{
+    string mainPath = "http://localhost:61038/Upload/ReferenceImage/"; // TODO: burası değişecek
+
+    <section class="bg-img technology_sec">
+        <div class="page-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center head_section wow fadeInUp">
+                        <h2 class="section-title tt">Bize Güvenen <span style="color: #e93726;"> Müşteriler</span> </h2>
+                    </div>
+                </div>
+                <div class="row technology_sec_boxes">
+                    @foreach (Referans referance in Model)
+                    {
+                        <div class="col-6 col-sm-2">
+                            <div class="card technology_img wow zoomIn" data-wow-delay="0.5s">
+                                <img alt="@referance.ReferansFirmaAdi" src="@string.Format("{0}{1}",mainPath,referance.ResimUrl)" title="@referance.ReferansFirmaAdi">
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+}

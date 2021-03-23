@@ -1,0 +1,40 @@
+﻿@using Admin.DataLayer
+@model List<MusteriYazi>
+
+@if (Model != null && Model.Count > 0)
+{
+    string mainPath = "http://localhost:61038/Upload/CustomerWritingImage/"; // TODO: burası değişecek
+    <section class="client_testi_slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center head_section wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                    <h2 class="section-title tt">Müşteri Değerlendirmeleri</h2>
+                </div>
+            </div>
+        </div>
+        <div class="our_client_logo_slider">
+            @foreach (MusteriYazi customerWriting in Model)
+            {
+                <div class="">
+                    <div class="client_details">
+                        <div class="client_name_img">
+                            <div class="client_imgs">
+                                @if (!string.IsNullOrEmpty(customerWriting.ResimUrl))
+                                {
+                                    <img src="@string.Format("{0}{1}",mainPath,customerWriting.ResimUrl)" class="img-fluid slide">
+                                }
+                            </div>
+                            <div class="client_title">
+                                <h5>@customerWriting.Isim</h5>
+                                <p><i>@customerWriting.Unvan</i></p>
+                            </div>
+                        </div>
+                        <div class="client_comment">
+                            <p>@customerWriting.MusteriYazi1</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+}

@@ -49,9 +49,13 @@ namespace Admin.DataLayer.LoginData
                 dbNew.DuyuruBaslik = news.DuyuruBaslik;
                 dbNew.Duyuru = news.Duyuru;
                 dbNew.DuyuruKisa = news.DuyuruKisa;
-                dbNew.ImageUrl = news.ImageUrl;
+
+                if (!string.IsNullOrEmpty(news.ImageUrl))
+                {
+                    dbNew.ImageUrl = news.ImageUrl;
+                }
+
                 dbNew.Sira = news.Sira;
-                dbNew.ImageUrl = news.ImageUrl;
                 dbNew.Aktif = news.Aktif;
 
                 entities.SaveChanges();

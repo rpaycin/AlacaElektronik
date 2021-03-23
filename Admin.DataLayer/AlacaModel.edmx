@@ -68,7 +68,7 @@
           <Property Name="MusteriYaziId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Isim" Type="nvarchar" MaxLength="100" />
           <Property Name="Unvan" Type="nvarchar" MaxLength="100" />
-          <Property Name="MusteriYazi" Type="nvarchar" MaxLength="255" />
+          <Property Name="MusteriYazi" Type="nvarchar(max)" />
           <Property Name="ResimUrl" Type="nvarchar" MaxLength="255" />
           <Property Name="FirmaUrl" Type="nvarchar" MaxLength="255" />
           <Property Name="Sira" Type="int" />
@@ -205,7 +205,7 @@
           <Property Name="MusteriYaziId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Isim" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Unvan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MusteriYazi1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MusteriYazi1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ResimUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="FirmaUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Sira" Type="Int32" />

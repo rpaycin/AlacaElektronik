@@ -1077,6 +1077,11 @@
     <Content Include="font\poppins-semibold-webfont.woff" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\Partials\References.cshtml" />
+    <Content Include="Views\Shared\Partials\Strenghs.cshtml" />
+    <Content Include="Views\Shared\Partials\Sectors.cshtml" />
+    <Content Include="Views\Shared\Partials\CustomerWriting.cshtml" />
+    <Content Include="Views\Shared\Partials\ReferencesExpend.cshtml" />
+    <Content Include="Views\Shared\Partials\News.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Admin.DataLayer\Alaca.DataLayer.csproj">

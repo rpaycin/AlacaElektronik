@@ -9,7 +9,7 @@
         <li data-target="#home_slider" data-slide-to="1"></li>
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active" data-interval="4000" data-bg="images/home_slider3.jpg">
+        <div class="carousel-item active" data-interval="10000" data-bg="images/home_slider3.jpg">
             <div class="container">
                 <div class="header-text zoomoutheader">
                     <div class="row">
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div class="carousel-item" data-interval="4000" data-bg="images/home_slider1.jpg">
+        <div class="carousel-item" data-interval="10000" data-bg="images/home_slider1.jpg">
             <div class="container">
                 <div class="header-text zoomoutheader">
                     <div class="row">
@@ -47,4 +47,14 @@
 </div>
 }
 
-@Html.Partial("Partials/References",Model.PageModel.References)
+@Html.Partial("Partials/References", Model.PageModel.References)
+
+@Html.Partial("Partials/Strenghs")
+
+@Html.Partial("Partials/Sectors")
+
+@Html.Partial("Partials/CustomerWriting", Model.PageModel.CustomerWritings)
+
+@Html.Partial("Partials/News", Model.PageModel.News)
+
+@Html.Partial("Partials/ReferencesExpend", Model.PageModel.References)

@@ -49,7 +49,12 @@ namespace Admin.DataLayer.LoginData
                 dbCustomerWriting.Isim = customerWriting.Isim;
                 dbCustomerWriting.Unvan = customerWriting.Unvan;
                 dbCustomerWriting.MusteriYazi1 = customerWriting.MusteriYazi1;
-                dbCustomerWriting.ResimUrl = customerWriting.ResimUrl;
+
+                if (!string.IsNullOrEmpty(customerWriting.ResimUrl))
+                {
+                    dbCustomerWriting.ResimUrl = customerWriting.ResimUrl;
+                }
+
                 dbCustomerWriting.Sira = customerWriting.Sira;
                 dbCustomerWriting.FirmaUrl = customerWriting.FirmaUrl;
                 dbCustomerWriting.Aktif = customerWriting.Aktif;
