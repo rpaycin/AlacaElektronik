@@ -1,0 +1,120 @@
+﻿@using Alaca.Web.Models
+@model LayoutModel
+
+@{
+    ViewBag.Title = "İletişim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section slider
+{
+    <div class="media-holder thank_you" id="contact_us">
+        <div class="container">
+            <img src="~/images/1920x806_bg1.jpg" class="banner_top_img">
+            <div id="media-hold-h-p">
+                <div class="b"></div>
+            </div>
+        </div>
+    </div>
+}
+<section class="ceheckout outer_white" id="contact_area">
+    <div class="container-fluid">
+        <div class="white_bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="contact_detail">
+                            <h6>Her türlü sorularınız, istek veya tavsiyeleriniz için  iletişim formunu doldurarak bizimle irtibat kurabilirsiniz.</h6>
+                            <br>
+                            <h6>Talepleriniz ilgili departmana ulaştırılarak değerlendirilecek ve en kısa süre içinde size konu hakkında yetkili personelimiz tarafından cevap verilecektir. Firmamıza ve hizmetlerimize göstermiş olduğunuz ilgi için teşekkür ederiz.</h6>
+                            <br />
+                            @{
+                                if (!string.IsNullOrEmpty(@Model.Firm.Telefon1))
+                                {
+
+                                    <h4>Telefon 1</h4>
+                                    <a href="tel:+90 @Model.Firm.Telefon1">@Model.Firm.Telefon1</a>
+                                }
+                                if (!string.IsNullOrEmpty(@Model.Firm.Telefon2))
+                                {
+
+                                    <br /><br />
+                                    <h4>Telefon 2</h4>
+                                    <a href="tel:+90 @Model.Firm.Telefon2">@Model.Firm.Telefon2</a>
+                                }
+                                if (!string.IsNullOrEmpty(@Model.Firm.CepTelefon))
+                                {
+
+                                    <br /><br />
+                                    <h4>Cep Telefonu</h4>
+                                    <a href="tel:+90 @Model.Firm.CepTelefon">@Model.Firm.CepTelefon</a>
+                                }
+                                if (!string.IsNullOrEmpty(@Model.Firm.Fax))
+                                {
+
+                                    <br /><br />
+                                    <h4>Fax</h4>
+                                    <a href="tel:+90 @Model.Firm.Fax">@Model.Firm.Fax</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="contact_left box_s">
+                            <h2><strong>BİZİMLE İLETİŞİME GEÇİN</strong></h2>
+                            <p><b>Gerekli bilgileri doldurun, teknoloji danışmanımız 24 saat içinde sizinle iletişime geçecektir.</b></p>
+
+                            <input type="text" class="form-control" id="txtAdSoyad" placeholder="Ad, Soyad" /><br />
+                            <input type="text" class="form-control" id="txtEPosta" placeholder="E-Posta" /><br />
+                            <input type="text" class="form-control" id="txtKonu" placeholder="Konu" /><br />
+                            <textarea class="form-control" id="txtMesaj" placeholder="Mesaj"></textarea><br />
+
+                            <div class="text-center">
+                                <button type="button" class="box_s my_button send_btn_contact_form" onclick="formGonder()">Gönder</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<script>
+    function fieldValidationControl(fieldKey, message) {
+        var fieldValue = $("#" + fieldKey).val();
+        if (fieldValue == '' || fieldValue == null || fieldValue == undefined) {
+            toastr.error(message)
+            return false;
+        }
+
+        return true;
+    }
+
+    function formGonder() {
+        if (!fieldValidationControl("txtAdSoyad", "Adınızı ve soyadını giriniz")) {
+            return;
+        }
+        if (!fieldValidationControl("txtMesaj", "Mesajınızı giriniz")) {
+            return;
+        }
+
+        var formData = new FormData();
+        formData.append("AdSoyad", $("#txtAdSoyad").val());
+        formData.append("EPosta", $("#txtEPosta").val());
+        formData.append("Konu", $("#txtKonu").val());
+        formData.append("Mesaj", $("#txtMesaj").val());
+
+        $.ajax({
+            type: "POST",
+            url: "/BizeUlasin/SendEmail",
+            data: formData,
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                toastr.success("Formunuz başarıyla gönderilmiştir")
+                location.reload();
+            }
+        });
+    }
+</script>

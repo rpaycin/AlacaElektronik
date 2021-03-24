@@ -71,5 +71,15 @@ namespace Admin.DataLayer.LoginData
                 return referenceDbList;
             }
         }
+
+        public List<Referans> GetTopReferences()
+        {
+            using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
+            {
+                List<Referans> referenceDbList = entities.Referans.Where(u => u.Aktif.HasValue && u.Aktif.Value && u.ShowInSlider.HasValue).Take(20).ToList();
+
+                return referenceDbList;
+            }
+        }
     }
 }

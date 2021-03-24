@@ -3,7 +3,7 @@
 
 @if (Model != null && Model.Count > 0)
 {
-    string mainPath = "http://localhost:55145/Upload/CustomerWritingImage/"; // TODO: burası değişecek
+    string mainPath = string.Format("{0}CustomerWritingImage/", ViewData["AdminDomainAddress"].ToString());
 
     <section class="client_testi_slider">
         <div class="container">

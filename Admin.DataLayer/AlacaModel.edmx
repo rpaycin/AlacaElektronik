@@ -47,6 +47,7 @@
           <Property Name="DestekMail" Type="nvarchar" MaxLength="255" />
           <Property Name="SatisMail" Type="nvarchar" MaxLength="255" />
           <Property Name="Aktif" Type="bit" />
+          <Property Name="AdminDomainAddress" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Kullanicilar">
           <Key>
@@ -184,6 +185,7 @@
           <Property Name="DestekMail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="SatisMail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Aktif" Type="Boolean" />
+          <Property Name="AdminDomainAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Kullanicilar">
           <Key>
@@ -312,6 +314,7 @@
           <EntitySetMapping Name="FirmaBilgileri">
             <EntityTypeMapping TypeName="AlacaYazilimWebSiteModel.FirmaBilgileri">
               <MappingFragment StoreEntitySet="FirmaBilgileri">
+                <ScalarProperty Name="AdminDomainAddress" ColumnName="AdminDomainAddress" />
                 <ScalarProperty Name="Aktif" ColumnName="Aktif" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirmaAdi" ColumnName="FirmaAdi" />

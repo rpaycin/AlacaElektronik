@@ -12,5 +12,6 @@ namespace Admin.DataLayer.LoginData
 
         void DeleteReference(int referenceId);
         List<Referans> GetSliderReferences();
+        List<Referans> GetTopReferences();
     }
 }

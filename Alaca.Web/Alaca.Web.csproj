@@ -141,12 +141,16 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BizeUlasinController.cs" />
+    <Compile Include="Controllers\DuyuruHaberController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReferansController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\LayoutModel.cs" />
+    <Compile Include="Models\ReferenceModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +165,7 @@
     <Content Include="css\slick-theme.css" />
     <Content Include="css\slick.css" />
     <Content Include="css\stylemin.css" />
+    <Content Include="css\toastr.min.css" />
     <Content Include="css\web_devlop.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont3e6e-2.html" />
@@ -1035,6 +1040,7 @@
     <Content Include="js\slick.js" />
     <Content Include="js\slickmin.js" />
     <Content Include="js\telephonemin.js" />
+    <Content Include="js\toastr.min.js" />
     <Content Include="js\wow.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -1082,6 +1088,10 @@
     <Content Include="Views\Shared\Partials\CustomerWriting.cshtml" />
     <Content Include="Views\Shared\Partials\ReferencesExpend.cshtml" />
     <Content Include="Views\Shared\Partials\News.cshtml" />
+    <Content Include="Views\Shared\Partials\Banner.cshtml" />
+    <Content Include="Views\DuyuruHaber\Index.cshtml" />
+    <Content Include="Views\Referans\Index.cshtml" />
+    <Content Include="Views\BizeUlasin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Admin.DataLayer\Alaca.DataLayer.csproj">

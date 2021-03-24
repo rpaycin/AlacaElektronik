@@ -45,6 +45,7 @@
     <link rel="stylesheet" href="css/stylemin.css" defer>
     <link rel="stylesheet" href="css/our_client.css">
     <link rel="stylesheet" href="css/responsivemin.css">
+    <link rel="stylesheet" href="~/css/toastr.min.css">
 </head>
 <body>
     @{
@@ -72,7 +73,7 @@
                             <div class="menu-holder">
                                 <div class="menu-wrap">
                                     <div class="nav-item">
-                                        <a href="contact-us/index.html" class="contac_btn">Bizimle İletişime Geçin</a>
+                                        <a href="@Url.Action("Index", "BizeUlasin")" class="contac_btn">Bizimle İletişime Geçin</a>
                                         <nav id="main-navigation" class="main-navigation">
                                             <ul id="menu" class="clearfix">
                                                 <li class="current">
@@ -100,13 +101,13 @@
                                                 </li>
 
                                                 <li class="hov-dp-13">
-                                                    <a href="javascript:void(0)">Referanslarımız</a>
+                                                    <a href="@Url.Action("Index", "Referans")">Referanslarımız</a>
                                                 </li>
                                                 <li class="hov-dp-13">
                                                     <a href="javascript:void(0)">Hakkımızda</a>
                                                 </li>
                                                 <li class="hov-dp-13">
-                                                    <a href="javascript:void(0)">İletişim</a>
+                                                    <a href="@Url.Action("Index", "BizeUlasin")">İletişim</a>
                                                 </li>
                                                 <li> <a class="box_s" id="buton-nav-project" target="_blank" href="https://alacaelektronik.com">Destek</a></li>
                                             </ul>
@@ -178,9 +179,9 @@
                         <div class="widget">
                             <h5 class="widget-title">Hızlı Linkler</h5>
                             <ul class="padding-foot">
-                                <li><a href="#">Referanslarımız</a></li>
+                                <li><a href="@Url.Action("Index", "Referans")">Referanslarımız</a></li>
                                 <li><a href="#">Hakkımızda</a></li>
-                                <li><a href="#">İletişim</a></li>
+                                <li><a href="@Url.Action("Index", "BizeUlasin")">İletişim</a></li>
                             </ul>
                             <h4 class="white-footer">Sosyal Medya</h4>
                             <ul class="social-icons">
@@ -228,5 +229,6 @@
     <script type="text/javascript" src="js/case_slider/jquerypp.custommin.js"></script>
     <script type="text/javascript" src="js/case_slider/jquery.elastislidemin.js"></script>
     <script src="js/cookieconsent.min.js" defer></script>
+    <script src="~/js/toastr.min.js" defer></script>
 </body>
 </html>

@@ -3,45 +3,46 @@
 
 @section slider
 {
-<div id="home_slider" class="carousel slide carousel-fade" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#home_slider" data-slide-to="0" class="active"></li>
-        <li data-target="#home_slider" data-slide-to="1"></li>
-    </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item active" data-interval="10000" data-bg="images/home_slider3.jpg">
-            <div class="container">
-                <div class="header-text zoomoutheader">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div id="media-hold-h-p">
-                                <h1>
-                                    ALACA YAZILIM <br>
-                                    <span class="txt-rotate">Siz sadece ihtiyaçlarınızı belirleyin. Gerisini biz çözeriz.</span><span class="blinking">
+    <div id="home_slider" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#home_slider" data-slide-to="0" class="active"></li>
+            <li data-target="#home_slider" data-slide-to="1"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-interval="10000" data-bg="images/home_slider3.jpg">
+                <div class="container">
+                    <div class="header-text zoomoutheader">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div id="media-hold-h-p">
+                                    <h1>
+                                        ALACA YAZILIM <br>
+                                        <span class="txt-rotate">Siz sadece ihtiyaçlarınızı belirleyin. Gerisini biz çözeriz.</span><span class="blinking">
 
-                                    </span>
-                                </h1>
-                                <a class="my_button wow pulse animated" href="contact-us" data-wow-delay="300ms" data-wow-iteration="infinite" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-delay: 300ms; animation-iteration-count: infinite; animation-name: pulse;">AYS Ürünlerini Keşfet</a>
-                                
+                                        </span>
+                                    </h1>
+                                    <a class="my_button wow pulse animated" href="contact-us" data-wow-delay="300ms" data-wow-iteration="infinite" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-delay: 300ms; animation-iteration-count: infinite; animation-name: pulse;">AYS Ürünlerini Keşfet</a>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="carousel-item" data-interval="10000" data-bg="images/home_slider1.jpg">
-            <div class="container">
-                <div class="header-text zoomoutheader">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div id="media-hold-h-p">
-                                <h1>
-                                    ALACA YAZILIM <br>
-                                    <span class="txt-rotate">AYS herzaman yanınızda. AYS Mobil'i deneniz mi?</span><span class="blinking">. </span>
+            <div class="carousel-item" data-interval="10000" data-bg="images/home_slider1.jpg">
+                <div class="container">
+                    <div class="header-text zoomoutheader">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div id="media-hold-h-p">
+                                    <h1>
+                                        ALACA YAZILIM <br>
+                                        <span class="txt-rotate">AYS herzaman yanınızda. AYS Mobil'i deneniz mi?</span><span class="blinking">. </span>
 
-                                    
-                                </h1>
-                                <a class="my_button wow pulse animated" href="contact-us" data-wow-delay="300ms" data-wow-iteration="infinite" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-delay: 300ms; animation-iteration-count: infinite; animation-name: pulse;">AYS Mobil</a>
+
+                                    </h1>
+                                    <a class="my_button wow pulse animated" href="contact-us" data-wow-delay="300ms" data-wow-iteration="infinite" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-delay: 300ms; animation-iteration-count: infinite; animation-name: pulse;">AYS Mobil</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -49,29 +50,22 @@
             </div>
         </div>
     </div>
-</div>
 }
 
-@Html.Partial("Partials/References", Model.PageModel.References)
+@{
+    var viewData = new ViewDataDictionary { { "AdminDomainAddress", Model.Firm.AdminDomainAddress } };
+}
+
+@Html.Partial("Partials/References", Model.PageModel.References, viewData)
 
 @Html.Partial("Partials/Strenghs")
 
 @Html.Partial("Partials/Sectors")
 
-<section id="home_ad_banner" class="add_banner">
-    <div class="overlay"></div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h2 class="section-title tt head_section wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">Bir Fikriniz Mi Var?</h2>
-                <p><a href="contact-us" class="my_button wow pulse animated animated animated" data-wow-delay="300ms" data-wow-iteration="infinite" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-delay: 300ms; animation-iteration-count: infinite; animation-name: pulse;">BİZE ULAŞIN</a></p>
-            </div>
-        </div>
-    </div>
-</section>
+@Html.Partial("Partials/Banner")
 
-@Html.Partial("Partials/CustomerWriting", Model.PageModel.CustomerWritings)
+@Html.Partial("Partials/CustomerWriting", Model.PageModel.CustomerWritings, viewData)
 
-@Html.Partial("Partials/News", Model.PageModel.News)
+@Html.Partial("Partials/News", Model.PageModel.News, viewData)
 
-@Html.Partial("Partials/ReferencesExpend", Model.PageModel.References)
+@Html.Partial("Partials/ReferencesExpend", Model.PageModel.References, viewData)

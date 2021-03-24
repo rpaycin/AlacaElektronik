@@ -3,7 +3,7 @@
 
 @if (Model != null && Model.Count > 0)
 {
-    string mainPath = "http://localhost:55145/Upload/NewsImage/"; // TODO: burası değişecek
+    string mainPath = string.Format("{0}NewsImage/", ViewData["AdminDomainAddress"].ToString());
 
     <section class="bg-img" id="all_blog_data">
         <div class="page-section">
@@ -27,7 +27,7 @@
                                             </a>
                                         </div>
                                         <div class="entry-meta">
-                                            <time class="entry-date" datetime="@news.CreateDate.Value.ToShortDateString">@news.CreateDate.Value.ToShortDateString() </time>
+                                            <time class="entry-date" datetime="@news.CreateDate.Value.ToShortDateString()">@news.CreateDate.Value.ToShortDateString() </time>
                                             <span> </span>
                                             <a href="/blog/wolt-food-delivery-startup-raises-530m-to-expand-its-fastest-growing-retail-service" class="entry-cat">
                                                 @news.DuyuruKisa

@@ -1,0 +1,28 @@
+﻿@using Alaca.Web.Models
+@model LayoutModel<ReferenceModel>
+
+@{
+    ViewBag.Title = "Referanslarımız";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var viewData = new ViewDataDictionary { { "AdminDomainAddress", Model.Firm.AdminDomainAddress } };
+}
+
+@section slider
+{
+    <div id="client_banner" class="half_banner">
+        <img src="images/our_clients/client_banner.png" class="banner_top_img">
+        <div class="container">
+            <div class="banner_heading text-center">
+                <h1>Bizim Müşterilerimiz</h1>
+                <p>Mobil Uygulama, E-ticaret geliştirme ve pazarlamada küresel yeteneklere sahip tam hizmetli bir dijital dönüşüm şirketi. İnsan merkezli ve geleceğe dönük dijital deneyimler yaratıyoruz.</p>
+            </div>
+        </div>
+    </div>
+}
+
+@Html.Partial("Partials/ReferencesExpend", Model.PageModel.References, viewData)
+
+@Html.Partial("Partials/CustomerWriting", Model.PageModel.CustomerWritings, viewData)

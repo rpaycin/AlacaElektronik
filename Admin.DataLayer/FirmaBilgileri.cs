@@ -26,5 +26,6 @@ namespace Admin.DataLayer
         public string DestekMail { get; set; }
         public string SatisMail { get; set; }
         public Nullable<bool> Aktif { get; set; }
+        public string AdminDomainAddress { get; set; }
     }
 }
