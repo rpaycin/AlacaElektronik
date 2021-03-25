@@ -14,11 +14,13 @@
                     </div>
                 </div>
                 <div class="row technology_sec_boxes">
-                    @foreach (Referans referance in Model)
+                    @foreach (Referans reference in Model)
                     {
                         <div class="col-6 col-sm-2">
                             <div class="card technology_img wow zoomIn" data-wow-delay="0.5s">
-                                <img alt="@referance.ReferansFirmaAdi" src="@string.Format("{0}{1}",mainPath,referance.ResimUrl)" title="@referance.ReferansFirmaAdi">
+                                <a href="@reference.FirmaUrl" target="_blank">
+                                    <img alt="@reference.ReferansFirmaAdi" src="@string.Format("{0}{1}",mainPath,reference.ResimUrl)" title="@reference.ReferansFirmaAdi">
+                                </a>
                             </div>
                         </div>
                     }

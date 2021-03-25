@@ -10,7 +10,7 @@
 {
     <div class="media-holder thank_you" id="contact_us">
         <div class="container">
-            <img src="~/images/1920x806_bg1.jpg" class="banner_top_img">
+            <img src="~/images/android_banner.jpg" class="banner_top_img">
             <div id="media-hold-h-p">
                 <div class="b"></div>
             </div>
@@ -94,6 +94,11 @@
         if (!fieldValidationControl("txtAdSoyad", "Adınızı ve soyadını giriniz")) {
             return;
         }
+
+        if (!fieldValidationControl("txtEPosta", "Email adresinizi giriniz")) {
+            return;
+        }
+
         if (!fieldValidationControl("txtMesaj", "Mesajınızı giriniz")) {
             return;
         }
