@@ -4540,3 +4540,21 @@ div#health1 {
         width: 284px;
     }
 }
+
+.home_strength_icon .home_icon {
+    background-image: url(../images/sprite_home_core_strength.jpg);
+    background-repeat: no-repeat;
+    background-position: 9px 11px;
+}
+
+.home_strength_icon .col-lg-3:nth-child(2) .home_icon {
+    background-position: -62px 11px;
+}
+
+.home_strength_icon .col-lg-3:nth-child(3) .home_icon {
+    background-position: -131px 11px;
+}
+
+.home_strength_icon .col-lg-3:nth-child(4) .home_icon {
+    background-position: -203px 11px;
+}
