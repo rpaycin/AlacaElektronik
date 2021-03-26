@@ -38,13 +38,13 @@
     <link rel="canonical" href="https://alacaelektronik.com/">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/animate.min.css" defer>
-    <link rel="stylesheet" href="css/bootstrap.min.css" defer>
-    <link rel="stylesheet" href="css/slick.css" defer>
-    <link rel="stylesheet" href="css/web_devlop.css" defer>
-    <link rel="stylesheet" href="css/stylemin.css" defer>
-    <link rel="stylesheet" href="css/our_client.css">
-    <link rel="stylesheet" href="css/responsivemin.css">
+    <link rel="stylesheet" href="~/css/animate.min.css" defer>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" defer>
+    <link rel="stylesheet" href="~/css/slick.css" defer>
+    <link rel="stylesheet" href="~/css/web_devlop.css" defer>
+    <link rel="stylesheet" href="~/css/stylemin.css" defer>
+    <link rel="stylesheet" href="~/css/our_client.css">
+    <link rel="stylesheet" href="~/css/responsivemin.css">
     <link rel="stylesheet" href="~/css/toastr.min.css">
 </head>
 <body>
@@ -66,7 +66,7 @@
                     <div class="row justify-content-between align-items-center">
                         <div id="header-menu-1" class="col-sm-3">
                             <div class="logo-wrap">
-                                <a href="/" class="logo"><img alt="logo image" src="images/logo2.png"></a>
+                                <a href="/" class="logo"><img alt="logo image" src="~/images/logo2.png"></a>
                             </div>
                         </div>
                         <div id="header-menu-2" class="col-sm-9">
@@ -92,10 +92,10 @@
                                                     <a href="javascript:void(0)">Hizmetlerimiz</a>
                                                     <div class="home-drop-down-2 box_s">
                                                         <ul>
-                                                            <li><a href="#">Mikro Satış ve Danışmalık</a></li>
-                                                            <li><a href="#">Proje Danışmanlık</a></li>
-                                                            <li><a href="#">Özel Yazılım</a></li>
-                                                            <li><a href="#">Pos Çözümleri</a></li>
+                                                            <li><a href="@Url.Action("Index", "Hizmetlerimiz", new { Id = "1" })">Mikro Satış ve Danışmalık</a></li>
+                                                            <li><a href="@Url.Action("Index", "Hizmetlerimiz", new { Id = "2" })">Proje Danışmanlık</a></li>
+                                                            <li><a href="@Url.Action("Index", "Hizmetlerimiz", new { Id = "3" })">Özel Yazılım</a></li>
+                                                            <li><a href="@Url.Action("Index", "Hizmetlerimiz", new { Id = "4" })">Pos Çözümleri</a></li>
                                                         </ul>
                                                     </div>
                                                 </li>
@@ -104,7 +104,7 @@
                                                     <a href="@Url.Action("Index", "Referans")">Referanslarımız</a>
                                                 </li>
                                                 <li class="hov-dp-13">
-                                                    <a href="javascript:void(0)">Hakkımızda</a>
+                                                    <a href="@Url.Action("Index", "Hakkimizda")">Hakkımızda</a>
                                                 </li>
                                                 <li class="hov-dp-13">
                                                     <a href="@Url.Action("Index", "BizeUlasin")">İletişim</a>
@@ -168,10 +168,10 @@
                         <div class="widget">
                             <h5 class="widget-title">Hizmetlerimiz</h5>
                             <ul class="padding-foot">
-                                <li><a href="#">Mikro Satış ve Danışmalık</a></li>
-                                <li><a href="#">Proje Danışmanlık</a></li>
-                                <li><a href="#">Özel Yazılım</a></li>
-                                <li><a href="#">Pos Çözümleri</a></li>
+                                <li><a href="@Url.Action("Index", "Hizmetlerimiz", new { Id = "1" })">Mikro Satış ve Danışmalık</a></li>
+                                <li><a href="@Url.Action("Index", "Hizmetlerimiz", new { Id = "2" })">Proje Danışmanlık</a></li>
+                                <li><a href="@Url.Action("Index", "Hizmetlerimiz", new { Id = "3" })">Özel Yazılım</a></li>
+                                <li><a href="@Url.Action("Index", "Hizmetlerimiz", new { Id = "4" })">Pos Çözümleri</a></li>
                             </ul>
                         </div>
                     </div>
@@ -180,7 +180,7 @@
                             <h5 class="widget-title">Hızlı Linkler</h5>
                             <ul class="padding-foot">
                                 <li><a href="@Url.Action("Index", "Referans")">Referanslarımız</a></li>
-                                <li><a href="#">Hakkımızda</a></li>
+                                <li><a href="@Url.Action("Index", "Hakkimizda")">Hakkımızda</a></li>
                                 <li><a href="@Url.Action("Index", "BizeUlasin")">İletişim</a></li>
                             </ul>
                             <h4 class="white-footer">Sosyal Medya</h4>
@@ -214,20 +214,20 @@
         </div>
     </footer>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/slickmin.js"></script>
-    <script src="js/libs/jquery.modernizrmin.js"></script>
-    <script src="js/jquery.validate.min.js" defer></script>
-    <script src="js/additional-methods.min.js" defer></script>
-    <script src="js/pluginsmin.js" defer></script>
-    <script src="js/footermin.js" defer></script>
-    <script src="js/telephonemin.js" defer></script>
-    <script src="js/custommin.js" defer></script>
-    <script type="text/javascript" src="js/costum.js" defer></script>
-    <script type="text/javascript" src="js/case_slider/jquerypp.custommin.js"></script>
-    <script type="text/javascript" src="js/case_slider/jquery.elastislidemin.js"></script>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/wow.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/slickmin.js"></script>
+    <script src="~/js/libs/jquery.modernizrmin.js"></script>
+    <script src="~/js/jquery.validate.min.js" defer></script>
+    <script src="~/js/additional-methods.min.js" defer></script>
+    <script src="~/js/pluginsmin.js" defer></script>
+    <script src="~/js/footermin.js" defer></script>
+    <script src="~/js/telephonemin.js" defer></script>
+    <script src="~/js/custommin.js" defer></script>
+    <script type="text/javascript" src="~/js/costum.js" defer></script>
+    <script type="text/javascript" src="~/js/case_slider/jquerypp.custommin.js"></script>
+    <script type="text/javascript" src="~/js/case_slider/jquery.elastislidemin.js"></script>
     <script src="js/cookieconsent.min.js" defer></script>
     <script src="~/js/toastr.min.js" defer></script>
 </body>

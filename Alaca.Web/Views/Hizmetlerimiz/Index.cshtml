@@ -1,0 +1,80 @@
+﻿@using Alaca.Web.Models
+@model LayoutModel<ServiceModel>
+
+@{
+    ViewBag.Title = "Hizmetlerimiz";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section slider
+{
+    <div id="about_us" class="half_banner" data-bg="/images/career.jpg">
+    </div>
+}
+<section class="about_sec half_top bg_gray">
+    <div class="container">
+        <div class="white_bg">
+
+            <div class="row">
+                <div class="col-md-8">
+                    @if (Model.PageModel.SelectedId == "1")
+                    {
+                        <h1 class="post-title"> Mikro Satış ve Danışmalık</h1>
+                        <hr class="wp-block-separator" />
+
+                            <p>Mikro Satış ve Danışmalık İçerik</p>
+                    }
+
+
+                    @if (Model.PageModel.SelectedId == "2")
+                    {
+                        <h1 class="post-title">
+                            Proje Danışmanlık
+                        </h1>
+                        <div class="post-content">
+                            <div class="post-description">
+                                <hr class="wp-block-separator" />
+
+                                <p>Proje Danışmanlık İçerik</p>
+                            </div>
+                        </div>
+                    }
+                    @if (Model.PageModel.SelectedId == "3")
+                    {
+                        <h1 class="post-title"> Özel Yazılım</h1>
+                        <div class="post-content">
+                            <div class="post-description">
+                                <hr class="wp-block-separator" />
+
+                                <p>Özel Yazılım İçerik</p>
+                            </div>
+                        </div>
+                    }
+                    @if (Model.PageModel.SelectedId == "4")
+                    {
+                        <h1 class="post-title">Pos Çözümleri</h1>
+                        <div class="post-content">
+                            <div class="post-description">
+                                <p class="post-description">
+                                    <hr class="wp-block-separator" />
+
+                                <p>Pos Çözümleri İçerik</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-md-4">
+                    <div id="recent-posts-2" class="widget widget_recent_entries">
+                        <h4 class="widgettitle">Hizmetlerimiz</h4>
+                        <ul>
+                            <li><a href="@Url.Action("Index", "Hizmetlerimiz", new { Id = "1" })">Mikro Satış ve Danışmalık</a></li>
+                            <li><a href="@Url.Action("Index", "Hizmetlerimiz", new { Id = "2" })">Proje Danışmanlık</a></li>
+                            <li><a href="@Url.Action("Index", "Hizmetlerimiz", new { Id = "3" })">Özel Yazılım</a></li>
+                            <li><a href="@Url.Action("Index", "Hizmetlerimiz", new { Id = "4" })">Pos Çözümleri</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

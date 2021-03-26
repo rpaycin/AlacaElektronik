@@ -3,14 +3,13 @@ using Admin.DataLayer.LoginData;
 using Alaca.Web.Models;
 using System.Web.Mvc;
 
-
 namespace Alaca.Web.Controllers
 {
-    public class DuyuruHaberController : Controller
+    public class HakkimizdaController : Controller
     {
         private readonly IFirmsData _firmsData;
 
-        public DuyuruHaberController()
+        public HakkimizdaController()
         {
             _firmsData = new FirmsData();
         }
