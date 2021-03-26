@@ -40,7 +40,7 @@
                             @foreach (DuyuruHaber news in Model.PageModel.TumHaberler)
                             {
                                 <li>
-                                    <a href="DuyuruHaber/@news.DuyuruId">@news.DuyuruKisa</a>
+                                    <a href="~/DuyuruHaber/@news.DuyuruId">@news.DuyuruBaslik</a>
                                     <span class="post-date">@news.CreateDate.Value.ToShortDateString()</span>
                                 </li>
                             }
