@@ -10,7 +10,7 @@ namespace Admin.DataLayer.LoginData
         {
             using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
             {
-                List<DuyuruHaber> newsDbList = entities.DuyuruHaber.OrderByDescending(u => u.Aktif.HasValue && u.Aktif.Value).ToList();
+                List<DuyuruHaber> newsDbList = entities.DuyuruHaber.Where(u => u.Aktif.HasValue && u.Aktif.Value ).OrderByDescending(u=>u.CreateDate).ToList();
 
                 return newsDbList;
             }
@@ -59,6 +59,16 @@ namespace Admin.DataLayer.LoginData
                 dbNew.Aktif = news.Aktif;
 
                 entities.SaveChanges();
+            }
+        }
+
+        public DuyuruHaber GetNew(int newsId)
+        {
+            using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
+            {
+                DuyuruHaber news = entities.DuyuruHaber.FirstOrDefault(u => u.DuyuruId == newsId);
+
+                return news;
             }
         }
     }

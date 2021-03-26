@@ -1,0 +1,53 @@
+﻿@using Alaca.Web.Models
+@using Admin.DataLayer
+@using System
+@model LayoutModel<NewsModel>
+
+@{
+    ViewBag.Title = "Duyuru&Haber";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string mainPath = string.Format("{0}NewsImage/", Model.Firm.AdminDomainAddress);
+}
+
+@section slider
+{
+    <div id="about_us" class="half_banner" data-bg="@string.Format("{0}{1}", mainPath, Model.PageModel.DuyuruHaber.ImageUrl)">
+    </div>
+}
+
+<section class="about_sec half_top bg_gray">
+    <div class="container">
+        <div class="white_bg">
+
+            <div class="row">
+                <div class="col-md-8">
+
+                    <h1 class="post-title">@Model.PageModel.DuyuruHaber.DuyuruKisa</h1>
+                    <div class="post-content">
+                        <div class="post-description">
+                            <p class="post-description">
+                                <hr class="wp-block-separator" />
+
+                            <p>@Html.Raw(Model.PageModel.DuyuruHaber.Duyuru)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div id="recent-posts-2" class="widget widget_recent_entries">
+                        <h4 class="widgettitle">Duyuru&Haber</h4>
+                        <ul>
+                            @foreach (DuyuruHaber news in Model.PageModel.TumHaberler)
+                            {
+                                <li>
+                                    <a href="DuyuruHaber/@news.DuyuruId">@news.DuyuruKisa</a>
+                                    <span class="post-date">@news.CreateDate.Value.ToShortDateString()</span>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

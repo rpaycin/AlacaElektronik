@@ -1,0 +1,106 @@
+﻿@using Alaca.Web.Models
+@model LayoutModel<ServiceModel>
+
+@{
+    ViewBag.Title = "Sektörler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section slider
+{
+    <div id="about_us" class="half_banner" data-bg="/images/bg_mb.jpg">
+    </div>
+}
+<section class="about_sec half_top bg_gray">
+    <div class="container">
+        <div class="white_bg">
+
+            <div class="row">
+                <div class="col-md-8">
+                    @if (Model.PageModel.SelectedId == "1")
+                    {
+                        <h1 class="post-title">Mikro</h1>
+                        <hr class="wp-block-separator" />
+
+                        <p>Mikro muhasebe yazılım satışı, eğitimi ve desteği</p>
+                    }
+
+
+                    @if (Model.PageModel.SelectedId == "2")
+                    {
+                        <h1 class="post-title">
+                            Etiket
+                        </h1>
+                        <div class="post-content">
+                            <div class="post-description">
+                                <hr class="wp-block-separator" />
+
+                                <p>Yazar kasa etiketleri üretimi</p>
+                            </div>
+                        </div>
+                    }
+                    @if (Model.PageModel.SelectedId == "3")
+                    {
+                        <h1 class="post-title"> Web</h1>
+                        <div class="post-content">
+                            <div class="post-description">
+                                <hr class="wp-block-separator" />
+
+                                <p>E-ticaret ve diğer WEB uygulamalar</p>
+                            </div>
+                        </div>
+                    }
+                    @if (Model.PageModel.SelectedId == "4")
+                    {
+                        <h1 class="post-title">Pos Çözümleri</h1>
+                        <div class="post-content">
+                            <div class="post-description">
+                                <p class="post-description">
+                                    <hr class="wp-block-separator" />
+
+                                <p>Pos terminalleri</p>
+                            </div>
+                        </div>
+                    }
+                    @if (Model.PageModel.SelectedId == "5")
+                    {
+                        <h1 class="post-title">Donanım</h1>
+                        <div class="post-content">
+                            <div class="post-description">
+                                <p class="post-description">
+                                    <hr class="wp-block-separator" />
+
+                                <p>Donanım çözümleri</p>
+                            </div>
+                        </div>
+                    }
+                    @if (Model.PageModel.SelectedId == "6")
+                    {
+                        <h1 class="post-title">Özel Yazılım</h1>
+                        <div class="post-content">
+                            <div class="post-description">
+                                <p class="post-description">
+                                    <hr class="wp-block-separator" />
+
+                                <p>Yazılım çözümleri</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-md-4">
+                    <div id="recent-posts-2" class="widget widget_recent_entries">
+                        <h4 class="widgettitle">Sektörler</h4>
+                        <ul>
+                            <li><a href="mikro">Mikro</a></li>
+                            <li><a href="etiket ">Etiket</a></li>
+                            <li><a href="web">Web</a></li>
+                            <li><a href="pos_cozumleri_sektor">Pos Çözümleri</a></li>
+                            <li><a href="donanim">Donanım</a></li>
+                            <li><a href="ozel_yazilim_sektor">Özel Yazılım</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

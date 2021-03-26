@@ -12,5 +12,7 @@ namespace Admin.DataLayer.LoginData
         void SaveNews(DuyuruHaber news);
 
         void DeleteNews(int newsId);
+
+        DuyuruHaber GetNew(int newsId);
     }
 }
