@@ -27,11 +27,14 @@
                                             </a>
                                         </div>
                                         <div class="entry-meta">
-                                            <time class="entry-date" datetime="@news.CreateDate.Value.ToShortDateString()">@news.CreateDate.Value.ToShortDateString() </time>
-                                            <span> </span>
-                                            <a href="DuyuruHaber/@news.DuyuruId" class="entry-cat">
-                                                @news.DuyuruBaslik
-                                            </a>
+                                            <div>
+                                                <time class="entry-date" datetime="@news.CreateDate.Value.ToShortDateString()">@news.CreateDate.Value.ToShortDateString() </time>
+                                                <br />
+                                                <a href="DuyuruHaber/@news.DuyuruId" class="entry-cat">
+                                                    @news.DuyuruBaslik
+                                                </a>
+                                            </div>
+                                            <br />
                                             <p class="country_link"><a href="DuyuruHaber/@news.DuyuruId">Devamı...</a></p>
                                         </div>
                                     </div>
