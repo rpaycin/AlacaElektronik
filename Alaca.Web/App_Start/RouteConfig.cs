@@ -79,6 +79,36 @@ namespace Alaca.Web
       );
 
             routes.MapRoute(
+         name: "ays_mobil",
+         url: "ays_mobil",
+         defaults: new { controller = "Urunlerimiz", action = "Index", seletedTab = "ays_mobil" }
+     );
+
+            routes.MapRoute(
+       name: "ays_hizli_satis",
+       url: "ays_hizli_satis",
+       defaults: new { controller = "Urunlerimiz", action = "Index", seletedTab = "ays_hizli_satis" }
+   );
+
+            routes.MapRoute(
+      name: "ays_restoran",
+      url: "ays_restoran",
+      defaults: new { controller = "Urunlerimiz", action = "Index", seletedTab = "ays_restoran" }
+  );
+
+            routes.MapRoute(
+     name: "ays_drive",
+     url: "ays_drive",
+     defaults: new { controller = "Urunlerimiz", action = "Index", seletedTab = "ays_drive" }
+ );
+
+            routes.MapRoute(
+     name: "ays_terminal",
+     url: "ays_terminal",
+     defaults: new { controller = "Urunlerimiz", action = "Index", seletedTab = "ays_terminal" }
+ );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

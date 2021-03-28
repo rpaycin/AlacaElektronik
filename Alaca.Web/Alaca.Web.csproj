@@ -141,6 +141,7 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\UrunlerimizController.cs" />
     <Compile Include="Controllers\SektorlerController.cs" />
     <Compile Include="Controllers\HizmetlerimizController.cs" />
     <Compile Include="Controllers\HakkimizdaController.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\LayoutModel.cs" />
     <Compile Include="Models\NewsModel.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ServiceModel.cs" />
     <Compile Include="Models\ReferenceModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1100,6 +1102,7 @@
     <Content Include="Views\Hizmetlerimiz\Index.cshtml" />
     <Content Include="Views\Sektorler\Index.cshtml" />
     <Content Include="Views\DuyuruHaber\Detay.cshtml" />
+    <Content Include="Views\Urunlerimiz\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Admin.DataLayer\Alaca.DataLayer.csproj">
