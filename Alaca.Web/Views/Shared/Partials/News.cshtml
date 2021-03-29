@@ -22,17 +22,20 @@
                                 <div class="col-lg-4 col-md-12 wow zoomIn animated" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;">
                                     <div class="entry entry-small">
                                         <div class="thumbnail-attachment">
-                                            <a href="/blog/wolt-food-delivery-startup-raises-530m-to-expand-its-fastest-growing-retail-service">
+                                            <a href="DuyuruHaber/@news.DuyuruId">
                                                 <img width="100%" alt="" src="@string.Format("{0}{1}",mainPath,news.ImageUrl)">
                                             </a>
                                         </div>
                                         <div class="entry-meta">
-                                            <time class="entry-date" datetime="@news.CreateDate.Value.ToShortDateString()">@news.CreateDate.Value.ToShortDateString() </time>
-                                            <span> </span>
-                                            <a href="/blog/wolt-food-delivery-startup-raises-530m-to-expand-its-fastest-growing-retail-service" class="entry-cat">
-                                                @news.DuyuruKisa
-                                            </a>
-                                            <p class="country_link"><a href="/blog/wolt-food-delivery-startup-raises-530m-to-expand-its-fastest-growing-retail-service">Devamı...</a></p>
+                                            <div>
+                                                <time class="entry-date" datetime="@news.CreateDate.Value.ToShortDateString()">@news.CreateDate.Value.ToShortDateString() </time>
+                                                <br />
+                                                <a href="DuyuruHaber/@news.DuyuruId" class="entry-cat">
+                                                    @news.DuyuruBaslik
+                                                </a>
+                                            </div>
+                                            <br />
+                                            <p class="country_link"><a href="DuyuruHaber/@news.DuyuruId">Devamı...</a></p>
                                         </div>
                                     </div>
                                 </div>

@@ -1,0 +1,96 @@
+﻿@using Alaca.Web.Models
+@model LayoutModel<ProductModel>
+
+@{
+    ViewBag.Title = "Ürünlerimiz";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section slider
+{
+    <div id="about_us" class="half_banner" data-bg="/images/html_banner.jpg">
+    </div>
+}
+
+@{
+    string selectedTabString = "";
+    string mobilActive = "";
+    string hizliSatisActive = "";
+    string restoranActive = "";
+    string driveActive = "";
+    string terminalActive = "";
+    string mobilShow = "";
+    string hizliSatisShow = "";
+    string restoranShow = "";
+    string driveShow = "";
+    string terminalShow = "";
+
+    if (Model.PageModel.SelectedTab == "ays_hizli_satis")
+    {
+        selectedTabString = "AYS Hızlı Satış";
+        hizliSatisActive = "active";
+        hizliSatisShow = "show";
+    }
+    else if (Model.PageModel.SelectedTab == "ays_restoran")
+    {
+        selectedTabString = "AYS Restoran";
+        restoranActive = "active";
+        restoranShow = "show";
+    }
+    else if (Model.PageModel.SelectedTab == "ays_drive")
+    {
+        selectedTabString = "AYS Drive";
+        driveActive = "active";
+        driveShow = "show";
+    }
+    else if (Model.PageModel.SelectedTab == "ays_terminal")
+    {
+        selectedTabString = "AYS Terminal";
+        terminalActive = "active";
+        terminalShow = "show";
+    }
+    else
+    {
+        selectedTabString = "AYS Mobil";
+        mobilActive = "active";
+        mobilShow = "show";
+    }
+}
+
+<section class="about_sec half_top bg_gray">
+    <div class="container">
+        <div class="cillum-pills">
+            <div class="col-md-12 text-center head_section wow fadeInUp">
+                <h2 class="section-title tt">Ürünlerimiz</h2>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="nav nav-pills wow flipInY" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link @mobilActive" id="v-pills-mobileTab" data-toggle="pill" href="#v-pills-mobile" role="tab" aria-controls="v-pills-mobilemobile" aria-selected="true">AYS Mobil</a>
+                        <a class="nav-link @hizliSatisActive" id="v-pills-hizliSatisTab" data-toggle="pill" href="#v-pills-hizliSatis" role="tab" aria-controls="v-pills-hizliSatis" aria-selected="false">AYS Hızlı Satış</a>
+                        <a class="nav-link @restoranActive" id="v-pills-restorantTab" data-toggle="pill" href="#v-pills-restorant" role="tab" aria-controls="v-pills-restorant" aria-selected="false">AYS Restorant</a>
+                        <a class="nav-link @driveActive" id="v-pills-driveTab" data-toggle="pill" href="#v-pills-drive" role="tab" aria-controls="v-pills-drive" aria-selected="false">AYS Drive</a>
+                        <a class="nav-link @terminalActive" id="v-pills-terminalTab" data-toggle="pill" href="#v-pills-terminal" role="tab" aria-controls="v-pills-terminal"" aria-selected="false">AYS Terminal</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tab-pane fade @mobilShow @mobilActive" id="v-pills-mobile" role="tabpanel" aria-labelledby="v-pills-mobileTab">
+                        Mobil Açıklama
+                    </div>
+                    <div class="tab-pane fade @hizliSatisShow @hizliSatisActive" id="v-pills-hizliSatis" role="tabpanel" aria-labelledby="v-pills-hizliSatisTab">
+                        Hızlı Satış Açıklama
+                    </div>
+                    <div class="tab-pane fade @restoranShow @restoranActive" id="v-pills-restorant" role="tabpanel" aria-labelledby="v-pills-restorantTab">
+                        Restorant Açıklama
+                    </div>
+                    <div class="tab-pane fade @driveShow @driveActive" id="v-pills-drive" role="tabpanel" aria-labelledby="v-pills-driveTab">
+                        Drive Açıklama
+                    </div>
+                    <div class="tab-pane fade @terminalShow @terminalActive" id="v-pills-terminal" role="tabpanel" aria-labelledby="v-pills-terminalTab">
+                        Terminal Açıklama
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -237,7 +237,7 @@ $('#file').on('change', function(e) {
   });
  $(document).on('click', '.redirect', function(){
   var location = $(this).attr("href");
-  window.location.href = "https://www.esferasoft.com/"+location;
+  window.location.href = location;
   window.location(location);
 });
 if ($("#contact1").is(":visible")) {
