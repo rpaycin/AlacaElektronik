@@ -762,6 +762,11 @@
     <Content Include="images\presta_big.png" />
     <Content Include="images\process.png" />
     <Content Include="images\product.png" />
+    <Content Include="images\product\AYSHizliSatis\Hizlisatisekrani.png" />
+    <Content Include="images\product\AYSHizliSatis\portalrapor.png" />
+    <Content Include="images\product\AYSRestoran\PortalRapor.png" />
+    <Content Include="images\product\AYSRestoran\RestoranAnaEkran.png" />
+    <Content Include="images\product\AYSRestoran\RestoranMasaEkrani.png" />
     <Content Include="images\product\grocery\grocery_screen1.jpg" />
     <Content Include="images\product\grocery\grocery_screen2.jpg" />
     <Content Include="images\product\grocery\grocery_screen3.jpg" />
