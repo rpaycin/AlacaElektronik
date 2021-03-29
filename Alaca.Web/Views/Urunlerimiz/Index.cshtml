@@ -63,14 +63,14 @@
             <div class="col-md-12 text-center head_section wow fadeInUp">
                 <h2 class="section-title tt">Ürünlerimiz</h2>
             </div>
-            <div class="row">
+            @*<div class="row">
                 <div class="col-12">
                     <div class="nav nav-pills wow flipInY" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link @mobilActive" id="v-pills-mobileTab" data-toggle="pill" href="#v-pills-mobile" role="tab" aria-controls="v-pills-mobilemobile" aria-selected="true">AYS Mobil</a>
                         <a class="nav-link @hizliSatisActive" id="v-pills-hizliSatisTab" data-toggle="pill" href="#v-pills-hizliSatis" role="tab" aria-controls="v-pills-hizliSatis" aria-selected="false">AYS Hızlı Satış</a>
                         <a class="nav-link @restoranActive" id="v-pills-restorantTab" data-toggle="pill" href="#v-pills-restorant" role="tab" aria-controls="v-pills-restorant" aria-selected="false">AYS Restorant</a>
                         <a class="nav-link @driveActive" id="v-pills-driveTab" data-toggle="pill" href="#v-pills-drive" role="tab" aria-controls="v-pills-drive" aria-selected="false">AYS Drive</a>
-                        <a class="nav-link @terminalActive" id="v-pills-terminalTab" data-toggle="pill" href="#v-pills-terminal" role="tab" aria-controls="v-pills-terminal"" aria-selected="false">AYS Terminal</a>
+                        <a class="nav-link @terminalActive" id="v-pills-terminalTab" data-toggle="pill" href="#v-pills-terminal" role="tab" aria-controls="v-pills-terminal" " aria-selected="false">AYS Terminal</a>
                     </div>
                 </div>
                 <div class="col-12">
@@ -78,7 +78,76 @@
                         Mobil Açıklama
                     </div>
                     <div class="tab-pane fade @hizliSatisShow @hizliSatisActive" id="v-pills-hizliSatis" role="tabpanel" aria-labelledby="v-pills-hizliSatisTab">
-                        Hızlı Satış Açıklama
+
+                        <div class="row d-flex flex-wrap">
+                            <div class="col-md-4">
+                                <div class="box text-md-right wow fadeInLeft animated" data-wow-delay=".25s" style="visibility: visible; animation-delay: 0.25s; animation-name: fadeInLeft;">
+                                    <div class="icon_heading justify-content-md-end">
+                                        <div class="box_s tab-image order-md-2"><img src="~/images/phone-call.png"></div>
+                                        <h4>Quick Bookings</h4>
+                                    </div>
+                                    <p>Riders can select the available ride options, choose the destination, and book a ride. </p>
+                                </div>
+                                <div class="box  text-md-right wow fadeInLeft animated" data-wow-delay=".35s" style="visibility: visible; animation-delay: 0.35s; animation-name: fadeInLeft;">
+                                    <div class="icon_heading justify-content-md-end">
+                                        <div class="box_s tab-image  order-md-2">
+                                            <img src="~/images/realtime.png">
+                                        </div>
+                                        <h4>Real-Time Updates</h4>
+                                    </div>
+                                    <p>Users will be able to track the real-time cab location to get an estimate of when the cab will arrive at the pickup location. </p>
+                                </div>
+                                <div class="box  text-md-right wow fadeInLeft animated" data-wow-delay=".45s" style="visibility: visible; animation-delay: 0.45s; animation-name: fadeInLeft;">
+                                    <div class="icon_heading justify-content-md-end">
+                                        <div class="box_s tab-image  order-md-2">
+                                            <img src="~/images/route.png">
+                                        </div>
+                                        <h4>SOS Feature</h4>
+                                    </div>
+                                    <p>In case of any trouble or emergency situation, a user can use the SOS button to reach out to the admin and the selected contacts. </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 wow fadeIn px-4 animated" style="visibility: visible; animation-name: fadeIn;">
+                                <div class="mobile_slide">
+                                    <div class="gallery_slider slider slick-initialized slick-slider"><div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 1488px;"><div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 186px; position: relative; left: 0px; top: 0px; z-index: 1000; opacity: 1; transition: opacity 1500ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="/images/user/Home.png"></div></div></div><div class="slick-slide" data-slick-index="1" aria-hidden="true" style="width: 186px; position: relative; left: -186px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1500ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/Signup.png"></div></div></div><div class="slick-slide" data-slick-index="2" aria-hidden="true" style="width: 186px; position: relative; left: -372px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1500ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/ConfirmBooking.png"></div></div></div><div class="slick-slide" data-slick-index="3" aria-hidden="true" style="width: 186px; position: relative; left: -558px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1500ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/DriverArriving.png"></div></div></div><div class="slick-slide" data-slick-index="4" aria-hidden="true" style="width: 186px; position: relative; left: -744px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1500ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/Preferences.png"></div></div></div><div class="slick-slide" data-slick-index="5" aria-hidden="true" style="width: 186px; position: relative; left: -930px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1500ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/ServiceType.png"></div></div></div><div class="slick-slide" data-slick-index="6" aria-hidden="true" style="width: 186px; position: relative; left: -1116px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1500ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/SideDrawer.png"></div></div></div><div class="slick-slide" data-slick-index="7" aria-hidden="true" style="width: 186px; position: relative; left: -1302px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1500ms ease 0s;"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/Wallet.png"></div></div></div></div></div></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="box wow fadeInRight animated" data-wow-delay=".25s" style="visibility: visible; animation-delay: 0.25s; animation-name: fadeInRight;">
+                                    <div class="icon_heading">
+                                        <div class="box_s tab-image"><img src="~/images/saved_location.png"></div>
+                                        <h4>Saved Locations</h4>
+                                    </div>
+                                    <p>
+                                        Users can save their favorite locations where they frequently travel
+                                    </p>
+                                </div>
+                                <div class="box wow fadeInRight animated" data-wow-delay=".35s" style="visibility: visible; animation-delay: 0.35s; animation-name: fadeInRight;">
+                                    <div class="icon_heading">
+                                        <div class="box_s tab-image">
+                                            <img src="~/images/call_masking.png">
+                                        </div>
+                                        <h4>Call Masking</h4>
+                                    </div>
+                                    <p>This security feature ensures the phone number &amp; other personal details of the users are hidden &amp; not accessible by the driver. </p>
+                                </div>
+                                <div class="box wow fadeInRight animated" data-wow-delay=".45s" style="visibility: visible; animation-delay: 0.45s; animation-name: fadeInRight;">
+                                    <div class="icon_heading">
+                                        <div class="box_s tab-image">
+                                            <img src="~/images/payments.png">
+                                        </div>
+                                        <h4>Simple Payments</h4>
+                                    </div>
+                                    <p>
+                                        The solution offers simple payment options like cash, card, and e-wallets for riders to pay for their rides.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <p><a href="contact-us" class="my_button view_f">Request a Demo</a></p>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="tab-pane fade @restoranShow @restoranActive" id="v-pills-restorant" role="tabpanel" aria-labelledby="v-pills-restorantTab">
                         Restorant Açıklama
@@ -90,7 +159,365 @@
                         Terminal Açıklama
                     </div>
                 </div>
+            </div>*@
+
+
+
+            <div class="row">
+                <div class="col-12">
+                    @*<div class="nav nav-pills wow flipInY animated" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="visibility: visible; animation-name: flipInY;">
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">User App</a>
+            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Service Provider App</a>
+            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Admin Panel</a>
+            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Dispatcher Panel</a>
+        </div>*@
+                    <div class="nav nav-pills wow flipInY" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link @mobilActive" id="v-pills-mobileTab" data-toggle="pill" href="#v-pills-mobile" role="tab" aria-controls="v-pills-mobilemobile" aria-selected="true">AYS Mobil</a>
+                        <a class="nav-link @hizliSatisActive" id="v-pills-hizliSatisTab" data-toggle="pill" href="#v-pills-hizliSatis" role="tab" aria-controls="v-pills-hizliSatis" aria-selected="false">AYS Hızlı Satış</a>
+                        <a class="nav-link @restoranActive" id="v-pills-restorantTab" data-toggle="pill" href="#v-pills-restorant" role="tab" aria-controls="v-pills-restorant" aria-selected="false">AYS Restorant</a>
+                        <a class="nav-link @driveActive" id="v-pills-driveTab" data-toggle="pill" href="#v-pills-drive" role="tab" aria-controls="v-pills-drive" aria-selected="false">AYS Drive</a>
+                        <a class="nav-link @terminalActive" id="v-pills-terminalTab" data-toggle="pill" href="#v-pills-terminal" role="tab" aria-controls="v-pills-terminal" " aria-selected="false">AYS Terminal</a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade @mobilShow @mobilActive" id="v-pills-mobileTab" role="tabpanel" aria-labelledby="v-pills-mobileTab">
+                            <div class="row d-flex flex-wrap">
+                                <div class="col-md-4">
+                                    <div class="box text-md-right wow fadeInLeft animated" data-wow-delay=".25s" style="visibility: visible; animation-delay: 0.25s; animation-name: fadeInLeft;">
+                                        <div class="icon_heading justify-content-md-end">
+                                            <div class="box_s tab-image order-md-2"><img src="~/images/phone-call.png"></div>
+                                            <h4>Quick Bookings</h4>
+                                        </div>
+                                        <p>Riders can select the available ride options, choose the destination, and book a ride. </p>
+                                    </div>
+                                    <div class="box  text-md-right wow fadeInLeft animated" data-wow-delay=".35s" style="visibility: visible; animation-delay: 0.35s; animation-name: fadeInLeft;">
+                                        <div class="icon_heading justify-content-md-end">
+                                            <div class="box_s tab-image  order-md-2">
+                                                <img src="~/images/realtime.png">
+                                            </div>
+                                            <h4>Real-Time Updates</h4>
+                                        </div>
+                                        <p>Users will be able to track the real-time cab location to get an estimate of when the cab will arrive at the pickup location. </p>
+                                    </div>
+                                    <div class="box  text-md-right wow fadeInLeft animated" data-wow-delay=".45s" style="visibility: visible; animation-delay: 0.45s; animation-name: fadeInLeft;">
+                                        <div class="icon_heading justify-content-md-end">
+                                            <div class="box_s tab-image  order-md-2">
+                                                <img src="~/images/route.png">
+                                            </div>
+                                            <h4>SOS Feature</h4>
+                                        </div>
+                                        <p>In case of any trouble or emergency situation, a user can use the SOS button to reach out to the admin and the selected contacts. </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 wow fadeIn px-4 animated" style="visibility: visible; animation-name: fadeIn;">
+                                    <div class="mobile_slide">
+                                        <div class="gallery_slider slider slick-initialized slick-slider"><div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 1488px;"><div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 186px; position: relative; left: 0px; top: 0px; z-index: 1000; opacity: 1; transition: opacity 1500ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="/images/user/Home.png"></div></div></div><div class="slick-slide" data-slick-index="1" aria-hidden="true" style="width: 186px; position: relative; left: -186px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1500ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/Signup.png"></div></div></div><div class="slick-slide" data-slick-index="2" aria-hidden="true" style="width: 186px; position: relative; left: -372px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1500ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/ConfirmBooking.png"></div></div></div><div class="slick-slide" data-slick-index="3" aria-hidden="true" style="width: 186px; position: relative; left: -558px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1500ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/DriverArriving.png"></div></div></div><div class="slick-slide" data-slick-index="4" aria-hidden="true" style="width: 186px; position: relative; left: -744px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1500ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/Preferences.png"></div></div></div><div class="slick-slide" data-slick-index="5" aria-hidden="true" style="width: 186px; position: relative; left: -930px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1500ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/ServiceType.png"></div></div></div><div class="slick-slide" data-slick-index="6" aria-hidden="true" style="width: 186px; position: relative; left: -1116px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1500ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/SideDrawer.png"></div></div></div><div class="slick-slide" data-slick-index="7" aria-hidden="true" style="width: 186px; position: relative; left: -1302px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1500ms ease 0s;"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/Wallet.png"></div></div></div></div></div></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="box wow fadeInRight animated" data-wow-delay=".25s" style="visibility: visible; animation-delay: 0.25s; animation-name: fadeInRight;">
+                                        <div class="icon_heading">
+                                            <div class="box_s tab-image"><img src="~/images/saved_location.png"></div>
+                                            <h4>Saved Locations</h4>
+                                        </div>
+                                        <p>
+                                            Users can save their favorite locations where they frequently travel
+                                        </p>
+                                    </div>
+                                    <div class="box wow fadeInRight animated" data-wow-delay=".35s" style="visibility: visible; animation-delay: 0.35s; animation-name: fadeInRight;">
+                                        <div class="icon_heading">
+                                            <div class="box_s tab-image">
+                                                <img src="~/images/call_masking.png">
+                                            </div>
+                                            <h4>Call Masking</h4>
+                                        </div>
+                                        <p>This security feature ensures the phone number &amp; other personal details of the users are hidden &amp; not accessible by the driver. </p>
+                                    </div>
+                                    <div class="box wow fadeInRight animated" data-wow-delay=".45s" style="visibility: visible; animation-delay: 0.45s; animation-name: fadeInRight;">
+                                        <div class="icon_heading">
+                                            <div class="box_s tab-image">
+                                                <img src="~/images/payments.png">
+                                            </div>
+                                            <h4>Simple Payments</h4>
+                                        </div>
+                                        <p>
+                                            The solution offers simple payment options like cash, card, and e-wallets for riders to pay for their rides.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <p><a href="contact-us" class="my_button view_f">Detaylı Döküman İndir</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade @hizliSatisShow @hizliSatisActive" id="v-pills-hizliSatisTab" role="tabpanel" aria-labelledby="v-pills-hizliSatisTab">
+                            
+                            <div class="row  d-flex flex-wrap">
+                                <div class="col-md-4 ">
+                                    <div class="box text-md-right wow fadeInLeft" data-wow-delay=".25s" style="visibility: hidden; animation-delay: 0.25s; animation-name: none;">
+                                        <div class="icon_heading justify-content-md-end">
+                                            <div class="box_s tab-image order-md-2"><img src="~/images/receipt.png"></div>
+                                            <h4>Quick Registration</h4>
+                                        </div>
+                                        <p>Drivers can quickly fill up their details and upload the required documents to get started quickly and easily.</p>
+                                    </div>
+                                    <div class="box text-md-right wow fadeInLeft" data-wow-delay=".35s" style="visibility: hidden; animation-delay: 0.35s; animation-name: none;">
+                                        <div class="icon_heading justify-content-md-end">
+                                            <div class="box_s tab-image order-md-2"><img src="~/images/realtime_black.png"></div>
+                                            <h4>Real-time Requests</h4>
+                                        </div>
+                                        <p>Drivers get real-time notification of ride requests, and they can accept or reject requests based on their schedules and bookings. </p>
+                                    </div>
+                                    <div class="box text-md-right wow fadeInLeft" data-wow-delay=".45s" style="visibility: hidden; animation-delay: 0.45s; animation-name: none;">
+                                        <div class="icon_heading justify-content-md-end">
+                                            <div class="box_s tab-image order-md-2"><img src="~/images/ready-to-launch.png"></div>
+                                            <h4>Trip Details</h4>
+                                        </div>
+                                        <p>The built-in navigation option allows drivers to get complete details about a trip, including user details, pick up locations, and drop points. </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 wow fadeIn px-4" style="visibility: hidden; animation-name: none;">
+                                    <div class="mobile_slide">
+                                        <div class="gallery_slider_02 slider slick-initialized slick-slider"><div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 0px;"><div class="slick-slide" data-slick-index="0" aria-hidden="true" style="width: 0px; position: relative; left: 0px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1600ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/NewBooking.jpg"></div></div></div><div class="slick-slide" data-slick-index="1" aria-hidden="true" style="width: 0px; position: relative; left: 0px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1600ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/NewBooking.jpg"></div></div></div><div class="slick-slide" data-slick-index="2" aria-hidden="true" style="width: 0px; position: relative; left: 0px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1600ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/driver/signin.jpg"></div></div></div><div class="slick-slide" data-slick-index="3" aria-hidden="true" style="width: 0px; position: relative; left: 0px; top: 0px; z-index: 998; opacity: 0; transition: opacity 1600ms ease 0s;"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/driver/signup.jpg"></div></div></div><div class="slick-slide slick-current slick-active" data-slick-index="4" aria-hidden="false" style="width: 0px; position: relative; left: 0px; top: 0px; z-index: 1000; opacity: 1; transition: opacity 1600ms ease 0s;" tabindex="-1"><div><div style="width: 100%; display: inline-block;"><img class="img-fluid slide" src="~/images/user/SideDrawer.jpg"></div></div></div></div></div></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="box  wow fadeInRight" data-wow-delay=".25s" style="visibility: hidden; animation-delay: 0.25s; animation-name: none;">
+                                        <div class="icon_heading">
+                                            <div class="box_s tab-image"><img src="~/images/payment_black.png"></div>
+                                            <h4>Payment Tracking</h4>
+                                        </div>
+                                        <p>Drivers can seamlessly track their daily earnings and view pending payments to get a detailed track of their finances. </p>
+                                    </div>
+                                    <div class="box  wow fadeInRight" data-wow-delay=".35s" style="visibility: hidden; animation-delay: 0.35s; animation-name: none;">
+                                        <div class="icon_heading">
+                                            <div class="box_s tab-image"><img src="~/images/online-offline-(1).png"></div>
+                                            <h4>Ride Tips</h4>
+                                        </div>
+                                        <p>Drivers will receive real-time ride tips to avoid traffic and make the riders comfortable and satisfied, thereby enhancing the overall user experience. </p>
+                                    </div>
+                                    <div class="box  wow fadeInRight" data-wow-delay=".45s" style="visibility: hidden; animation-delay: 0.45s; animation-name: none;">
+                                        <div class="icon_heading">
+                                            <div class="box_s tab-image"><img src="~/images/cancellation.png"></div>
+                                            <h4>Cancellation Penalty</h4>
+                                        </div>
+                                        <p>Drivers automatically get a share from the cancellation penalty imposed on users for last-minute ride cancellations. </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <p><a href="contact-us" class="my_button view_f">Detaylı Döküman İndir</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade @restoranShow @restoranActive" id="v-pills-restorant" role="tabpanel" aria-labelledby="v-pills-restorantTab">
+                            
+                            <div class="row d-flex align-items-center flex-wrap">
+                                <div class="col-md-4 ">
+                                    <img class="img-fluid wow zoomIn mb-4" src="~/images/product/taxi/taxi_1.jpg" style="visibility: hidden; animation-name: none;">
+                                    <img class="img-fluid wow zoomIn mb-4" src="~/images/product/taxi/taxi_2.jpg" style="visibility: hidden; animation-name: none;">
+                                    <img class="img-fluid wow zoomIn" src="~/images/product/taxi/taxi_3.jpg" style="visibility: hidden; animation-name: none;">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="box wow fadeInRight" data-wow-delay=".25s" style="visibility: hidden; animation-delay: 0.25s; animation-name: none;">
+                                        <div class="icon_heading">
+                                            <div class="box_s tab-image"><img src="~/images/destination-2.png"></div>
+                                            <div class="tab_text">
+                                                <h4>Driver Management</h4>
+                                                <p>View and manage new driver requests and customer feedback to effectively manage your business.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box wow fadeInRight" data-wow-delay=".35s" style="visibility: hidden; animation-delay: 0.35s; animation-name: none;">
+                                        <div class="icon_heading">
+                                            <div class="box_s tab-image"><img src="~/images/call_mask.png"></div>
+                                            <div class="tab_text">
+                                                <h4>Passenger Management</h4>
+                                                <p>Analyze all the users on your platform for their requirements and difficulties, to provide them with the best offers. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box wow fadeInRight" data-wow-delay=".45s" style="visibility: hidden; animation-delay: 0.45s; animation-name: none;">
+                                        <div class="icon_heading">
+                                            <div class="box_s tab-image"><img src="~/images/payment_black.png"></div>
+                                            <div class="tab_text">
+                                                <h4>Payments Management</h4>
+                                                <p>Admins can easily manage bill payment and driver commissions to keep the transaction records accurate and straightforward. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box wow fadeInRight" data-wow-delay=".45s" style="visibility: hidden; animation-delay: 0.45s; animation-name: none;">
+                                        <div class="icon_heading">
+                                            <div class="box_s tab-image"><img src="~/images/analytics.png"></div>
+                                            <div class="tab_text">
+                                                <h4>Analytics</h4>
+                                                <p>In-depth analytics to get insights into how your business is performing and where it is lacking, thus, allowing you to make informed business decisions. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box wow fadeInRight" data-wow-delay=".45s" style="visibility: hidden; animation-delay: 0.45s; animation-name: none;">
+                                        <div class="icon_heading">
+                                            <div class="box_s tab-image"><img src="~/images/fix_price.png"></div>
+                                            <div class="tab_text">
+                                                <h4>Fix Prices</h4>
+                                                <p>Admins can set prices based on location, demand, and current market rates to maximize profitability.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box wow fadeInRight" data-wow-delay=".45s" style="visibility: hidden; animation-delay: 0.45s; animation-name: none;">
+                                        <div class="icon_heading">
+                                            <div class="box_s tab-image"><img src="~/images/destination-2.png"></div>
+                                            <div class="tab_text">
+                                                <h4>Driver Monitoring</h4>
+                                                <p>See real-time location and performance of all the drivers to ensure they are complying with your company rules and policies. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box wow fadeInRight" data-wow-delay=".45s" style="visibility: hidden; animation-delay: 0.45s; animation-name: none;">
+                                        <div class="icon_heading">
+                                            <div class="box_s tab-image"><img src="~/images/vehicle_man.png"></div>
+                                            <div class="tab_text">
+                                                <h4>Vehicle Management</h4>
+                                                <p>
+                                                    Get your fleet on your fingertips by managing vehicle registration, repairs, and maintenance.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <p><a href="contact-us" class="my_button view_f">Detaylı Döküman İndir</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade @driveShow @driveActive" id="v-pills-drive" role="tabpanel" aria-labelledby="v-pills-driveTab">
+                            <div class="box">
+                                <div class="icon_heading">
+                                    <div class="box_s tab-image"><img src="~/images/request.png"></div>
+                                    <div class="tab_text">
+                                        <h4>Request Management</h4>
+                                        <p>Accommodate multiple dispatchers to take requests via online booking and calls to allocate them to the driver who is the best fit. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="icon_heading">
+                                    <div class="box_s tab-image"><img src="~/images/clients.png"></div>
+                                    <div class="tab_text">
+                                        <h4>Trips Tracking</h4>
+                                        <p>Admins get access to interactive maps to view all trips in real-time, along with managing emergency situations. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="icon_heading">
+                                    <div class="box_s tab-image"><img src="~/images/driving-test.png"></div>
+                                    <div class="tab_text">
+                                        <h4>Create Bookings</h4>
+                                        <p>Interactive, straightforward booking system for dispatchers to add new customers to the database. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="icon_heading">
+                                    <div class="box_s tab-image"><img src="~/images/feedback.png"></div>
+                                    <div class="tab_text">
+                                        <h4>Feedback and Reviews</h4>
+                                        <p>
+                                            View and analyze user and driver feedback to analyze your business environment and take actions like suspend drivers and issue warnings accordingly.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="icon_heading">
+                                    <div class="box_s tab-image"><img src="~/images/support.png"></div>
+                                    <div class="tab_text">
+                                        <h4>User Emergency</h4>
+                                        <p>The dispatcher can contact the support team and service providers in the case of an emergency. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="icon_heading">
+                                    <div class="box_s tab-image"><img src="~/images/support2.png"></div>
+                                    <div class="tab_text">
+                                        <h4>Driver Emergency</h4>
+                                        <p>If the driver encounters any trouble using the app, the dispatcher gets an instant notification to take the necessary steps. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <p><a href="contact-us" class="my_button view_f">Detaylı Döküman İndir</a></p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade @terminalShow @terminalActive" id="v-pills-terminalTab" role="tabpanel" aria-labelledby="v-pills-driveTab">
+                            <div class="box">
+                                <div class="icon_heading">
+                                    <div class="box_s tab-image"><img src="~/images/request.png"></div>
+                                    <div class="tab_text">
+                                        <h4>Request Management</h4>
+                                        <p>Accommodate multiple dispatchers to take requests via online booking and calls to allocate them to the driver who is the best fit. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="icon_heading">
+                                    <div class="box_s tab-image"><img src="~/images/clients.png"></div>
+                                    <div class="tab_text">
+                                        <h4>Trips Tracking</h4>
+                                        <p>Admins get access to interactive maps to view all trips in real-time, along with managing emergency situations. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="icon_heading">
+                                    <div class="box_s tab-image"><img src="~/images/driving-test.png"></div>
+                                    <div class="tab_text">
+                                        <h4>Create Bookings</h4>
+                                        <p>Interactive, straightforward booking system for dispatchers to add new customers to the database. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="icon_heading">
+                                    <div class="box_s tab-image"><img src="~/images/feedback.png"></div>
+                                    <div class="tab_text">
+                                        <h4>Feedback and Reviews</h4>
+                                        <p>
+                                            View and analyze user and driver feedback to analyze your business environment and take actions like suspend drivers and issue warnings accordingly.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="icon_heading">
+                                    <div class="box_s tab-image"><img src="~/images/support.png"></div>
+                                    <div class="tab_text">
+                                        <h4>User Emergency</h4>
+                                        <p>The dispatcher can contact the support team and service providers in the case of an emergency. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="icon_heading">
+                                    <div class="box_s tab-image"><img src="~/images/support2.png"></div>
+                                    <div class="tab_text">
+                                        <h4>Driver Emergency</h4>
+                                        <p>If the driver encounters any trouble using the app, the dispatcher gets an instant notification to take the necessary steps. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <p><a href="contact-us" class="my_button view_f">Detaylı Döküman İndir</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+
+
         </div>
     </div>
 </section>
