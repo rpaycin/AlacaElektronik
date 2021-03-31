@@ -109,6 +109,7 @@
           </Key>
           <Property Name="UrunId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FKUrunGrupId" Type="int" />
+          <Property Name="FKAnaUrunId" Type="int" />
           <Property Name="UrunAdi" Type="nvarchar" MaxLength="255" />
           <Property Name="Aciklama" Type="nvarchar(max)" />
           <Property Name="ListeFiyat" Type="money" />
@@ -254,6 +255,7 @@
           <Property Name="Aktif" Type="Boolean" />
           <Property Name="CreateUser" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="FKAnaUrunId" Type="Int32" />
         </EntityType>
         <EntityType Name="UrunGrup">
           <Key>
@@ -391,6 +393,7 @@
           <EntitySetMapping Name="Urun">
             <EntityTypeMapping TypeName="AlacaYazilimWebSiteModel.Urun">
               <MappingFragment StoreEntitySet="Urun">
+                <ScalarProperty Name="FKAnaUrunId" ColumnName="FKAnaUrunId" />
                 <ScalarProperty Name="UrunId" ColumnName="UrunId" />
                 <ScalarProperty Name="FKUrunGrupId" ColumnName="FKUrunGrupId" />
                 <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />

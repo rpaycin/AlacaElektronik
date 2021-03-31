@@ -10,7 +10,7 @@ namespace Admin.DataLayer.LoginData
         {
             using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
             {
-                List<Kullanicilar> UserDbList = entities.Kullanicilar.OrderByDescending(u => u.Aktif.HasValue && u.Aktif.Value).ToList();
+                List<Kullanicilar> UserDbList = entities.Kullanicilar.Where(u => u.Aktif.HasValue && u.Aktif.Value).OrderByDescending(c => c.CreateDate).ToList();
 
                 return UserDbList;
             }

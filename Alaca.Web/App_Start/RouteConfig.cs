@@ -109,6 +109,12 @@ namespace Alaca.Web
  );
 
             routes.MapRoute(
+     name: "urun_secim",
+     url: "urun_secim",
+     defaults: new { controller = "Urunlerimiz", action = "Secim"}
+ );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

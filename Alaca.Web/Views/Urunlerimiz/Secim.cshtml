@@ -1,0 +1,97 @@
+﻿@using Alaca.Web.Models
+@using Admin.DataLayer
+@model LayoutModel<ProductChoiceModel>
+
+@{
+    ViewBag.Title = "Ürün Seçim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section slider
+{
+    <div id="about_us" class="half_banner" data-bg="/images/node_banner.jpg">
+    </div>
+}
+
+<section class="about_sec half_top bg_gray">
+    <div class="container">
+        <div class="white_bg">
+
+            <div class="row">
+                <div class="col-md-12 text-center head_section wow fadeInUp">
+                    <h2 class="section-title tt">Alaca Yazılım <span style="color: #e93726;">İndirilebilir Dosyalar</span></h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            Ürün Ailesi<br />
+                            <select id="ddlMainGroup" class="form-control" onchange="mainGroupChange()">
+                                <option value="-1">Seçiniz</option>
+                                @{
+                                    foreach (UrunGrup mainGroup in Model.PageModel.MainGroups)
+                                    {
+                                        <option value="@mainGroup.UrunGrupId">@mainGroup.UrunGrupAdi</option>
+                                    }
+                                }
+                            </select>
+                            <br />
+                            Ürün Alt Ailesi<br />
+                            <select id="ddlSubMainGroup" class="form-control"></select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    Sipariş Listesi gelicek
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    function mainGroupChange() {
+        var formData = new FormData();
+        formData.append("MainGroupId", $("#ddlMainGroup").val());
+
+        $.ajax({
+            type: "POST",
+            url: "/Urunlerimiz/GetMainSubGroups",
+            data: formData,
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            success: function (subMainGroups) {
+                $('#ddlSubMainGroup').empty();
+
+                if (subMainGroups != null && subMainGroups.length > 0) {
+                    if (subMainGroups.length == 1) {
+                        var subGroup = subMainGroups[0];
+
+                        $('#ddlSubMainGroup').append('<option value="' + subGroup.UrunGrupId + '" selected="selected">' + subGroup.UrunGrupAdi+'</option>');
+                    }
+                    else {
+
+                        $('#ddlSubMainGroup').append($('<option>', {
+                            value: -1,
+                            text: "Seçiniz"
+                        }));
+
+                        for (var i = 0; i < subMainGroups.length; i++) {
+                            var subGroup = subMainGroups[i];
+
+                            $('#ddlSubMainGroup').append($('<option>', {
+                                value: subGroup.UrunGrupId,
+                                text: subGroup.UrunGrupAdi
+                            }));
+                        }
+                    }
+                }
+            }
+        });
+    }
+</script>

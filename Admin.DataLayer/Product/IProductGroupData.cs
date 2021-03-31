@@ -12,5 +12,9 @@ namespace Admin.DataLayer.LoginData
         void SaveProductGroup(UrunGrup urunGrup);
 
         void DeleteProductGroup(int ProductGroupId);
+
+        List<UrunGrup> GetProductMainGroups();
+
+        List<UrunGrup> GetProductSubGroups(int mainGroupId);
     }
 }

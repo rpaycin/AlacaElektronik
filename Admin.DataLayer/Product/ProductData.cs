@@ -10,7 +10,27 @@ namespace Admin.DataLayer.LoginData
         {
             using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
             {
-                List<Urun> productsDbList = entities.Urun.OrderByDescending(u => u.Aktif.HasValue && u.Aktif.Value).ToList();
+                List<Urun> productsDbList = entities.Urun.Where(u => u.Aktif.HasValue && u.Aktif.Value).OrderBy(c => c.UrunAdi).ToList();
+
+                return productsDbList;
+            }
+        }
+
+        public List<Urun> GetSubProducts(int mainGroupId)
+        {
+            using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
+            {
+                List<Urun> productsDbList = entities.Urun.Where(u => u.Aktif.HasValue && u.Aktif.Value && u.FKUrunGrupId == mainGroupId).OrderBy(c => c.UrunAdi).ToList();
+
+                return productsDbList;
+            }
+        }
+
+        public List<Urun> GetSubAdditionalProducts(int mainGroupId, int productId)
+        {
+            using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
+            {
+                List<Urun> productsDbList = entities.Urun.Where(u => u.Aktif.HasValue && u.Aktif.Value && u.FKUrunGrupId == mainGroupId && u.FKAnaUrunId == productId).OrderBy(c => c.UrunAdi).ToList();
 
                 return productsDbList;
             }

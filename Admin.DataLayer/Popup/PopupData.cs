@@ -10,7 +10,7 @@ namespace Admin.DataLayer.LoginData
         {
             using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
             {
-                List<Popup> popupDbList = entities.Popup.OrderByDescending(u => u.Aktif.HasValue && u.Aktif.Value).ToList();
+                List<Popup> popupDbList = entities.Popup.Where(u => u.Aktif.HasValue && u.Aktif.Value).OrderBy(c => c.PopupAd).ToList();
 
                 return popupDbList;
             }

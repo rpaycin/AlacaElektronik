@@ -23,5 +23,6 @@ namespace Admin.DataLayer
         public Nullable<bool> Aktif { get; set; }
         public Nullable<int> CreateUser { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
+        public Nullable<int> FKAnaUrunId { get; set; }
     }
 }

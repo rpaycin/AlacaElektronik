@@ -157,6 +157,7 @@
     <Compile Include="Models\LayoutModel.cs" />
     <Compile Include="Models\DownloadModel.cs" />
     <Compile Include="Models\NewsModel.cs" />
+    <Compile Include="Models\ProductChoiceModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ServiceModel.cs" />
     <Compile Include="Models\ReferenceModel.cs" />
@@ -1111,6 +1112,7 @@
     <Content Include="Views\DuyuruHaber\Detay.cshtml" />
     <Content Include="Views\Urunlerimiz\Index.cshtml" />
     <Content Include="Views\Download\Index.cshtml" />
+    <Content Include="Views\Urunlerimiz\Secim.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Admin.DataLayer\Alaca.DataLayer.csproj">
