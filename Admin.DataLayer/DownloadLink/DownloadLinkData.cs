@@ -10,7 +10,7 @@ namespace Admin.DataLayer.LoginData
         {
             using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
             {
-                List<DownloadLink> downloadLinkDbList = entities.DownloadLink.OrderByDescending(u => u.Aktif).ToList();
+                List<DownloadLink> downloadLinkDbList = entities.DownloadLink.Where(u => u.Aktif == 1).OrderBy(c => c.Aciklama).ToList();
 
                 return downloadLinkDbList;
             }
