@@ -217,6 +217,7 @@
     <Content Include="images\about\about-bg.jpg" />
     <Content Include="images\about_dot.png" />
     <Content Include="images\accept_payment.png" />
+    <Content Include="images\add.png" />
     <Content Include="images\address.png" />
     <Content Include="images\ad_banner.jpg" />
     <Content Include="images\AI-images\1.png" />

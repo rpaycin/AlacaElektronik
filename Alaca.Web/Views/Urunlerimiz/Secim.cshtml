@@ -19,33 +19,62 @@
 
             <div class="row">
                 <div class="col-md-12 text-center head_section wow fadeInUp">
-                    <h2 class="section-title tt">Alaca Yazılım <span style="color: #e93726;">İndirilebilir Dosyalar</span></h2>
+                    <h2 class="section-title tt">Müşteri <span style="color: #e93726;">Ürün Seçimi</span></h2>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="row">
                         <div class="col-md-6">
-                            Ürün Ailesi<br />
-                            <select id="ddlMainGroup" class="form-control" onchange="mainGroupChange()">
-                                <option value="-1">Seçiniz</option>
-                                @{
-                                    foreach (UrunGrup mainGroup in Model.PageModel.MainGroups)
-                                    {
-                                        <option value="@mainGroup.UrunGrupId">@mainGroup.UrunGrupAdi</option>
+                            <div>
+                                Ürün Ailesi<br />
+                                <select id="ddlMainGroup" class="form-control" onchange="mainGroupChange()">
+                                    <option value="-1">Seçiniz</option>
+                                    @{
+                                        foreach (UrunGrup mainGroup in Model.PageModel.MainGroups)
+                                        {
+                                            <option value="@mainGroup.UrunGrupId">@mainGroup.UrunGrupAdi</option>
+                                        }
                                     }
-                                }
-                            </select>
+                                </select>
+                            </div>
                             <br />
-                            Ürün Alt Ailesi<br />
-                            <select id="ddlSubMainGroup" class="form-control"></select>
+                            <div>
+                                Ürün Alt Ailesi<br />
+                                <select id="ddlSubMainGroup" class="form-control" onchange="subMainGroupChange()"></select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <br />Ürün Listesi<br />
+                            <table class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="dataList_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th style="width:50px"></th>
+                                        <th>Ürün Adı</th>
+                                        <th>Liste Fiyatı</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyProduct"></tbody>
+                            </table>
                         </div>
                     </div>
 
                 </div>
-                <div class="col-md-6">
-                    Sipariş Listesi gelicek
+                <div class="col-md-7">
+                    <div class="col-md-9">
+                        <br />Siparişler<br />
+                        <table id="tblOrderList" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="dataList_info">
+                            <thead>
+                                <tr role="row">
+                                    <th>Ürün Adı</th>
+                                    <th>Liste Fiyatı</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyOrderList"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -66,13 +95,15 @@
             contentType: false,
             processData: false,
             success: function (subMainGroups) {
+                $('#tbodyProduct').empty();
                 $('#ddlSubMainGroup').empty();
 
                 if (subMainGroups != null && subMainGroups.length > 0) {
                     if (subMainGroups.length == 1) {
                         var subGroup = subMainGroups[0];
 
-                        $('#ddlSubMainGroup').append('<option value="' + subGroup.UrunGrupId + '" selected="selected">' + subGroup.UrunGrupAdi+'</option>');
+                        $('#ddlSubMainGroup').append('<option value="' + subGroup.UrunGrupId + '" selected="selected">' + subGroup.UrunGrupAdi + '</option>');
+                        subMainGroupChange();
                     }
                     else {
 
@@ -89,6 +120,64 @@
                                 text: subGroup.UrunGrupAdi
                             }));
                         }
+                    }
+                }
+            }
+        });
+    }
+
+    function subMainGroupChange() {
+        var formData = new FormData();
+        formData.append("SubMainGroupId", $("#ddlSubMainGroup").val());
+
+        $.ajax({
+            type: "POST",
+            url: "/Urunlerimiz/GetProducts",
+            data: formData,
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            success: function (products) {
+                $('#tbodyProduct').empty();
+
+                if (products != null && products.length > 0) {
+                    for (var i = 0; i < products.length; i++) {
+                        var product = products[i];
+
+                        $("#tbodyProduct").append(' <tr role=\"row\" class=\"odd\">' +
+                            '<td>' +
+                            '<button onclick= "productClick(' + product.UrunId + ')"> <img src="/images/add.png\"></button>' +
+                            '</td>' +
+                            '<td>' + product.UrunAdi + '</td>' +
+                            '<td>' + product.ListeFiyat + ' TL</td>' +
+                            '</tr>');
+                    }
+                }
+            }
+        });
+    }
+
+    function productClick(productId) {
+        var formData = new FormData();
+        formData.append("SubMainGroupId", $("#ddlSubMainGroup").val());
+        formData.append("ProductId", productId);
+
+        $.ajax({
+            type: "POST",
+            url: "/Urunlerimiz/GetAdditionalProducts",
+            data: formData,
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            success: function (products) {
+                if (products != null && products.length > 0) {
+                    for (var i = 0; i < products.length; i++) {
+                        var product = products[i];
+
+                        $("#tbodyOrderList").append(' <tr role=\"row\" class=\"odd\">' +
+                            '<td>' + product.UrunAdi + '</td>' +
+                            '<td>' + product.ListeFiyat + ' TL</td>' +
+                            '</tr>');
                     }
                 }
             }

@@ -20,7 +20,7 @@ namespace Admin.DataLayer.LoginData
         {
             using (AlacaYazilimWebSiteEntities entities = new AlacaYazilimWebSiteEntities())
             {
-                List<Urun> productsDbList = entities.Urun.Where(u => u.Aktif.HasValue && u.Aktif.Value && u.FKUrunGrupId == mainGroupId).OrderBy(c => c.UrunAdi).ToList();
+                List<Urun> productsDbList = entities.Urun.Where(u => u.Aktif.HasValue && u.Aktif.Value && u.FKUrunGrupId == mainGroupId && (!u.FKAnaUrunId.HasValue || u.FKAnaUrunId == 0)).OrderBy(c => c.UrunAdi).ToList();
 
                 return productsDbList;
             }
