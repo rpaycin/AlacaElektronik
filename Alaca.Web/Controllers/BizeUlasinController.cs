@@ -26,6 +26,9 @@ namespace Alaca.Web.Controllers
             return View(layoutModel);
         }
 
+
+
+
         [HttpPost]
         public JsonResult SendEmail()
         {
@@ -72,5 +75,6 @@ namespace Alaca.Web.Controllers
 
             return Json(true, JsonRequestBehavior.AllowGet);
         }
+
     }
 }
