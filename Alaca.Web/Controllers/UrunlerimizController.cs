@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace Alaca.Web.Controllers
 {
@@ -60,6 +61,35 @@ namespace Alaca.Web.Controllers
             List<UrunGrup> mainSubGroups = _productGroupData.GetProductSubGroups(mainGroupId);
 
             return Json(mainSubGroups, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GetProducts()
+        {
+            NameValueCollection form = HttpContext.Request.Form;
+
+            int subMainGroupId = Convert.ToInt32(form["SubMainGroupId"]);
+            List<Urun> products = _productData.GetSubProducts(subMainGroupId);
+
+            return Json(products, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GetAdditionalProducts()
+        {
+            NameValueCollection form = HttpContext.Request.Form;
+
+            int subMainGroupId = Convert.ToInt32(form["SubMainGroupId"]);
+            int productId = Convert.ToInt32(form["ProductId"]);
+
+            List<Urun> products = _productData.GetSubProducts(subMainGroupId);
+            Urun product = products.FirstOrDefault(p => p.UrunId == productId);
+
+            List<Urun> productAdditionals = new List<Urun> { product };
+            List<Urun> dbAdditionalProducts = _productData.GetSubAdditionalProducts(subMainGroupId, productId);
+            productAdditionals.AddRange(dbAdditionalProducts);
+
+            return Json(productAdditionals, JsonRequestBehavior.AllowGet);
         }
     }
 }
