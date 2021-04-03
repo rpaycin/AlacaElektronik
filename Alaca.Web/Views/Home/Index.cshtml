@@ -22,7 +22,7 @@
 
                                         </span>
                                     </h1>
-                                    <a class="my_button wow pulse animated" href="contact-us" data-wow-delay="300ms" data-wow-iteration="infinite" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-delay: 300ms; animation-iteration-count: infinite; animation-name: pulse;">AYS Ürünlerini Keşfet</a>
+                                    <a class="my_button wow pulse animated" href="AYS_Mobil" data-wow-delay="300ms" data-wow-iteration="infinite" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-delay: 300ms; animation-iteration-count: infinite; animation-name: pulse;">AYS Ürünlerini Keşfet</a>
 
                                 </div>
                             </div>
@@ -86,14 +86,18 @@
 <div class="modal fade" id="modalTalepGonder" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            @*<div class="modal-header">
                 <span id="spanBaslikGrup"></span>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
-            </div>
+            </div>*@
             <div class="modal-body">
-                <section>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <section style="padding:0,0,0,0 !important">
+
                     <ul class="my-simple-slider big-mys-slider mys-autoplay">
                         @for (int i = 0; i < Model.PageModel.Popups.Count; i++)
                         {
@@ -111,23 +115,14 @@
                             }
                         }
                     </ul>
-                    @*<div class="mys-slider-nav">
-                            <nav>
-                                <ul>
-                                    @for (int i = 0; i < Model.PageModel.Popups.Count; i++)
-                                    {
-                                        <li>
-                                            <a>@(i+1)</a>
-                                        </li>
-                                    }
-                                </ul>
-                            </nav>
-                        </div>*@
+
                 </section>
             </div>
         </div>
     </div>
 </div>
+
+
 <style>
     .modal {
         z-index: -1;
@@ -135,9 +130,21 @@
         justify-content: center;
         align-items: center;
         max-width: 100%;
+     
+      
+        
+    }
+
+    .modal-dialog{
+        max-width:800px;
+        width:80%;
     }
 
     .modal-open .modal {
         z-index: 1050;
+    }
+
+    .modal-body section{
+        padding:0,0,0,0 !important;
     }
 </style>
