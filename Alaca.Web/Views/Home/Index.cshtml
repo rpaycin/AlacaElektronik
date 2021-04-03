@@ -1,4 +1,5 @@
 ﻿@using Alaca.Web.Models
+@using Admin.DataLayer
 @model LayoutModel<HomeModel>
 
 @section slider
@@ -69,3 +70,167 @@
 @Html.Partial("Partials/News", Model.PageModel.News, viewData)
 
 @Html.Partial("Partials/ReferencesExpend", Model.PageModel.References, viewData)
+
+
+@if (Model.PageModel.Popups != null && Model.PageModel.Popups.Count > 0)
+{
+    <script>
+        $(function () {
+            $('#btnModal').click();
+        });
+    </script>
+}
+
+<button type="button" data-toggle="modal" data-target="#modalTalepGonder" id="btnModal" style="display:none"></button>
+
+<div class="modal fade" id="modalTalepGonder" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="spanBaslikGrup"></span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="slider">
+                    <div class="sliderleft"></div>
+                    <div class="sliderright"></div>
+                    @foreach (Popup popup in Model.PageModel.Popups)
+                    {
+                        <li>@Html.Raw(popup.Popup1)</li>
+                    }
+                </div><br /><br />
+                @*<div class="sliderbutton">
+                        @foreach (Popup popup in Model.PageModel.Popups)
+                        {
+                            <li></li>
+                        }
+                    </div>*@
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .modal {
+        z-index: -1;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        max-width: 100%;
+    }
+
+    .modal-open .modal {
+        z-index: 1050;
+    }
+
+    #slider {
+        positon: relative;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+        #slider li {
+            list-style: none;
+        }
+
+    .sliderbutton {
+        position: relative;
+        margin: 0 auto;
+        width: 120px;
+        margin-top: -25px;
+    }
+
+        .sliderbutton li {
+            list-style: none;
+            padding: 5px;
+            background: red;
+            float: left;
+            margin-right: 10px;
+            border-radius: 10px;
+        }
+
+    .sliderleft {
+        cursor: pointer;
+        background: rgba(0,0,0,0.2);
+        position: absolute;
+    }
+
+    .sliderright {
+        cursor: pointer;
+        background: rgba(0,0,0,0.2);
+        position: absolute;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        var slider = 0;
+        var sliderTime = 6000;
+        $('.sliderbutton li:first').css('background', 'yellow');
+        $.slider = function (toplam) {
+            $('#slider li').hide();
+            if (slider < toplam - 1) {
+                slider++;
+                $('.sliderbutton li').css('background', 'red');
+                $('.sliderbutton li:eq(' + slider + ')').css('background', 'yellow');
+                $('#slider li:eq(' + slider + ')').fadeIn("fast");
+
+            } else if (slider < 0) {
+
+                slider = toplam - 1;
+                $('.sliderbutton li').css('background', 'red');
+                $('.sliderbutton li:eq(' + slider + ')').css('background', 'yellow');
+                $('#slider li:eq(' + slider + ')').fadeIn("fast");
+            } else {
+
+                $('#slider li:first').fadeIn("fast");
+                slider = 0;
+                $('.sliderbutton li').css('background', 'red');
+                $('.sliderbutton li:eq(' + slider + ')').css('background', 'yellow');
+            }
+        }
+        var lenghtli = $('#slider li').length;
+        var interval = setInterval('$.slider(' + lenghtli + ')', sliderTime);
+        $('#slider').hover(function () {
+            interval = clearInterval(interval);
+        }, function () {
+            interval = setInterval('$.slider(' + lenghtli + ')', 0);
+        })
+        $('.sliderbutton li').click(function () {
+            $('.sliderbutton li').css('background', 'red');
+            $(this).css('background', 'yellow');
+            interval = clearInterval(interval);
+            var indis = $(this).index();
+            $('#slider li').hide();
+            $('#slider li:eq(' + indis + ')').fadeIn("fast");
+            slider = indis;
+            interval = setInterval('$.slider(' + lenghtli + ')', sliderTime);
+
+        });
+        $('.sliderleft').click(function () {
+            slider--;
+            $('.sliderbutton li').css('background', 'red');
+            if (slider < 0) {
+                $('.sliderbutton li:last').css('background', 'yellow');
+                slider = lenghtli - 1;
+            } else {
+                $('.sliderbutton li:eq(' + slider + ')').css('background', 'yellow');
+            }
+            $('#slider li').hide();
+            $('#slider li:eq(' + slider + ')').fadeIn("fast");
+        });
+        $('.sliderright').click(function () {
+            slider++;
+            $('.sliderbutton li').css('background', 'red');
+            if (slider > lenghtli - 1) {
+                $('.sliderbutton li:first').css('background', 'yellow');
+                slider = 0;
+            } else {
+                $('.sliderbutton li:eq(' + slider + ')').css('background', 'yellow');
+            }
+
+            $('#slider li').hide();
+            $('#slider li:eq(' + slider + ')').fadeIn("fast");
+        });
+    });
+</script>

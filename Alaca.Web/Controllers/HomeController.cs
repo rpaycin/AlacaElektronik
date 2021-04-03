@@ -12,6 +12,7 @@ namespace Alaca.Web.Controllers
         private readonly IReferenceData _referenceData;
         private readonly ICustomerWritingData _customerWritingData;
         private readonly INewsData _newsData;
+        private readonly IPopupData _popupData;
 
         public HomeController()
         {
@@ -19,6 +20,7 @@ namespace Alaca.Web.Controllers
             _referenceData = new ReferenceData();
             _customerWritingData = new CustomerWritingData();
             _newsData = new NewsData();
+            _popupData = new PopupData();
         }
 
         public ActionResult Index()
@@ -30,11 +32,14 @@ namespace Alaca.Web.Controllers
 
             List<DuyuruHaber> news = _newsData.GetNews();
 
+            List<Popup> popups = _popupData.GetPopups();
+
             var homeModel = new HomeModel
             {
                 References = references,
                 CustomerWritings = customerWritings,
-                News = news
+                News = news,
+                Popups = popups
             };
 
             //layout model

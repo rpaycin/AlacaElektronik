@@ -10,5 +10,7 @@ namespace Alaca.Web.Models
         public List<MusteriYazi> CustomerWritings { get; set; }
 
         public List<DuyuruHaber> News { get; set; }
+
+        public List<Popup> Popups { get; set; }
     }
 }
