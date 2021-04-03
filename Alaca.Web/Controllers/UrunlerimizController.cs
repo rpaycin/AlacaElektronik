@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Web.Mvc;
 using System.Linq;
+using Alaca.Web.Helper;
 
 namespace Alaca.Web.Controllers
 {
@@ -90,6 +91,22 @@ namespace Alaca.Web.Controllers
             productAdditionals.AddRange(dbAdditionalProducts);
 
             return Json(productAdditionals, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public JsonResult SendEmail()
+        {
+            NameValueCollection form = HttpContext.Request.Form;
+
+            FirmaBilgileri firm = _firmsData.GetFirstActiveFirm();
+
+            string body = form["Body"];
+            EmailSender.Send("Alaca Yazılım - Talep Formu", body, form["EPosta"]);
+
+            string satisBody = string.Format("Ad Soyad:{0}, Firma Adı:{1}, Eposta:{2}, Telefon:{3} <br/> {4}", form["AdSoyad"], form["FirmaAdi"], form["EPosta"], form["Telefon"], body);
+            EmailSender.Send("Alaca Yazılım - Talep Formu", satisBody, firm.SatisMail);
+
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
     }
 }

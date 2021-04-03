@@ -1,4 +1,5 @@
 ﻿@using Alaca.Web.Models
+@using Admin.DataLayer
 @model LayoutModel<HomeModel>
 
 @section slider
@@ -69,3 +70,74 @@
 @Html.Partial("Partials/News", Model.PageModel.News, viewData)
 
 @Html.Partial("Partials/ReferencesExpend", Model.PageModel.References, viewData)
+
+
+@if (Model.PageModel.Popups != null && Model.PageModel.Popups.Count > 0)
+{
+    <script>
+        $(function () {
+            $('#btnModal').click();
+        });
+    </script>
+}
+
+<button type="button" data-toggle="modal" data-target="#modalTalepGonder" id="btnModal" style="display:none"></button>
+
+<div class="modal fade" id="modalTalepGonder" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="spanBaslikGrup"></span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <section>
+                    <ul class="my-simple-slider big-mys-slider mys-autoplay">
+                        @for (int i = 0; i < Model.PageModel.Popups.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                <li class="selected">
+                                    <a>@Html.Raw(Model.PageModel.Popups[i].Popup1)</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a>@Html.Raw(Model.PageModel.Popups[i].Popup1)</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                    @*<div class="mys-slider-nav">
+                            <nav>
+                                <ul>
+                                    @for (int i = 0; i < Model.PageModel.Popups.Count; i++)
+                                    {
+                                        <li>
+                                            <a>@(i+1)</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </nav>
+                        </div>*@
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .modal {
+        z-index: -1;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        max-width: 100%;
+    }
+
+    .modal-open .modal {
+        z-index: 1050;
+    }
+</style>

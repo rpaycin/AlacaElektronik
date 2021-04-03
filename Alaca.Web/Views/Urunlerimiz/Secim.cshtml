@@ -63,7 +63,7 @@
 
                 </div>
                 <div class="col-md-7">
-                    <div class="col-md-9">
+                    <div class="col-md-9" id="divOrder">
                         <br />Siparişler<br />
                         <table id="tblOrderList" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="dataList_info">
                             <thead>
@@ -74,7 +74,10 @@
                             </thead>
                             <tbody id="tbodyOrderList"></tbody>
                         </table>
+                        <br />
+                        <div id="divTotal"><b>TOPLAM: </b><b id="bToplam">0</b><b> TL</b></div>
                     </div>
+                    <button type="button" data-toggle="modal" data-target="#modalTalepGonder" style="width:200px" id="btnTalepGonder">Talep Gönder</button> <br />
                 </div>
             </div>
 
@@ -82,7 +85,49 @@
     </div>
 </section>
 
+<div class="modal fade" id="modalTalepGonder" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="spanBaslikGrup">Talep Formu</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div id="divUpdate" class="modal-body">
+                <form role="form">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="txtAdSoyad" placeholder="Ad, Soyad" /><br />
+                            <input type="text" class="form-control" id="txtFirmaAdi" placeholder="Firma Adı" /><br />
+                            <input type="email" class="form-control" id="txtEPosta" placeholder="E-Posta" /><br />
+                            <input type="tel" class="form-control" id="txtTelefon" placeholder="Telefon" /><br />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="btnModalClose">Kapat</button>
+                <button type="button" class="btn btn-primary" onclick="talepGonderOnay()">Gönder</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
+    $(function () {
+        $("#btnTalepGonder").hide();
+        $("#divOrder").hide();
+        //$("#tblOrderList").dataTable({
+        //    "responsive": true,
+        //    "autoWidth": true,
+        //    "ordering": false,
+        //    "language": {
+        //        "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
+        //    }
+        //});
+    });
+
     function mainGroupChange() {
         var formData = new FormData();
         formData.append("MainGroupId", $("#ddlMainGroup").val());
@@ -146,7 +191,7 @@
 
                         $("#tbodyProduct").append(' <tr role=\"row\" class=\"odd\">' +
                             '<td>' +
-                            '<button onclick= "productClick(' + product.UrunId + ')"> <img src="/images/add.png\"></button>' +
+                            '<button onclick= "productClick(' + product.UrunId + ')"> <img src="/images/add.png\" style=\"width:30px;height:30px\"></button>' +
                             '</td>' +
                             '<td>' + product.UrunAdi + '</td>' +
                             '<td>' + product.ListeFiyat + ' TL</td>' +
@@ -171,15 +216,72 @@
             processData: false,
             success: function (products) {
                 if (products != null && products.length > 0) {
+                    $("#btnTalepGonder").show();
+                    $("#divOrder").show();
+
+                    var total = parseFloat($("#bToplam").text());
+
                     for (var i = 0; i < products.length; i++) {
                         var product = products[i];
 
-                        $("#tbodyOrderList").append(' <tr role=\"row\" class=\"odd\">' +
+                        $("#tbodyOrderList").append(' <tr>' +
                             '<td>' + product.UrunAdi + '</td>' +
                             '<td>' + product.ListeFiyat + ' TL</td>' +
                             '</tr>');
+
+                        total += parseFloat(product.ListeFiyat);
                     }
+
+                    $("#bToplam").text(total)
                 }
+            }
+        });
+    }
+
+    function fieldValidationControl(fieldKey, message) {
+        var fieldValue = $("#" + fieldKey).val();
+        if (fieldValue == '' || fieldValue == null || fieldValue == undefined) {
+            toastr.error(message)
+            return false;
+        }
+
+        return true;
+    }
+
+    function talepGonderOnay() {
+        if (!fieldValidationControl("txtAdSoyad", "Adınızı ve soyadını giriniz")) {
+            return;
+        }
+
+        if (!fieldValidationControl("txtFirmaAdi", "Firma adını giriniz")) {
+            return;
+        }
+
+        if (!fieldValidationControl("txtEPosta", "Email adresini giriniz")) {
+            return;
+        }
+
+        if (!fieldValidationControl("txtTelefon", "Telefonu giriniz")) {
+            return;
+        }
+
+        var formData = new FormData();
+        formData.append("AdSoyad", $("#txtAdSoyad").val());
+        formData.append("FirmaAdi", $("#txtFirmaAdi").val());
+        formData.append("EPosta", $("#txtEPosta").val());
+        formData.append("Telefon", $("#txtTelefon").val());
+        formData.append("Body", $("#divOrder").html());
+
+        $.ajax({
+            type: "POST",
+            url: "/Urunlerimiz/SendEmail",
+            data: formData,
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                toastr.success("Talep formunuz başarıyla gönderilmiştir")
+                location.reload();
             }
         });
     }

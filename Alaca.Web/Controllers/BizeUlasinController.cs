@@ -1,5 +1,6 @@
 ﻿using Admin.DataLayer;
 using Admin.DataLayer.LoginData;
+using Alaca.Web.Helper;
 using Alaca.Web.Models;
 using System.Collections.Specialized;
 using System.Net;
@@ -32,46 +33,13 @@ namespace Alaca.Web.Controllers
         [HttpPost]
         public JsonResult SendEmail()
         {
+            FirmaBilgileri firm = _firmsData.GetFirstActiveFirm();
+
             NameValueCollection form = HttpContext.Request.Form;
 
-            string senderMailAddress = "test@gmail.com"; // todo : değişcek
-            const string fromPassword = "test"; // todo : değişcek
-
-            string subject = form["Konu"];
             string body = string.Format("Mail Adresi: {0}, İçerik:{1}", form["EPosta"], form["Mesaj"]);
 
-            MailMessage mailMessage = new MailMessage();
-            MailAddress mailAddress = new MailAddress(senderMailAddress, form["AdSoyad"]);
-            mailMessage.From = mailAddress;
-            mailAddress = new MailAddress(senderMailAddress, "Alaca Elektronik - Bize Ulaşın");
-            mailMessage.To.Add(mailAddress);
-            mailMessage.Subject = subject;
-            mailMessage.Body = body;
-            mailMessage.IsBodyHtml = true;
-
-            SmtpClient mailSender = new SmtpClient("smtp.gmail.com", 587)
-            {
-                EnableSsl = true,
-                UseDefaultCredentials = false,
-                DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
-                Credentials = new NetworkCredential(senderMailAddress, fromPassword)
-            };
-
-            try
-            {
-                mailSender.Send(mailMessage);
-            }
-            catch (SmtpFailedRecipientException ex)
-            {
-            }
-            catch (SmtpException ex)
-            {
-            }
-            finally
-            {
-                mailSender = null;
-                mailMessage.Dispose();
-            }
+            EmailSender.Send("Bize Ulaşın", body, firm.IletisimMail);
 
             return Json(true, JsonRequestBehavior.AllowGet);
         }
