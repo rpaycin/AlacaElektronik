@@ -175,6 +175,7 @@
     <Content Include="css\responsivemin.css" />
     <Content Include="css\slick-theme.css" />
     <Content Include="css\slick.css" />
+    <Content Include="css\slider.css" />
     <Content Include="css\stylemin.css" />
     <Content Include="css\toastr.min.css" />
     <Content Include="css\web_devlop.css" />
@@ -1056,6 +1057,7 @@
     <Content Include="js\pluginsmin.js" />
     <Content Include="js\slick.js" />
     <Content Include="js\slickmin.js" />
+    <Content Include="js\slider.js" />
     <Content Include="js\telephonemin.js" />
     <Content Include="js\toastr.min.js" />
     <Content Include="js\wow.min.js" />
