@@ -755,6 +755,7 @@
     <Content Include="images\partner2.png" />
     <Content Include="images\partner3.png" />
     <Content Include="images\partner4.png" />
+    <Content Include="images\patch-plus-fill.svg" />
     <Content Include="images\payments.png" />
     <Content Include="images\payment_black.png" />
     <Content Include="images\pentagon.png" />
