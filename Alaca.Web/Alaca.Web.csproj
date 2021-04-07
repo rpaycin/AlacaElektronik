@@ -1020,6 +1020,7 @@
     <Content Include="images\why_hire_us.jpg" />
     <Content Include="images\why_uber_clone.jpg" />
     <Content Include="images\work.png" />
+    <Content Include="images\x-circle-fill.svg" />
     <Content Include="images\xcode_uber.png" />
     <Content Include="images\yii-development-img.png" />
     <Content Include="js\additional-methods.min.js" />

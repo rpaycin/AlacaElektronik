@@ -64,6 +64,7 @@
                     <table id="tblOrderList" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="dataList_info">
                         <thead>
                             <tr role="row">
+                                <th style="width:60px"></th>
                                 <th style="width:60px">Adet</th>
                                 <th>Ürün Adı</th>
                                 <th>Liste Fiyatı</th>
@@ -73,7 +74,7 @@
                     </table>
                     <br />
                     <div id="divTotal"><b>TOPLAM: </b><b id="bToplam">0</b><b> TL</b></div>
-                    <button type="button" data-toggle="modal" data-target="#modalTalepGonder" style="width:200px" id="btnTalepGonder">Talep Gönder</button> <br />
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTalepGonder"  id="btnTalepGonder">Talep Gönder</button> 
                 </div>
             </div>
 
@@ -114,14 +115,6 @@
     $(function () {
         $("#btnTalepGonder").hide();
         $("#divOrder").hide();
-        //$("#tblOrderList").dataTable({
-        //    "responsive": true,
-        //    "autoWidth": true,
-        //    "ordering": false,
-        //    "language": {
-        //        "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
-        //    }
-        //});
     });
 
     function mainGroupChange() {
@@ -220,12 +213,16 @@
                     for (var i = 0; i < products.length; i++) {
                         var product = products[i];
 
+                        var tdSil = '<td></td>';
                         var tdAdet = '<td></td>';
 
                         if (i == 0) {
                             tdAdet = '<td ><input type="number" id="txtAdet' + product.UrunId + '" class="adetChange" placeholder="Adet" value="1" style="width:40px"  /></td>';
+                            tdSil = '<td><button onclick= "productDeleteClick(' + product.UrunId + ')"> <img src="/images/x-circle-fill.svg" style=\"width:30px;height:30px\"></button></td>';
                         }
-                        $("#tbodyOrderList").append(' <tr urunId= "tr' + product.UrunId + '" anaUrunId="tr' + product.FKAnaUrunId+'">' +
+
+                        $("#tbodyOrderList").append(' <tr urunId= "tr' + product.UrunId + '" anaUrunId="tr' + product.FKAnaUrunId + '" class="tr' + product.FKAnaUrunId + '">' +
+                            tdSil +
                             tdAdet +
                             '<td>' + product.UrunAdi + '</td>' +
                             '<td><span id="spanOriginal' + product.UrunId + '" style="display:none">' + product.ListeFiyat + '</span><span id="span' + product.UrunId + '">' + product.ListeFiyat + '</span> TL</td>' +
@@ -238,6 +235,20 @@
                 }
             }
         });
+    }
+
+    function productDeleteClick(productId) {
+        $("#tbodyOrderList").find("tr[urunId]").each(function () {
+            var trId = this.attributes["urunid"].value.replace("tr", "");
+            if (trId == productId) {
+                this.remove();
+            }
+        });
+        $("#tbodyOrderList").children(".tr" + productId).each(function () {
+            this.remove();
+        });
+
+        calculateTotalPrice();
     }
 
     function calculateTotalPrice() {
@@ -259,16 +270,24 @@
     }
 
     $(function () {
+        var urunId = 0;
         $('#tbodyOrderList').delegate('.adetChange', 'change', function () {
-            var $this = $(this)
+            var $thisTextbox = $(this)
 
-            var id = $this.attr('id').replace("txtAdet", "");
+            urunId = $thisTextbox.attr('id').replace("txtAdet", "");
 
-            var adet = parseFloat($this.val());
+            var adet = parseFloat($thisTextbox.val());
 
-            var originalFiyat = parseFloat($("#spanOriginal" + id).text());
+            var originalFiyat = parseFloat($("#spanOriginal" + urunId).text());
             var fiyat = originalFiyat * adet;
-            $("#span" + id).text(fiyat);
+            $("#span" + urunId).text(fiyat);
+
+            $("#tbodyOrderList").children(".tr" + urunId).each(function () {
+                var trId = this.attributes["urunid"].value.replace("tr", "");
+                var originalFiyat = parseFloat($("#spanOriginal" + trId).text());
+                var fiyat = originalFiyat * adet;
+                $("#span" + trId).text(fiyat);
+            });
 
             calculateTotalPrice();
         });
