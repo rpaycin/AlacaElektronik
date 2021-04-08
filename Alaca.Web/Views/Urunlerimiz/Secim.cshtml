@@ -25,59 +25,56 @@
 
             <div class="row">
                 <div class="col-md-5">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div>
-                                Ürün Ailesi<br />
-                                <select id="ddlMainGroup" class="form-control" onchange="mainGroupChange()">
-                                    <option value="-1">Seçiniz</option>
-                                    @{
-                                        foreach (UrunGrup mainGroup in Model.PageModel.MainGroups)
-                                        {
-                                            <option value="@mainGroup.UrunGrupId">@mainGroup.UrunGrupAdi</option>
-                                        }
-                                    }
-                                </select>
-                            </div>
-                            <br />
-                            <div>
-                                Ürün Alt Ailesi<br />
-                                <select id="ddlSubMainGroup" class="form-control" onchange="subMainGroupChange()"></select>
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <br />Ürün Listesi<br />
-                            <table class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="dataList_info">
-                                <thead>
-                                    <tr role="row">
-                                        <th style="width:50px"></th>
-                                        <th>Ürün Adı</th>
-                                        <th>Liste Fiyatı</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbodyProduct"></tbody>
-                            </table>
-                        </div>
+                    <div>
+                        Ürün Ailesi<br />
+                        <select id="ddlMainGroup" class="form-control" onchange="mainGroupChange()">
+                            <option value="-1">Seçiniz</option>
+                            @{
+                                foreach (UrunGrup mainGroup in Model.PageModel.MainGroups)
+                                {
+                                    <option value="@mainGroup.UrunGrupId">@mainGroup.UrunGrupAdi</option>
+                                }
+                            }
+                        </select>
                     </div>
-
+                    <br />
+                    <div>
+                        Ürün Alt Ailesi<br />
+                        <select id="ddlSubMainGroup" class="form-control" onchange="subMainGroupChange()"></select>
+                    </div>
                 </div>
-                <div class="col-md-7">
-                    <div class="col-md-9" id="divOrder">
-                        <br />Siparişler<br />
-                        <table id="tblOrderList" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="dataList_info">
-                            <thead>
-                                <tr role="row">
-                                    <th>Ürün Adı</th>
-                                    <th>Liste Fiyatı</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbodyOrderList"></tbody>
-                        </table>
-                        <br />
-                        <div id="divTotal"><b>TOPLAM: </b><b id="bToplam">0</b><b> TL</b></div>
-                    </div>
-                    <button type="button" data-toggle="modal" data-target="#modalTalepGonder" style="width:200px" id="btnTalepGonder">Talep Gönder</button> <br />
+                <div class="col-md-1"></div>
+                <div class="col-md-6">
+                    Ürün Listesi<br />
+                    <table class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="dataList_info">
+                        <thead>
+                            <tr role="row">
+                                <th style="width:50px"></th>
+                                <th>Ürün Adı</th>
+                                <th>Liste Fiyatı</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyProduct"></tbody>
+                    </table>
+                </div>
+
+                <br />
+                <div class="col-md-12">
+                    <br />Siparişler<br />
+                    <table id="tblOrderList" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="dataList_info">
+                        <thead>
+                            <tr role="row">
+                                <th style="width:60px"></th>
+                                <th style="width:60px">Adet</th>
+                                <th>Ürün Adı</th>
+                                <th>Liste Fiyatı</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyOrderList"></tbody>
+                    </table>
+                    <br />
+                    <div id="divTotal"><b>TOPLAM: </b><b id="bToplam">0</b><b> TL</b></div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTalepGonder"  id="btnTalepGonder">Talep Gönder</button> 
                 </div>
             </div>
 
@@ -118,14 +115,6 @@
     $(function () {
         $("#btnTalepGonder").hide();
         $("#divOrder").hide();
-        //$("#tblOrderList").dataTable({
-        //    "responsive": true,
-        //    "autoWidth": true,
-        //    "ordering": false,
-        //    "language": {
-        //        "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json",
-        //    }
-        //});
     });
 
     function mainGroupChange() {
@@ -191,7 +180,7 @@
 
                         $("#tbodyProduct").append(' <tr role=\"row\" class=\"odd\">' +
                             '<td>' +
-                            '<button onclick= "productClick(' + product.UrunId + ')"> <img src="/images/add.png\" style=\"width:30px;height:30px\"></button>' +
+                            '<button onclick= "productClick(' + product.UrunId + ')"> <img src="/images/patch-plus-fill.svg" style=\"width:30px;height:30px\"></button>' +
                             '</td>' +
                             '<td>' + product.UrunAdi + '</td>' +
                             '<td>' + product.ListeFiyat + ' TL</td>' +
@@ -224,19 +213,85 @@
                     for (var i = 0; i < products.length; i++) {
                         var product = products[i];
 
-                        $("#tbodyOrderList").append(' <tr>' +
+                        var tdSil = '<td></td>';
+                        var tdAdet = '<td></td>';
+
+                        if (i == 0) {
+                            tdAdet = '<td ><input type="number" id="txtAdet' + product.UrunId + '" class="adetChange" placeholder="Adet" value="1" style="width:40px"  /></td>';
+                            tdSil = '<td><button onclick= "productDeleteClick(' + product.UrunId + ')"> <img src="/images/x-circle-fill.svg" style=\"width:30px;height:30px\"></button></td>';
+                        }
+
+                        $("#tbodyOrderList").append(' <tr urunId= "tr' + product.UrunId + '" anaUrunId="tr' + product.FKAnaUrunId + '" class="tr' + product.FKAnaUrunId + '">' +
+                            tdSil +
+                            tdAdet +
                             '<td>' + product.UrunAdi + '</td>' +
-                            '<td>' + product.ListeFiyat + ' TL</td>' +
+                            '<td><span id="spanOriginal' + product.UrunId + '" style="display:none">' + product.ListeFiyat + '</span><span id="span' + product.UrunId + '">' + product.ListeFiyat + '</span> TL</td>' +
                             '</tr>');
 
                         total += parseFloat(product.ListeFiyat);
                     }
 
-                    $("#bToplam").text(total)
+                    calculateTotalPrice();
                 }
             }
         });
     }
+
+    function productDeleteClick(productId) {
+        $("#tbodyOrderList").find("tr[urunId]").each(function () {
+            var trId = this.attributes["urunid"].value.replace("tr", "");
+            if (trId == productId) {
+                this.remove();
+            }
+        });
+        $("#tbodyOrderList").children(".tr" + productId).each(function () {
+            this.remove();
+        });
+
+        calculateTotalPrice();
+    }
+
+    function calculateTotalPrice() {
+        var total = 0;
+
+        $("#tbodyOrderList > tr").each(function () {
+            var urunId = $(this).attr('urunId').replace("tr", "");
+            var anaUrunId = $(this).attr('anaUrunId').replace("tr", "");
+
+            var adetId = anaUrunId == "0" ? urunId : anaUrunId;
+            var adet = parseFloat($("#txtAdet" + adetId).val());
+
+            var originalFiyat = parseFloat($("#spanOriginal" + urunId).text());
+
+            total += (adet * originalFiyat);
+        });
+
+        $("#bToplam").text(total);
+    }
+
+    $(function () {
+        var urunId = 0;
+        $('#tbodyOrderList').delegate('.adetChange', 'change', function () {
+            var $thisTextbox = $(this)
+
+            urunId = $thisTextbox.attr('id').replace("txtAdet", "");
+
+            var adet = parseFloat($thisTextbox.val());
+
+            var originalFiyat = parseFloat($("#spanOriginal" + urunId).text());
+            var fiyat = originalFiyat * adet;
+            $("#span" + urunId).text(fiyat);
+
+            $("#tbodyOrderList").children(".tr" + urunId).each(function () {
+                var trId = this.attributes["urunid"].value.replace("tr", "");
+                var originalFiyat = parseFloat($("#spanOriginal" + trId).text());
+                var fiyat = originalFiyat * adet;
+                $("#span" + trId).text(fiyat);
+            });
+
+            calculateTotalPrice();
+        });
+    });
 
     function fieldValidationControl(fieldKey, message) {
         var fieldValue = $("#" + fieldKey).val();
